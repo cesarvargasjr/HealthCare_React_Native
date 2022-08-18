@@ -19,6 +19,7 @@ export default function Routes() {
                 name="SignIn"
                 component={SignIn}
                 options={{
+                    title: 'Login',
                     headerShown: false,
                 }}
             />
