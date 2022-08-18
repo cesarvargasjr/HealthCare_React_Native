@@ -22,36 +22,6 @@ export const ContainerLogin = styled.View`
     margin-top: 10%;
 `;
 
-
-export const TextButton = styled.Text`
-    color: ${colors.white};
-    font-family: 'Nunito_700Bold';
-    `;
-
-export const ContainerButton = styled.TouchableOpacity`
-    width: 80%;
-    background-color: ${colors.purple};
-    border-radius: 50px;
-    margin-top: 5%;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-`;
-
-export const ContainerButtonNewUser = styled.TouchableOpacity`
-    width: 60%;
-    margin-top: 6%;
-    margin-bottom: 2%;
-`;
-
-export const TextButtonNewUser = styled.Text`
-    color: ${colors.purple};
-    font-size: 14px;
-    font-family: 'Nunito_800ExtraBold';
-    text-align: center;
-    line-height: 25px;
-`;
-
 export const ContainerInput = styled.View`
     width: 100%;
     height: 40px;

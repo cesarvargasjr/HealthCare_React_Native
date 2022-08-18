@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Image, TextInput, TouchableOpacity } from 'react-native';
+import { Image, TextInput } from 'react-native';
 import * as S from './styles';
+import { Button } from '../../components/button';
 
 export const SignIn = () => {
 
@@ -39,12 +40,20 @@ export const SignIn = () => {
                     />
                 </S.ContainerInput>
             </S.ContainerLogin>
-            <S.ContainerButton onPress={() => console.log('***DEFINIR ROTA***')} >
-                <S.TextButton>ENTRAR</S.TextButton>
-            </S.ContainerButton>
-            <S.ContainerButtonNewUser onPress={() => navigation.navigate('Register')}>
-                <S.TextButtonNewUser>QUERO ME CADASTRAR</S.TextButtonNewUser>
-            </S.ContainerButtonNewUser>
+            <Button
+                typeButton='primary'
+                textButton={'ENTRAR'}
+                onPress={() => console.log('***DEFINIR ROTA***')}
+                marginTop={8}
+                marginBottom={0}
+            />
+            <Button
+                typeButton='secondary'
+                textButton={'QUERO ME CADASTRAR'}
+                onPress={() => navigation.navigate('Register')}
+                marginTop={7}
+                marginBottom={0}
+            />
         </S.ContainerPage>
     )
 }

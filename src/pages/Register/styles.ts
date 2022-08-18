@@ -20,21 +20,6 @@ export const ContainerLogin = styled.View`
     margin-top: 10%;
 `;
 
-export const TextButton = styled.Text`
-    color: ${colors.white};
-    font-family: 'Nunito_700Bold';
-`;
-
-export const ContainerButton = styled.TouchableOpacity`
-    width: 80%;
-    background-color: ${colors.purple};
-    border-radius: 50px;
-    margin-top: 10%;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-`;
-
 export const TextButtonNewUser = styled.Text`
     color: ${colors.purple};
     font-size: 14px;

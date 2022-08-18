@@ -1,8 +1,8 @@
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native';
 import * as S from './styles';
 import * as Animation from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native';
+import { Button } from '../../components/button';
 
 export const Welcome = () => {
 
@@ -19,12 +19,13 @@ export const Welcome = () => {
             <S.Title animation="flipInY">
                 Health Care
             </S.Title>
-            <S.ContainerButton
-                animation="flipInY"
+            <Button
+                typeButton='primary'
+                textButton={'ACESSAR AGORA'}
                 onPress={() => navigation.navigate('SignIn')}
-            >
-                <S.TextButton>ACESSAR AGORA</S.TextButton>
-            </S.ContainerButton>
+                marginTop={35}
+                marginBottom={0}
+            />
         </S.ContainerPage>
     )
 }

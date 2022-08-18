@@ -15,18 +15,3 @@ export const Title = styled(Animation.Text)`
     color: ${colors.purple};
     margin-top: 20%;
 `;
-
-export const TextButton = styled.Text`
-    color: ${colors.white};
-    font-family: 'Nunito_700Bold';
-`;
-
-export const ContainerButton = styled.TouchableOpacity`
-    width: 80%;
-    background-color: ${colors.purple};
-    border-radius: 50px;
-    margin-top: 30%;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-`;

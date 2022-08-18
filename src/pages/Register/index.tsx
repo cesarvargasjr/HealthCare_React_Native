@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Image, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+import { ScrollView, TextInput } from 'react-native';
 import * as S from './styles';
-import { SvgCss } from 'react-native-svg';
+import { Button } from '../../components/button';
+// import { SvgCss } from 'react-native-svg';
 // import register2 from '../../assets/register2.svg';
 
 export const Register = () => {
@@ -50,9 +51,13 @@ export const Register = () => {
                         />
                     </S.ContainerInput>
                 </S.ContainerLogin>
-                <S.ContainerButton onPress={() => console.log('***DEFINIR ROTA***')} >
-                    <S.TextButton>CADASTRAR</S.TextButton>
-                </S.ContainerButton>
+                <Button
+                    typeButton='primary'
+                    textButton={'CADASTRAR'}
+                    onPress={() => console.log('***DEFINIR ROTA***')}
+                    marginTop={10}
+                    marginBottom={2}
+                />
             </S.ContainerPage>
         </ScrollView>
     )
