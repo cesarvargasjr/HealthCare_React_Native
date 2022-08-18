@@ -19,10 +19,11 @@ export const Welcome = () => {
             <S.Title animation="flipInY">
                 Health Care
             </S.Title>
-            <S.ContainerButton animation="flipInY">
-                <TouchableOpacity onPress={() => navigation.navigate('SignIn')} >
-                    <S.TextButton>ACESSAR AGORA</S.TextButton>
-                </TouchableOpacity>
+            <S.ContainerButton
+                animation="flipInY"
+                onPress={() => navigation.navigate('SignIn')}
+            >
+                <S.TextButton>ACESSAR AGORA</S.TextButton>
             </S.ContainerButton>
         </S.ContainerPage>
     )

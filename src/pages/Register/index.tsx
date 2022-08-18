@@ -50,10 +50,8 @@ export const Register = () => {
                         />
                     </S.ContainerInput>
                 </S.ContainerLogin>
-                <S.ContainerButton>
-                    <TouchableOpacity onPress={() => console.log('***DEFINIR ROTA***')} >
-                        <S.TextButton>CADASTRAR</S.TextButton>
-                    </TouchableOpacity>
+                <S.ContainerButton onPress={() => console.log('***DEFINIR ROTA***')} >
+                    <S.TextButton>CADASTRAR</S.TextButton>
                 </S.ContainerButton>
             </S.ContainerPage>
         </ScrollView>

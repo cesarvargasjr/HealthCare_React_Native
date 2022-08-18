@@ -25,7 +25,7 @@ export const TextButton = styled.Text`
     font-family: 'Nunito_700Bold';
 `;
 
-export const ContainerButton = styled.View`
+export const ContainerButton = styled.TouchableOpacity`
     width: 80%;
     background-color: ${colors.purple};
     border-radius: 50px;

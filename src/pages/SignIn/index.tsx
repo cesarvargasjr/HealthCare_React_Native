@@ -39,15 +39,11 @@ export const SignIn = () => {
                     />
                 </S.ContainerInput>
             </S.ContainerLogin>
-            <S.ContainerButton>
-                <TouchableOpacity onPress={() => console.log('***DEFINIR ROTA***')} >
-                    <S.TextButton>ENTRAR</S.TextButton>
-                </TouchableOpacity>
+            <S.ContainerButton onPress={() => console.log('***DEFINIR ROTA***')} >
+                <S.TextButton>ENTRAR</S.TextButton>
             </S.ContainerButton>
-            <S.ContainerButtonNewUser>
-                <TouchableOpacity onPress={() => navigation.navigate('Register')} >
-                    <S.TextButtonNewUser>QUERO ME CADASTRAR</S.TextButtonNewUser>
-                </TouchableOpacity>
+            <S.ContainerButtonNewUser onPress={() => navigation.navigate('Register')}>
+                <S.TextButtonNewUser>QUERO ME CADASTRAR</S.TextButtonNewUser>
             </S.ContainerButtonNewUser>
         </S.ContainerPage>
     )
