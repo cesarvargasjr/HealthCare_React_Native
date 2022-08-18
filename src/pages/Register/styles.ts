@@ -6,8 +6,6 @@ export const ContainerPage = styled.View`
     color: ${colors.red};
     padding: 7%;
     align-items: center;
-    justify-content: center;
-    height: 100%;
 `;
 
 export const TitleInput = styled.Text`

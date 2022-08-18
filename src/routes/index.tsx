@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Register } from '../pages/Register';
 import { SignIn } from '../pages/SignIn';
 import { Welcome } from '../pages/Welcome';
 
@@ -21,6 +22,15 @@ export default function Routes() {
                 options={{
                     title: 'Login',
                     headerShown: false,
+                }}
+            />
+            <Stack.Screen
+                name="Register"
+                component={Register}
+                options={{
+                    title: 'Cadastro',
+                    headerShown: true,
+                    headerTitleAlign: 'center',
                 }}
             />
         </Stack.Navigator>
