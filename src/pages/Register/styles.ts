@@ -23,15 +23,16 @@ export const ContainerLogin = styled.View`
 export const TextButton = styled.Text`
     color: ${colors.white};
     font-family: 'Nunito_700Bold';
-    text-align: center;
-    background-color: ${colors.purple};
-    border-radius: 50px;
-    padding: 10px;
 `;
 
 export const ContainerButton = styled.View`
     width: 80%;
-    margin-top: 5%;
+    background-color: ${colors.purple};
+    border-radius: 50px;
+    margin-top: 10%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
 `;
 
 export const TextButtonNewUser = styled.Text`

@@ -44,11 +44,11 @@ export const SignIn = () => {
                     <S.TextButton>ENTRAR</S.TextButton>
                 </TouchableOpacity>
             </S.ContainerButton>
-            <S.ContainerButton>
+            <S.ContainerButtonNewUser>
                 <TouchableOpacity onPress={() => navigation.navigate('Register')} >
                     <S.TextButtonNewUser>QUERO ME CADASTRAR</S.TextButtonNewUser>
                 </TouchableOpacity>
-            </S.ContainerButton>
+            </S.ContainerButtonNewUser>
         </S.ContainerPage>
     )
 }

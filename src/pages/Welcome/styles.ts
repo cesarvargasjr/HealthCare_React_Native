@@ -6,9 +6,7 @@ export const ContainerPage = styled.View`
     background-color: ${colors.white};
     min-height: 100%;
     align-items: center;
-    justify-content: center;
-    flex: 1;
-    padding: 3%;
+    padding: 7%;
 `;
 
 export const Title = styled(Animation.Text)`
@@ -21,13 +19,14 @@ export const Title = styled(Animation.Text)`
 export const TextButton = styled.Text`
     color: ${colors.white};
     font-family: 'Nunito_700Bold';
-    text-align: center;
-    background-color: ${colors.purple};
-    border-radius: 50px;
-    padding: 10px;
-    margin-top: 40%;
 `;
 
 export const ContainerButton = styled(Animation.View)`
-    width: 60%;
+    width: 80%;
+    background-color: ${colors.purple};
+    border-radius: 50px;
+    margin-top: 30%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
 `;

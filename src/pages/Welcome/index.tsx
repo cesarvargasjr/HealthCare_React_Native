@@ -13,7 +13,7 @@ export const Welcome = () => {
             <Animation.Image
                 source={require('../../assets/welcome.png')}
                 resizeMode="contain"
-                style={{ maxHeight: '40%', width: '100%' }}
+                style={{ maxHeight: '40%', width: '100%', marginTop: '10%' }}
                 animation="flipInY"
             />
             <S.Title animation="flipInY">

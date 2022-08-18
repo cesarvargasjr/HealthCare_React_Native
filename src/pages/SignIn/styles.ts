@@ -22,18 +22,26 @@ export const ContainerLogin = styled.View`
     margin-top: 10%;
 `;
 
+
 export const TextButton = styled.Text`
     color: ${colors.white};
     font-family: 'Nunito_700Bold';
-    text-align: center;
-    background-color: ${colors.purple};
-    border-radius: 50px;
-    padding: 10px;
-`;
+    `;
 
 export const ContainerButton = styled.View`
     width: 80%;
+    background-color: ${colors.purple};
+    border-radius: 50px;
     margin-top: 5%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+`;
+
+export const ContainerButtonNewUser = styled.View`
+    width: 60%;
+    margin-top: 6%;
+    margin-bottom: 2%;
 `;
 
 export const TextButtonNewUser = styled.Text`
