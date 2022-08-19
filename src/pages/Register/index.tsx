@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { ScrollView, TextInput } from 'react-native';
+import { ScrollView } from 'react-native';
 import * as S from './styles';
 import { Button } from '../../components/button';
-// import { SvgCss } from 'react-native-svg';
-// import register2 from '../../assets/register2.svg';
+import { Input } from '../../components/input';
 
 export const Register = () => {
 
@@ -13,43 +12,27 @@ export const Register = () => {
     return (
         <ScrollView style={{ backgroundColor: 'white' }}>
             <S.ContainerPage>
-                {/* <SvgCss xml={register2} height={250} width={250} /> */}
                 <S.ContainerLogin>
-                    <S.TitleInput>Nome da clínica</S.TitleInput>
-                    <S.ContainerInput>
-                        <TextInput
-                            placeholder='Informe o usuário'
-                            placeholderTextColor='#bbbbff'
-                            style={{
-                                fontSize: 16,
-                                fontFamily: 'Nunito_400Regular',
-                            }}
-                        />
-                    </S.ContainerInput>
-                    <S.TitleInput>Senha</S.TitleInput>
-                    <S.ContainerInput>
-                        <TextInput
-                            placeholder='Defina uma senha'
-                            placeholderTextColor='#bbbbff'
-                            secureTextEntry={true}
-                            style={{
-                                fontSize: 16,
-                                fontFamily: 'Nunito_400Regular',
-                            }}
-                        />
-                    </S.ContainerInput>
-                    <S.TitleInput>Confirmar senha</S.TitleInput>
-                    <S.ContainerInput>
-                        <TextInput
-                            placeholder='Repita a senha'
-                            placeholderTextColor='#bbbbff'
-                            secureTextEntry={true}
-                            style={{
-                                fontSize: 16,
-                                fontFamily: 'Nunito_400Regular',
-                            }}
-                        />
-                    </S.ContainerInput>
+                    <Input
+                        titleInput={'Nome da Clínica/Asilo'}
+                        placeholder={'Digite o nome completo'}
+                        typeInput={'text'}
+                    />
+                    <Input
+                        titleInput={'Defina um usuário'}
+                        placeholder={'Usuário para login'}
+                        typeInput={'userName'}
+                    />
+                    <Input
+                        titleInput={'Senha'}
+                        placeholder={'Defina uma senha'}
+                        typeInput={'password'}
+                    />
+                    <Input
+                        titleInput={'Confirmar senha'}
+                        placeholder={'Repita a senha'}
+                        typeInput={'password'}
+                    />
                 </S.ContainerLogin>
                 <Button
                     typeButton='primary'

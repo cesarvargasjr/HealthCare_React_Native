@@ -24,7 +24,6 @@ export const Welcome = () => {
                 textButton={'ACESSAR AGORA'}
                 onPress={() => navigation.navigate('SignIn')}
                 marginTop={35}
-                marginBottom={0}
             />
         </S.ContainerPage>
     )
