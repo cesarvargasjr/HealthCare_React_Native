@@ -31,14 +31,12 @@ export const Input = ({ placeholder, titleInput, typeInput }: InputProps) => {
                 return (
                     <Number
                         placeholder={placeholder}
-                        keyboardType={true}
                     />
                 );
             case 'password':
                 return (
                     <Password
                         placeholder={placeholder}
-                        secureTextEntry={true}
                     />
                 );
         }

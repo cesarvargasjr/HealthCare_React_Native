@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home } from '../pages/Home';
 import { Register } from '../pages/Register';
 import { SignIn } from '../pages/SignIn';
 import { Welcome } from '../pages/Welcome';
@@ -12,6 +13,7 @@ export default function Routes() {
         <Stack.Navigator
             screenOptions={{
                 headerTintColor: colors.grey,
+                headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontSize: 20,
                     fontFamily: 'Nunito_600SemiBold',
@@ -38,7 +40,15 @@ export default function Routes() {
                 options={{
                     title: 'Cadastro',
                     headerShown: true,
-                    headerTitleAlign: 'center',
+                }}
+            />
+            <Stack.Screen
+                name="Home"
+                component={Home}
+                options={{
+                    title: 'Home',
+                    headerShown: true,
+                    headerBackVisible: false,
                 }}
             />
         </Stack.Navigator>

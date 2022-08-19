@@ -1,13 +1,9 @@
 import styled from 'styled-components/native';
 import colors from '../../utils/colors';
 
-export const ContainerPage = styled.View`
+export const ContainerPage = styled.ScrollView.attrs({contentContainerStyle: { flex: 1, alignItems: 'center', justifyContent: 'center' }})`
     background-color: ${colors.white};
-    color: ${colors.red};
     padding: 7%;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
 `;
 
 export const ContainerLogin = styled.View`

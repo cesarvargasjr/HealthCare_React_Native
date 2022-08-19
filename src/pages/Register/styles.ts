@@ -3,7 +3,6 @@ import colors from '../../utils/colors';
 
 export const ContainerPage = styled.View`
     background-color: ${colors.white};
-    color: ${colors.red};
     padding: 7%;
     align-items: center;
 `;

@@ -1,40 +1,49 @@
-import React from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
 import * as S from './styles';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
+import { RFPercentage } from 'react-native-responsive-fontsize';
+import signIn from '../../assets/signIn.png';
+import { SizeImage } from '../../utils/sizeImage';
 
 export const SignIn = () => {
 
     const navigation: any = useNavigation();
 
+    // const isFocused = useIsFocused();
+    // useEffect(() => {
+    // }, [isFocused])
+
+    const sizes: any = SizeImage(985, 907, RFPercentage(12))
+
     return (
-
-        // ************ SCROLLVIEW PARA INPUT / CORRIGIR IMAGE ************
-
         <S.ContainerPage>
             <Image
-                source={require('../../assets/login.png')}
+                style={{
+                    width: sizes.width,
+                    height: sizes.height,
+                }}
+                source={signIn}
                 resizeMode="contain"
-                style={{ maxHeight: '40%', width: '100%' }}
             />
             <S.ContainerLogin>
                 <Input
+                    typeInput={'text'}
                     titleInput={'Usuário'}
                     placeholder={'Informe o usuário'}
-                    typeInput={'userName'}
                 />
                 <Input
+                    typeInput={'password'}
                     titleInput={'Senha'}
                     placeholder={'Sua senha'}
-                    typeInput={'password'}
                 />
             </S.ContainerLogin>
             <Button
                 typeButton='primary'
                 textButton={'ENTRAR'}
-                onPress={() => console.log('***DEFINIR ROTA***')}
+                onPress={() => navigation.navigate('Home')}
                 marginTop={8}
             />
             <Button

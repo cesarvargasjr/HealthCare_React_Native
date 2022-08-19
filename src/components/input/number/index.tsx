@@ -1,7 +1,7 @@
 import React from 'react';
 import { MaskedTextInput } from 'react-native-mask-text';
 
-export const Number = ({ placeholder, keyboardType }) => {
+export const Number = ({ placeholder }) => {
     return (
         <MaskedTextInput
             maxLength={10}
@@ -9,7 +9,7 @@ export const Number = ({ placeholder, keyboardType }) => {
             onChangeText={(value) => value}
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'
-            keyboardType={keyboardType}
+            keyboardType={'numeric'}
             style={{
                 fontSize: 16,
                 fontFamily: 'Nunito_400Regular',
