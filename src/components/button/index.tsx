@@ -10,26 +10,35 @@ interface ButtonProps {
 }
 
 export const Button = ({ textButton, onPress, marginTop, marginBottom, typeButton }: ButtonProps) => {
+
+    function getButton() {
+        switch (typeButton) {
+            case 'primary':
+                return (
+                    <S.ContainerButton
+                        onPress={onPress}
+                        marginTop={marginTop}
+                        marginBottom={marginBottom}
+                    >
+                        <S.TextButton>{textButton}</S.TextButton>
+                    </S.ContainerButton>
+                );
+            case 'secondary':
+                return (
+                    <S.ContainerButtonNewUser
+                        onPress={onPress}
+                        marginTop={marginTop}
+                        marginBottom={marginBottom}
+                    >
+                        <S.TextButtonNewUser>{textButton}</S.TextButtonNewUser>
+                    </S.ContainerButtonNewUser>
+                );
+        }
+    }
+
     return (
         <>
-            {typeButton === 'primary' && (
-                <S.ContainerButton
-                    onPress={onPress}
-                    marginTop={marginTop}
-                    marginBottom={marginBottom}
-                >
-                    <S.TextButton>{textButton}</S.TextButton>
-                </S.ContainerButton>
-            )}
-            {typeButton === 'secondary' && (
-                <S.ContainerButtonNewUser
-                    onPress={onPress}
-                    marginTop={marginTop}
-                    marginBottom={marginBottom}
-                >
-                    <S.TextButtonNewUser>{textButton}</S.TextButtonNewUser>
-                </S.ContainerButtonNewUser>
-            )}
+            {getButton()}
         </>
     );
 };
