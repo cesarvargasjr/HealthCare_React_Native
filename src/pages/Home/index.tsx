@@ -23,7 +23,7 @@ export const Home = () => {
             <Button
                 typeButton={'primary'}
                 textButton={'ADICIONAR UM IDOSO'}
-                onPress={() => console.log('***DEFINIR ROTA***')}
+                onPress={() => navigation.navigate('RegisterPatient')}
                 marginTop={25}
                 marginBottom={4}
             />
@@ -42,7 +42,7 @@ export const Home = () => {
                 marginBottom={4}
             />
             <Button
-                typeButton={'primary'}
+                typeButton={'tertiary'}
                 textButton={'SAIR'}
                 onPress={() => navigation.navigate('SignIn')}
                 marginTop={4}

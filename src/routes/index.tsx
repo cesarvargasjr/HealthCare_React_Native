@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home } from '../pages/Home';
 import { Register } from '../pages/Register';
+import { RegisterPatient } from '../pages/registerPatient';
 import { SignIn } from '../pages/SignIn';
 import { Welcome } from '../pages/Welcome';
 import colors from '../utils/colors';
@@ -49,6 +50,15 @@ export default function Routes() {
                     title: 'Home',
                     headerShown: true,
                     headerBackVisible: false,
+                }}
+            />
+            <Stack.Screen
+                name="RegisterPatient"
+                component={RegisterPatient}
+                options={{
+                    title: 'Cadastro de idoso',
+                    headerShown: true,
+                    headerBackVisible: true,
                 }}
             />
         </Stack.Navigator>

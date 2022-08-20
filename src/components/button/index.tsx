@@ -33,6 +33,16 @@ export const Button = ({ textButton, onPress, marginTop, marginBottom, typeButto
                         <S.TextButtonNewUser>{textButton}</S.TextButtonNewUser>
                     </S.ContainerButtonNewUser>
                 );
+            case 'tertiary':
+                return (
+                    <S.ContainerButtonTertiary
+                        onPress={onPress}
+                        marginTop={marginTop}
+                        marginBottom={marginBottom}
+                    >
+                        <S.TextButtonTertiary>{textButton}</S.TextButtonTertiary>
+                    </S.ContainerButtonTertiary>
+                );
         }
     }
 
