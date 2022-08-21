@@ -8,6 +8,8 @@ export const Home = () => {
 
     const navigation: any = useNavigation();
 
+    // CORRIGIR BOTÃO DE VOLTAR DAS PRÓXIMAS TELAS
+
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => true)
         return () => BackHandler.removeEventListener('hardwareBackPress', () => true)
@@ -30,14 +32,14 @@ export const Home = () => {
             <Button
                 typeButton={'primary'}
                 textButton={'LISTAR IDOSOS'}
-                onPress={() => console.log('***DEFINIR ROTA***')}
+                onPress={() => navigation.navigate('ListPatients')}
                 marginTop={4}
                 marginBottom={4}
             />
             <Button
                 typeButton={'primary'}
                 textButton={'MEU PERFIL'}
-                onPress={() => console.log('***DEFINIR ROTA***')}
+                onPress={() => navigation.navigate('Profile')}
                 marginTop={4}
                 marginBottom={4}
             />

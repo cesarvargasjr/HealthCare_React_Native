@@ -10,5 +10,7 @@ export default {
     orange: '#FF824D',
     yellow: '#FFED00',
     green: '#16C153',
+    // line: '#E4E4FF',
+    line: '#EBEBEB',
   };
   
