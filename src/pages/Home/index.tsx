@@ -16,6 +16,7 @@ export const Home = () => {
     }, [])
 
     return (
+
         <S.ContainerPage>
             <Image
                 source={require('../../assets/home.png')}
@@ -24,14 +25,14 @@ export const Home = () => {
             />
             <Button
                 typeButton={'primary'}
-                textButton={'ADICIONAR UM IDOSO'}
+                textButton={'ADICIONAR UM PACIENTE'}
                 onPress={() => navigation.navigate('RegisterPatient')}
                 marginTop={25}
                 marginBottom={4}
             />
             <Button
                 typeButton={'primary'}
-                textButton={'LISTAR IDOSOS'}
+                textButton={'LISTAR PACIENTES'}
                 onPress={() => navigation.navigate('ListPatients')}
                 marginTop={4}
                 marginBottom={4}
@@ -51,5 +52,6 @@ export const Home = () => {
                 marginBottom={4}
             />
         </S.ContainerPage>
+
     )
 }

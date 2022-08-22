@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import colors from '../../utils/colors';
+import colors from '../../../utils/colors';
 
 export const ContainerPage = styled.ScrollView`
     background-color: ${colors.white};

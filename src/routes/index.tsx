@@ -3,8 +3,9 @@ import { Home } from '../pages/Home';
 import { ListPatients } from '../pages/ListPatients';
 import { Profile } from '../pages/Profile';
 import { ProfilePatient } from '../pages/ProfilePatient';
+import { EditPatient } from '../pages/ProfilePatient/EditPatient';
+import { RegisterPatient } from '../pages/ProfilePatient/RegisterPatient';
 import { Register } from '../pages/Register';
-import { RegisterPatient } from '../pages/RegisterPatient';
 import { RegisterRemedie } from '../pages/RegisterRemedie';
 import { SignIn } from '../pages/SignIn';
 import { Welcome } from '../pages/Welcome';
@@ -60,7 +61,7 @@ export default function Routes() {
                 name="RegisterPatient"
                 component={RegisterPatient}
                 options={{
-                    title: 'Cadastro de idoso',
+                    title: 'Cadastro de paciente',
                     headerShown: true,
                     headerBackVisible: true,
                 }}
@@ -69,7 +70,7 @@ export default function Routes() {
                 name="ListPatients"
                 component={ListPatients}
                 options={{
-                    title: 'Lista dos idosos',
+                    title: 'Lista dos pacientes',
                     headerShown: true,
                     headerBackVisible: true,
                 }}
@@ -87,7 +88,7 @@ export default function Routes() {
                 name="ProfilePatient"
                 component={ProfilePatient}
                 options={{
-                    title: 'Perfil do idoso',
+                    title: 'Perfil do paciente',
                     headerShown: true,
                     headerBackVisible: true,
                 }}
@@ -97,6 +98,15 @@ export default function Routes() {
                 component={RegisterRemedie}
                 options={{
                     title: 'Cadastro de medicamento',
+                    headerShown: true,
+                    headerBackVisible: true,
+                }}
+            />
+            <Stack.Screen
+                name="EditPatient"
+                component={EditPatient}
+                options={{
+                    title: 'Editar perfil',
                     headerShown: true,
                     headerBackVisible: true,
                 }}

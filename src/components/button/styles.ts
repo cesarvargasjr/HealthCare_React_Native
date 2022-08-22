@@ -53,3 +53,20 @@ export const TextButtonTertiary = styled.Text`
     font-family: 'Nunito_700Bold';
     font-size: 15px;
 `;
+
+export const ContainerButtonCancel = styled.TouchableOpacity<ButtonProps>`
+    width: 80%;
+    border-radius: 50px;
+    border: 2px solid ${colors.lightRed};
+    margin-top: ${({ marginTop }) => marginTop ?? 0}%;
+    margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+`;
+
+export const TextButtonCancel = styled.Text`
+    color: ${colors.lightRed};
+    font-family: 'Nunito_700Bold';
+    font-size: 15px;
+`;

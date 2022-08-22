@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
 import { Button } from '../../components/button';
@@ -6,10 +6,12 @@ import { CardRemedies } from '../../components/cards/remedies';
 import { Line } from '../../components/line';
 
 import * as S from './styles';
+import { ModalDelete } from '../../components/modal/modalDelete';
 
 export const ProfilePatient = () => {
 
     const navigation: any = useNavigation();
+    const [isOpen, setIsOpen] = useState(false);
 
     const remedies = [
         {
@@ -47,7 +49,7 @@ export const ProfilePatient = () => {
                     <S.NameProfile>José da Silva</S.NameProfile>
                     <S.TextBold>Idade: <S.Text>80 anos</S.Text></S.TextBold>
                     <S.TextBold>Peso: <S.Text>70 kg</S.Text></S.TextBold>
-                    <S.TextBold>Altura: <S.Text>1,75 M</S.Text></S.TextBold>
+                    <S.TextBold>Altura: <S.Text>175 cm</S.Text></S.TextBold>
                 </S.ContainerInfo>
             </S.ContainerProfile>
             <Line
@@ -80,17 +82,23 @@ export const ProfilePatient = () => {
                 <Button
                     typeButton='primary'
                     textButton='EDITAR PERFIL'
-                    onPress={() => console.log('***DEFINIR ROTA***')}
+                    onPress={() => navigation.navigate('EditPatient')}
                     marginTop={2}
                     marginBottom={2}
                 />
                 <Button
                     typeButton='primary'
                     textButton='EXCLUIR PERFIL'
-                    onPress={() => console.log('***DEFINIR ROTA***')}
+                    onPress={() => setIsOpen(true)}
                     marginTop={2}
                 />
             </S.ContainerButton>
+            {isOpen && (
+                <ModalDelete
+                    description='Deseja excluir este perfil?'
+                    closeModal={() => setIsOpen(false)}
+                />
+            )}
         </S.ContainerPage>
     )
 }

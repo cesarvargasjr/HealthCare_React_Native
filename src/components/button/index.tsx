@@ -43,6 +43,16 @@ export const Button = ({ textButton, onPress, marginTop, marginBottom, typeButto
                         <S.TextButtonTertiary>{textButton}</S.TextButtonTertiary>
                     </S.ContainerButtonTertiary>
                 );
+            case 'cancel':
+                return (
+                    <S.ContainerButtonCancel
+                        onPress={onPress}
+                        marginTop={marginTop}
+                        marginBottom={marginBottom}
+                    >
+                        <S.TextButtonCancel>{textButton}</S.TextButtonCancel>
+                    </S.ContainerButtonCancel>
+                );
         }
     }
 

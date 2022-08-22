@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '../../components/button';
-import { AddImage } from '../../components/cards/addImage';
-import { Input } from '../../components/input';
+import { Button } from '../../../components/button';
+import { AddImage } from '../../../components/cards/addImage';
+import { Input } from '../../../components/input';
 import * as S from './styles';
 
-export const RegisterPatient = () => {
+export const EditPatient = () => {
     return (
         <S.ContainerPage>
             <Input
@@ -24,10 +24,10 @@ export const RegisterPatient = () => {
             />
             <Input
                 typeInput='number'
-                titleInput='Altura (M)'
-                placeholder='1.75'
+                titleInput='Altura (cm)'
+                placeholder='175'
             />
-            <S.TitleCard>Foto do idoso</S.TitleCard>
+            <S.TitleCard>Alterar foto</S.TitleCard>
             <AddImage />
             <S.ContainerButton>
                 <Button

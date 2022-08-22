@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Button } from '../../../components/button';
+import { ModalDelete } from '../../modal/modalDelete';
 
 interface CardProps {
     onPress?: () => void;
@@ -13,6 +13,9 @@ interface CardProps {
 }
 
 export const CardRemedies = ({ nameRemedie, daysExpired, timerNotification, totalRemedies, daysNotifications }: CardProps) => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <S.ContainerCard>
             <S.ContainerHeader>
@@ -31,14 +34,20 @@ export const CardRemedies = ({ nameRemedie, daysExpired, timerNotification, tota
             </S.TextBold>
             <S.ContainerRow>
                 {daysExpired > 1 ? (
-                    <S.TextExpired>Restam ainda {daysExpired} dias...</S.TextExpired>
+                    <S.TextExpired>Restam {daysExpired} dias...</S.TextExpired>
                 ) : (
-                    <S.TextExpired>Resta ainda {daysExpired} dia...</S.TextExpired>
+                    <S.TextExpired>Resta {daysExpired} dia...</S.TextExpired>
                 )}
-                <S.ContainerDelete onPress={() => console.log('***DEFINIR ROTA***')} >
-                    <Icon name="trash" size={25} color='#FF0000' />
+                <S.ContainerDelete onPress={() => setIsOpen(true)} >
+                    <Icon name="trash" size={25} color='#FF2222' />
                 </S.ContainerDelete>
             </S.ContainerRow>
+            {isOpen && (
+                <ModalDelete
+                    description='Deseja excluir este medicamento?'
+                    closeModal={() => setIsOpen(false)}
+                />
+            )}
         </S.ContainerCard>
     )
 }
