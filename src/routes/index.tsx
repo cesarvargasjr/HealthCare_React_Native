@@ -5,6 +5,7 @@ import { Profile } from '../pages/Profile';
 import { ProfilePatient } from '../pages/ProfilePatient';
 import { Register } from '../pages/Register';
 import { RegisterPatient } from '../pages/RegisterPatient';
+import { RegisterRemedie } from '../pages/RegisterRemedie';
 import { SignIn } from '../pages/SignIn';
 import { Welcome } from '../pages/Welcome';
 import colors from '../utils/colors';
@@ -87,6 +88,15 @@ export default function Routes() {
                 component={ProfilePatient}
                 options={{
                     title: 'Perfil do idoso',
+                    headerShown: true,
+                    headerBackVisible: true,
+                }}
+            />
+            <Stack.Screen
+                name="RegisterRemedie"
+                component={RegisterRemedie}
+                options={{
+                    title: 'Cadastro de medicamento',
                     headerShown: true,
                     headerBackVisible: true,
                 }}

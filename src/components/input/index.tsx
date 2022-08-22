@@ -4,14 +4,16 @@ import { Number } from './number';
 import { Password } from './password';
 import { Text } from './text';
 import { UserName } from './userName';
+import { TextArea } from './textArea';
 
 interface InputProps {
     placeholder: string;
     titleInput: string;
     typeInput: string;
+    height?: number;
 }
 
-export const Input = ({ placeholder, titleInput, typeInput }: InputProps) => {
+export const Input = ({ placeholder, titleInput, typeInput, height }: InputProps) => {
 
     function getInput() {
         switch (typeInput) {
@@ -39,13 +41,19 @@ export const Input = ({ placeholder, titleInput, typeInput }: InputProps) => {
                         placeholder={placeholder}
                     />
                 );
+            case 'textArea':
+                return (
+                    <TextArea
+                        placeholder={placeholder}
+                    />
+                );
         }
     }
 
     return (
         <>
             <S.TitleInput>{titleInput}</S.TitleInput>
-            <S.ContainerInput>
+            <S.ContainerInput height={height} >
                 {getInput()}
             </S.ContainerInput>
         </>

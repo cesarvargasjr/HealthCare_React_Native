@@ -11,8 +11,8 @@ export const ContainerProfile = styled.View`
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    width: 80%;
-    height: 15%;
+    width: 70%;
+    height: 18%;
 `;
 
 export const ContainerInfo = styled.View`
@@ -40,8 +40,8 @@ export const Text = styled.Text`
 `;
 
 export const ContainerCards = styled.ScrollView`
-    margin-top: 25px;
     height: 90px;
+    padding: 0 5%;
 `;
 
 export const ContainerButton = styled.View`

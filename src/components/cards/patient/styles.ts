@@ -14,6 +14,7 @@ export const ContainerCard = styled.TouchableOpacity`
 
 export const ContainerInfo = styled.View`
     flex-direction: column;
+    width: 75%;
 `;
 
 export const TextBold = styled.Text`

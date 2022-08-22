@@ -1,9 +1,14 @@
 import styled from 'styled-components/native';
 import colors from '../../utils/colors';
 
-export const ContainerInput = styled.View`
+interface InputProps {
+    height?: number;
+}
+
+export const ContainerInput = styled.View<InputProps>`
     width: 100%;
-    height: 40px;
+    /* height: 40px; */
+    height: ${({ height }) => height ?? 40}px;
     margin-top: 7px;
     margin-bottom: 25px;
     padding-left: 10px;
