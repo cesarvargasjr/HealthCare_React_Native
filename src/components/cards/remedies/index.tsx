@@ -15,12 +15,12 @@ interface CardProps {
 export const CardRemedies = ({ nameRemedie, daysExpired, timerNotification, totalRemedies, daysNotifications }: CardProps) => {
     return (
         <S.ContainerCard>
-            <S.ContainerRow>
+            <S.ContainerHeader>
                 <S.Title>{nameRemedie}</S.Title>
                 <S.TextHour>
                     <Icon name="bell" size={16} color="#16C153" /> {timerNotification}h
                 </S.TextHour>
-            </S.ContainerRow>
+            </S.ContainerHeader>
             <S.TextBold>Comprimidos na cartela: <S.Text>{totalRemedies}</S.Text></S.TextBold>
             <S.TextBold>Lembrete por:
                 {daysNotifications > 1 ? (
@@ -31,9 +31,9 @@ export const CardRemedies = ({ nameRemedie, daysExpired, timerNotification, tota
             </S.TextBold>
             <S.ContainerRow>
                 {daysExpired > 1 ? (
-                    <S.TextDays>Restam ainda {daysExpired} dias...</S.TextDays>
+                    <S.TextExpired>Restam ainda {daysExpired} dias...</S.TextExpired>
                 ) : (
-                    <S.TextDays>Resta ainda {daysExpired} dia...</S.TextDays>
+                    <S.TextExpired>Resta ainda {daysExpired} dia...</S.TextExpired>
                 )}
                 <S.ContainerDelete onPress={() => console.log('***DEFINIR ROTA***')} >
                     <Icon name="trash" size={25} color='#FF0000' />

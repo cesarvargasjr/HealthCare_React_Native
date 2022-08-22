@@ -17,25 +17,31 @@ export const ContainerRow = styled.View`
     align-items: center;
 `;
 
+export const ContainerHeader = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 3%;
+`;
+
 export const TextBold = styled.Text`
     font-size: 15px;
     color: ${colors.black};
     font-family: 'Nunito_700Bold';
-    margin-bottom: 6px;
+    margin-bottom: 3px;
 `;
 
-export const TextDays = styled.Text`
+export const TextExpired = styled.Text`
     font-size: 15px;
     color: ${colors.purple};
     font-family: 'Nunito_700Bold';
-    margin-bottom: 5px;
 `;
 
 export const TextHour = styled.Text`
-    font-size: 15px;
+    font-size: 16px;
     color: ${colors.green};
-    font-family: 'Nunito_700Bold';
-    margin-bottom: 5px;
+    font-family: 'Nunito_800ExtraBold';
 `;
 
 export const ContainerDelete = styled.TouchableOpacity`
@@ -50,8 +56,7 @@ export const Text = styled.Text`
 `;
 
 export const Title = styled.Text`
-    font-size: 21px;
+    font-size: 22px;
     color: ${colors.black};
     font-family: 'Nunito_800ExtraBold';
-    margin-bottom: 12px;
 `;

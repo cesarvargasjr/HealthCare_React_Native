@@ -3,6 +3,7 @@ import colors from '../../../utils/colors';
 
 export const ContainerCard = styled.TouchableOpacity`
     align-items: center;
+    justify-content: center;
     border: 2px solid ${colors.purple};
     border-radius: 8px;
     height: 72px;

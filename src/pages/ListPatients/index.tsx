@@ -35,6 +35,14 @@ export const ListPatients = () => {
             name: 'Isabel Monteiro',
             age: 89,
         },
+        {
+            name: 'Joana Silva',
+            age: 85,
+        },
+        {
+            name: 'Manoel Batista',
+            age: 78,
+        },
     ];
 
     return (

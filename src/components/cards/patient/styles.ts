@@ -3,12 +3,12 @@ import colors from '../../../utils/colors';
 
 export const ContainerCard = styled.TouchableOpacity`
     width: 100%;
-    height: 100px;
     border-radius: 8px;
     padding: 5%;
     border: 2px solid ${colors.purple};
     margin-bottom: 5%;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
 `;
 
@@ -18,14 +18,14 @@ export const ContainerInfo = styled.View`
 `;
 
 export const TextBold = styled.Text`
-    font-size: 14px;
+    font-size: 16px;
     color: ${colors.black};
     font-family: 'Nunito_700Bold';
-    margin-bottom: 5px;
+    line-height: 26px;
 `;
 
 export const Text = styled.Text`
-    font-size: 14px;
+    font-size: 16px;
     color: ${colors.black};
     font-family: 'Nunito_400Regular';
 `;
