@@ -34,7 +34,7 @@ export const RegisterPatient = () => {
                     typeButton='primary'
                     textButton='SALVAR'
                     onPress={() => console.log('***DEFINIR ROTA***')}
-                    marginTop={20}
+                    marginTop={10}
                 />
             </S.ContainerButton>
         </S.ContainerPage>

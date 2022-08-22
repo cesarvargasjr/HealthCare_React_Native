@@ -53,7 +53,6 @@ export const ListPatients = () => {
                         namePatient={name}
                         agePatient={age}
                         key={index}
-                        onPress={() => navigation.navigate('ProfilePatient')}
                     />
                 ))}
             </S.ContainerCards>
