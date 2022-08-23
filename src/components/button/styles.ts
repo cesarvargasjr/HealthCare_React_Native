@@ -3,7 +3,8 @@ import colors from '../../utils/colors';
 
 interface ButtonProps {
     marginTop?: number; 
-    marginBottom?: number; 
+    marginBottom?: number;
+    width?: number; 
 }
 
 export const ContainerButton = styled.TouchableOpacity<ButtonProps>`
@@ -23,13 +24,13 @@ export const TextButton = styled.Text`
     font-size: 15px;
 `;
 
-export const ContainerButtonNewUser = styled.TouchableOpacity<ButtonProps>`
-    width: 60%;
+export const ContainerButtonJustText = styled.TouchableOpacity<ButtonProps>`
+    width: ${({ width }) => width ?? 60}%;
     margin-top: ${({ marginTop }) => marginTop ?? 0}%;
     margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;
 `;
 
-export const TextButtonNewUser = styled.Text`
+export const TextButtonJustText = styled.Text`
     color: ${colors.purple};
     font-size: 15px;
     font-family: 'Nunito_800ExtraBold';

@@ -2,14 +2,15 @@ import React from 'react';
 import * as S from './styles';
 
 interface ButtonProps {
+    typeButton: string;
     textButton: string;
     onPress: () => void;
     marginTop?: number;
     marginBottom?: number;
-    typeButton: string;
+    width?: number;
 }
 
-export const Button = ({ textButton, onPress, marginTop, marginBottom, typeButton }: ButtonProps) => {
+export const Button = ({ textButton, onPress, marginTop, marginBottom, typeButton, width }: ButtonProps) => {
 
     function getButton() {
         switch (typeButton) {
@@ -25,13 +26,14 @@ export const Button = ({ textButton, onPress, marginTop, marginBottom, typeButto
                 );
             case 'secondary':
                 return (
-                    <S.ContainerButtonNewUser
+                    <S.ContainerButtonJustText
                         onPress={onPress}
                         marginTop={marginTop}
                         marginBottom={marginBottom}
+                        width={width}
                     >
-                        <S.TextButtonNewUser>{textButton}</S.TextButtonNewUser>
-                    </S.ContainerButtonNewUser>
+                        <S.TextButtonJustText>{textButton}</S.TextButtonJustText>
+                    </S.ContainerButtonJustText>
                 );
             case 'tertiary':
                 return (

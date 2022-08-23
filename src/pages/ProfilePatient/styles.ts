@@ -10,13 +10,13 @@ export const ContainerPage = styled.View`
 export const ContainerProfile = styled.View`
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
-    width: 70%;
-    height: 18%;
+    width: 100%;
+    height: 23%;
 `;
 
 export const ContainerInfo = styled.View`
     flex-direction: column;
+    margin-left: 5%;
 `;
 
 export const NameProfile = styled.Text`
@@ -45,5 +45,10 @@ export const ContainerCards = styled.ScrollView`
 `;
 
 export const ContainerButton = styled.View`
+    align-items: center;
+`;
+
+export const ContainerButtonProfile = styled.View`
+    width: 100%;
     align-items: center;
 `;

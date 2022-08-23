@@ -46,10 +46,19 @@ export const ProfilePatient = () => {
                     style={{ height: 100, width: 100 }}
                 />
                 <S.ContainerInfo>
-                    <S.NameProfile>José da Silva</S.NameProfile>
+                    <S.NameProfile>José Carlos da Silva</S.NameProfile>
                     <S.TextBold>Idade: <S.Text>80 anos</S.Text></S.TextBold>
                     <S.TextBold>Peso: <S.Text>70 kg</S.Text></S.TextBold>
                     <S.TextBold>Altura: <S.Text>175 cm</S.Text></S.TextBold>
+                    <S.ContainerButtonProfile>
+                        <Button
+                            typeButton='secondary'
+                            textButton='Editar Perfil'
+                            width={55}
+                            onPress={() => navigation.navigate('EditPatient')}
+                            marginTop={5}
+                        />
+                    </S.ContainerButtonProfile>
                 </S.ContainerInfo>
             </S.ContainerProfile>
             <Line
@@ -77,13 +86,6 @@ export const ProfilePatient = () => {
                     textButton='ADICIONAR MEDICAMENTO'
                     onPress={() => navigation.navigate('RegisterRemedie')}
                     marginTop={6}
-                    marginBottom={2}
-                />
-                <Button
-                    typeButton='primary'
-                    textButton='EDITAR PERFIL'
-                    onPress={() => navigation.navigate('EditPatient')}
-                    marginTop={2}
                     marginBottom={2}
                 />
                 <Button
