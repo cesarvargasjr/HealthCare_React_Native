@@ -1,31 +1,119 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import { Button } from '../../../components/button';
 import { AddImage } from '../../../components/cards/addImage';
 import { Input } from '../../../components/input';
 import * as S from './styles';
 
+interface FormProps {
+    name: string,
+    age: number,
+    weight: number,
+    height: number,
+}
+
 export const RegisterPatient = () => {
+
+    const navigation: any = useNavigation();
+
+    const schema: yup.SchemaOf<FormProps> = yup.object().shape({
+        name: yup.string().required('Digite o nome completo'),
+        age: yup.string().required('Digite a idade'),
+        weight: yup.string().required('Digite o peso'),
+        height: yup.string().required('Digite a altura'),
+    });
+
+    const {
+        control,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<FormProps>({
+        mode: 'onChange',
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = (data: FormProps) => {
+        if (data !== undefined) {
+            navigation.navigate('Home')
+            console.log(data);
+        }
+    }
+
     return (
         <S.ContainerPage>
-            <Input
-                typeInput='text'
-                titleInput='Nome'
-                placeholder='Nome completo'
+            <Controller
+                control={control}
+                name="name"
+                rules={{
+                    minLength: 5,
+                }}
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        typeInput='text'
+                        titleInput='Nome'
+                        placeholder='Nome completo'
+                        value={value}
+                        onChangeText={onChange}
+                        messageError={errors?.name?.message}
+                    />
+                )}
             />
-            <Input
-                typeInput='number'
-                titleInput='Idade'
-                placeholder='80 anos'
+            <Controller
+                control={control}
+                name="age"
+                rules={{
+                    minLength: 2,
+                    maxLength: 3,
+                }}
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        typeInput='number'
+                        titleInput='Idade'
+                        placeholder='80 anos'
+                        value={value}
+                        onChangeText={onChange}
+                        messageError={errors?.age?.message}
+                    />
+                )}
             />
-            <Input
-                typeInput='number'
-                titleInput='Peso'
-                placeholder='70 kg'
+            <Controller
+                control={control}
+                name="weight"
+                rules={{
+                    minLength: 3,
+                    maxLength: 3,
+                }}
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        typeInput='number'
+                        titleInput='Altura (cm)'
+                        placeholder='175'
+                        value={value}
+                        onChangeText={onChange}
+                        messageError={errors?.weight?.message}
+                    />
+                )}
             />
-            <Input
-                typeInput='number'
-                titleInput='Altura (cm)'
-                placeholder='175'
+            <Controller
+                control={control}
+                name="height"
+                rules={{
+                    minLength: 2,
+                    maxLength: 3,
+                }}
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        typeInput='number'
+                        titleInput='Peso (Kg)'
+                        placeholder='80'
+                        value={value}
+                        onChangeText={onChange}
+                        messageError={errors?.height?.message}
+                    />
+                )}
             />
             <S.TitleCard>Foto do paciente</S.TitleCard>
             <AddImage />
@@ -33,7 +121,7 @@ export const RegisterPatient = () => {
                 <Button
                     typeButton='primary'
                     textButton='SALVAR'
-                    onPress={() => console.log('***DEFINIR ROTA***')}
+                    onPress={handleSubmit(onSubmit)}
                     marginTop={10}
                 />
             </S.ContainerButton>

@@ -11,9 +11,12 @@ interface InputProps {
     titleInput: string;
     typeInput: string;
     height?: number;
+    onChangeText?: any;
+    value?: any;
+    messageError?: string;
 }
 
-export const Input = ({ placeholder, titleInput, typeInput, height }: InputProps) => {
+export const Input = ({ placeholder, titleInput, typeInput, height, value, onChangeText, messageError }: InputProps) => {
 
     function getInput() {
         switch (typeInput) {
@@ -21,30 +24,40 @@ export const Input = ({ placeholder, titleInput, typeInput, height }: InputProps
                 return (
                     <UserName
                         placeholder={placeholder}
+                        onChangeText={onChangeText}
+                        value={value}
                     />
                 );
             case 'text':
                 return (
                     <Text
                         placeholder={placeholder}
+                        onChangeText={onChangeText}
+                        value={value}
                     />
                 );
             case 'number':
                 return (
                     <Number
                         placeholder={placeholder}
+                        onChangeText={onChangeText}
+                        value={value}
                     />
                 );
             case 'password':
                 return (
                     <Password
                         placeholder={placeholder}
+                        onChangeText={onChangeText}
+                        value={value}
                     />
                 );
             case 'textArea':
                 return (
                     <TextArea
                         placeholder={placeholder}
+                        onChangeText={onChangeText}
+                        value={value}
                     />
                 );
         }
@@ -56,6 +69,7 @@ export const Input = ({ placeholder, titleInput, typeInput, height }: InputProps
             <S.ContainerInput height={height} >
                 {getInput()}
             </S.ContainerInput>
+            <S.MessageError>{messageError}</S.MessageError>
         </>
     )
 }

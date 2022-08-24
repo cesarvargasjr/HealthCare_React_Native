@@ -1,11 +1,13 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 
-export const Password = ({ placeholder }) => {
+export const Password = ({ placeholder, onChangeText, value }) => {
+
     return (
         <TextInput
             maxLength={8}
-            onChangeText={(value) => value}
+            onChangeText={onChangeText}
+            value={value}
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'
             secureTextEntry={true}

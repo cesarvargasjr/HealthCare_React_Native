@@ -1,11 +1,13 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 
-export const Text = ({ placeholder }) => {
+export const Text = ({ placeholder, value, onChangeText }) => {
+
     return (
         <TextInput
             maxLength={50}
-            onChangeText={(value) => value}
+            onChangeText={onChangeText}
+            value={value}
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'
             style={{
