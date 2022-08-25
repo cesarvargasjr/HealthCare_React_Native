@@ -43,10 +43,10 @@ export const RegisterPatient = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: FormProps) => {
-        if (data !== undefined) {
+    const onSubmit = ({ name, age, weight, height }: FormProps) => {
+        if (name.length > 0 && age > 0 && weight > 0 && height > 0) {
             navigation.navigate('Home')
-            console.log(data);
+            console.log({ name, age, weight, height });
         }
     }
 

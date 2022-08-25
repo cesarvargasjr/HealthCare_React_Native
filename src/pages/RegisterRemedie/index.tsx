@@ -36,7 +36,6 @@ export const RegisterRemedie = () => {
     const {
         control,
         handleSubmit,
-        setError: setFormError,
         formState: { errors }
     } = useForm<FormProps>({
         mode: 'onChange',
@@ -44,31 +43,9 @@ export const RegisterRemedie = () => {
     });
 
     const onSubmit = ({ name, hours, totalRemedies, daysNotifications }: FormProps) => {
-
         if (name.length > 0 && hours > 0 && totalRemedies > 0 && daysNotifications > 0) {
             navigation.navigate('Home')
             console.log({ name, hours, totalRemedies, daysNotifications });
-        } else {
-            name.length === 0 &&
-                setFormError('name', {
-                    type: 'manual',
-                    message: 'TESTE ERRO',
-                });
-            hours === 0 &&
-                setFormError('hours', {
-                    type: 'manual',
-                    message: 'TESTE ERRO',
-                });
-            totalRemedies === 0 &&
-                setFormError('totalRemedies', {
-                    type: 'manual',
-                    message: 'TESTE ERRO',
-                });
-            daysNotifications === 0 &&
-                setFormError('daysNotifications', {
-                    type: 'manual',
-                    message: 'TESTE ERRO',
-                });
         }
     }
 

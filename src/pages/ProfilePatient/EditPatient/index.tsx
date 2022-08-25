@@ -35,10 +35,10 @@ export const EditPatient = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data: FormProps) => {
-        if (data !== undefined) {
+    const onSubmit = ({ name, age, weight, height }: FormProps) => {
+        if (name.length > 0 && age > 0 && weight > 0 && height > 0) {
             navigation.navigate('Home')
-            console.log(data);
+            console.log({ name, age, weight, height });
         }
     }
 
@@ -47,14 +47,12 @@ export const EditPatient = () => {
             <Controller
                 control={control}
                 name="name"
-                rules={{
-                    minLength: 5,
-                }}
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='text'
                         titleInput='Nome'
                         placeholder='Nome completo'
+                        maxLength={2}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.name?.message}
@@ -64,15 +62,12 @@ export const EditPatient = () => {
             <Controller
                 control={control}
                 name="age"
-                rules={{
-                    minLength: 2,
-                    maxLength: 3,
-                }}
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
                         titleInput='Idade'
                         placeholder='80 anos'
+                        maxLength={2}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.age?.message}
@@ -81,16 +76,13 @@ export const EditPatient = () => {
             />
             <Controller
                 control={control}
-                name="weight"
-                rules={{
-                    minLength: 3,
-                    maxLength: 3,
-                }}
+                name="height"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
                         titleInput='Altura (cm)'
                         placeholder='175'
+                        maxLength={3}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.weight?.message}
@@ -99,16 +91,13 @@ export const EditPatient = () => {
             />
             <Controller
                 control={control}
-                name="height"
-                rules={{
-                    minLength: 2,
-                    maxLength: 3,
-                }}
+                name="weight"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
                         titleInput='Peso (Kg)'
                         placeholder='80'
+                        maxLength={3}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.height?.message}

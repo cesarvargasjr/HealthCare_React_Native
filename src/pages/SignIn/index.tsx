@@ -44,7 +44,6 @@ export const SignIn = () => {
     });
 
     const onSubmit = ({ userName, password }: FormProps) => {
-
         if (userName.length > 0 && password.length > 0) {
             navigation.navigate('Home')
             console.log({ userName, password });
