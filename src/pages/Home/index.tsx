@@ -2,13 +2,17 @@ import React, { useEffect } from 'react';
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native';
 import { Button } from '../../components/button';
-import { Image, BackHandler } from 'react-native';
+import { BackHandler } from 'react-native';
+import { SvgCss } from 'react-native-svg';
+import home from '../../assets/home.svg';
 
 export const Home = () => {
 
     const navigation: any = useNavigation();
 
+    // ******************************************* //
     // CORRIGIR BOTÃO DE VOLTAR DAS PRÓXIMAS TELAS
+    // ******************************************* //
 
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => true)
@@ -18,16 +22,12 @@ export const Home = () => {
     return (
 
         <S.ContainerPage>
-            <Image
-                source={require('../../assets/home.png')}
-                resizeMode="contain"
-                style={{ maxHeight: '40%', width: '100%', marginTop: '5%' }}
-            />
+            <SvgCss xml={home} height={250} width={250} />
             <Button
                 typeButton={'primary'}
                 textButton={'ADICIONAR UM PACIENTE'}
                 onPress={() => navigation.navigate('RegisterPatient')}
-                marginTop={25}
+                marginTop={20}
                 marginBottom={4}
             />
             <Button

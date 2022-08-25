@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import * as yup from 'yup';
 import { Button } from '../../../components/button';
 import { AddImage } from '../../../components/cards/addImage';
 import { Input } from '../../../components/input';
@@ -15,16 +15,21 @@ interface FormProps {
     height: number,
 }
 
+// ********************************************************************************* //
+// TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, PODERIA TRAZER OS 
+// DADOS CADASTRADOS DO USUÁRIO PODENDO EDITAR O INPUT PARA ALTERAR.
+// ********************************************************************************* //
+
 export const EditPatient = () => {
 
     const navigation: any = useNavigation();
 
-    const schema: yup.SchemaOf<FormProps> = yup.object().shape({
-        name: yup.string().required('Digite o nome completo'),
-        age: yup.string().required('Digite a idade'),
-        weight: yup.string().required('Digite o peso'),
-        height: yup.string().required('Digite a altura'),
-    });
+    // const schema: yup.SchemaOf<FormProps> = yup.object().shape({
+    //     name: yup.string().required('Digite o nome completo'),
+    //     age: yup.string().required('Digite a idade'),
+    //     weight: yup.string().required('Digite o peso'),
+    //     height: yup.string().required('Digite a altura'),
+    // });
 
     const {
         control,
@@ -32,14 +37,14 @@ export const EditPatient = () => {
         formState: { errors }
     } = useForm<FormProps>({
         mode: 'onChange',
-        resolver: yupResolver(schema),
+        // resolver: yupResolver(schema),
     });
 
     const onSubmit = ({ name, age, weight, height }: FormProps) => {
-        if (name.length > 0 && age > 0 && weight > 0 && height > 0) {
-            navigation.navigate('Home')
-            console.log({ name, age, weight, height });
-        }
+        // if (name.length > 0 && age > 0 && weight > 0 && height > 0) {
+        navigation.navigate('Home')
+        console.log({ name, age, weight, height });
+        // }
     }
 
     return (
@@ -104,12 +109,12 @@ export const EditPatient = () => {
                     />
                 )}
             />
-            <S.TitleCard>Foto do paciente</S.TitleCard>
+            <S.TitleCard>Alterar Foto</S.TitleCard>
             <AddImage />
             <S.ContainerButton>
                 <Button
                     typeButton='primary'
-                    textButton='SALVAR'
+                    textButton='SALVAR ALTERAÇÕES'
                     onPress={handleSubmit(onSubmit)}
                     marginTop={10}
                 />

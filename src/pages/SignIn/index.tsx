@@ -3,12 +3,11 @@ import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Image } from 'react-native';
 import * as S from './styles';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
-// import { RFPercentage } from 'react-native-responsive-fontsize';
-// import { SizeImage } from '../../utils/sizeImage';
+import { SvgCss } from 'react-native-svg';
+import signIn from '../../assets/signIn.svg';
 
 interface FormProps {
     userName: string;
@@ -18,11 +17,6 @@ interface FormProps {
 export const SignIn = () => {
 
     const navigation: any = useNavigation();
-    // const sizes: any = SizeImage(985, 907, RFPercentage(12))
-    // style={{
-    //     width: sizes.width,
-    //     height: sizes.height,
-    // }}
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         userName: yup
@@ -63,14 +57,7 @@ export const SignIn = () => {
 
     return (
         <S.ContainerPage>
-            <Image
-                style={{
-                    width: 300,
-                    height: 250,
-                }}
-                source={require('../../assets/signIn.png')}
-                resizeMode="contain"
-            />
+            <SvgCss xml={signIn} height={250} width={250} />
             <S.ContainerLogin>
                 <Controller
                     control={control}
