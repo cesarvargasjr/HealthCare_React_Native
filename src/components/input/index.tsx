@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styles'
 import { Number } from './number';
 import { Password } from './password';
@@ -14,9 +14,10 @@ interface InputProps {
     onChangeText?: any;
     value?: any;
     messageError?: string;
+    maxLength?: number;
 }
 
-export const Input = ({ placeholder, titleInput, typeInput, height, value, onChangeText, messageError }: InputProps) => {
+export const Input = ({ placeholder, titleInput, typeInput, height, value, onChangeText, messageError, maxLength }: InputProps) => {
 
     function getInput() {
         switch (typeInput) {
@@ -42,6 +43,7 @@ export const Input = ({ placeholder, titleInput, typeInput, height, value, onCha
                         placeholder={placeholder}
                         onChangeText={onChangeText}
                         value={value}
+                        maxLength={maxLength}
                     />
                 );
             case 'password':

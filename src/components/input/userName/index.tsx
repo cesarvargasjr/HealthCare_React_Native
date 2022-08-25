@@ -1,13 +1,12 @@
 import React from 'react';
-import { MaskedTextInput } from 'react-native-mask-text';
+import { TextInput } from 'react-native';
 
 export const UserName = ({ placeholder, onChangeText, value }) => {
 
     return (
-        <MaskedTextInput
-            mask="AAAAAAAAAAAAAAAAAAAAAAAA99999999999999999"
-            maxLength={20}
-            onChangeText={onChangeText}
+        <TextInput
+            maxLength={30}
+            onChangeText={(e) => onChangeText(e.trim().replace(/ /g, ''))}
             value={value}
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'

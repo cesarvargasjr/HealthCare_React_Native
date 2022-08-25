@@ -5,8 +5,8 @@ export const Password = ({ placeholder, onChangeText, value }) => {
 
     return (
         <TextInput
-            maxLength={8}
-            onChangeText={onChangeText}
+            passwordRules={null}
+            onChangeText={(e) => onChangeText(e.trim().replace(/ /g, ''))}
             value={value}
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'

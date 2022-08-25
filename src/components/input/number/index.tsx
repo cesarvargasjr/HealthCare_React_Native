@@ -1,13 +1,12 @@
 import React from 'react';
-import { MaskedTextInput } from 'react-native-mask-text';
+import { TextInput } from 'react-native';
 
-export const Number = ({ placeholder, onChangeText, value }) => {
+export const Number = ({ placeholder, onChangeText, value, maxLength }) => {
 
     return (
-        <MaskedTextInput
-            maxLength={10}
-            mask="99999999999999999999999"
-            onChangeText={onChangeText}
+        <TextInput
+            maxLength={maxLength}
+            onChangeText={(e) => onChangeText(e.trim().replace(/[^0-9]/g, ''))}
             value={value}
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'

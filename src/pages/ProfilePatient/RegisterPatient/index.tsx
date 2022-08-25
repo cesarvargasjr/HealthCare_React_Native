@@ -20,10 +20,18 @@ export const RegisterPatient = () => {
     const navigation: any = useNavigation();
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
-        name: yup.string().required('Digite o nome completo'),
-        age: yup.string().required('Digite a idade'),
-        weight: yup.string().required('Digite o peso'),
-        height: yup.string().required('Digite a altura'),
+        name: yup
+            .string()
+            .required('Digite o nome completo'),
+        age: yup
+            .string()
+            .required('Digite a idade'),
+        weight: yup
+            .string()
+            .required('Digite o peso'),
+        height: yup
+            .string()
+            .required('Digite a altura'),
     });
 
     const {
@@ -64,15 +72,12 @@ export const RegisterPatient = () => {
             <Controller
                 control={control}
                 name="age"
-                rules={{
-                    minLength: 2,
-                    maxLength: 3,
-                }}
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
                         titleInput='Idade'
                         placeholder='80 anos'
+                        maxLength={2}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.age?.message}
@@ -82,15 +87,12 @@ export const RegisterPatient = () => {
             <Controller
                 control={control}
                 name="weight"
-                rules={{
-                    minLength: 3,
-                    maxLength: 3,
-                }}
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
                         titleInput='Altura (cm)'
                         placeholder='175'
+                        maxLength={3}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.weight?.message}
@@ -100,15 +102,12 @@ export const RegisterPatient = () => {
             <Controller
                 control={control}
                 name="height"
-                rules={{
-                    minLength: 2,
-                    maxLength: 3,
-                }}
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
                         titleInput='Peso (Kg)'
                         placeholder='80'
+                        maxLength={3}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.height?.message}

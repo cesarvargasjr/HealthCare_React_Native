@@ -6,6 +6,8 @@ export const TextArea = ({ placeholder, onChangeText, value }) => {
     return (
         <TextInput
             maxLength={200}
+            multiline={true}
+            // scrollEnabled={true}
             onChangeText={onChangeText}
             value={value}
             placeholder={placeholder}
