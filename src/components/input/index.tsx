@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as S from './styles'
 import { Number } from './number';
 import { Password } from './password';

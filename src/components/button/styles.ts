@@ -10,7 +10,7 @@ interface ButtonProps {
 export const ContainerButton = styled.TouchableOpacity<ButtonProps>`
     width: 80%;
     background-color: ${colors.purple};
-    border-radius: 50px;
+    border-radius: 8px;
     margin-top: ${({ marginTop }) => marginTop ?? 0}%;
     margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;
     align-items: center;
@@ -40,7 +40,7 @@ export const TextButtonJustText = styled.Text`
 
 export const ContainerButtonTertiary = styled.TouchableOpacity<ButtonProps>`
     width: 80%;
-    border-radius: 50px;
+    border-radius: 8px;
     border: 2px solid ${colors.purple};
     margin-top: ${({ marginTop }) => marginTop ?? 0}%;
     margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;
@@ -57,7 +57,7 @@ export const TextButtonTertiary = styled.Text`
 
 export const ContainerButtonCancel = styled.TouchableOpacity<ButtonProps>`
     width: 80%;
-    border-radius: 50px;
+    border-radius: 8px;
     border: 2px solid ${colors.lightRed};
     margin-top: ${({ marginTop }) => marginTop ?? 0}%;
     margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;

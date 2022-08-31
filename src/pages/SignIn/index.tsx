@@ -2,57 +2,70 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useToast } from 'react-native-toast-notifications';
 import * as yup from 'yup';
 import * as S from './styles';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { SvgCss } from 'react-native-svg';
 import signIn from '../../assets/signIn.svg';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../../../firebase-config';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 interface FormProps {
-    userName: string;
+    email: string;
     password: string;
 }
 
-export const SignIn = () => {
+export const SignIn: React.FC = () => {
 
     const navigation: any = useNavigation();
+    const toast = useToast();
+
+    /**************** AUTENTICAÇÃO DE USUÁRIO - FIREBASE ****************/
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const handleSignIn = ({ email, password }) => {
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                navigation.navigate('Home')
+            })
+            .catch(error => {
+                console.log(error);
+                toast.show('Erro ao fazer login, verifique seu e-mail e senha', {
+                    type: 'danger',
+                    swipeEnabled: true,
+                });
+            })
+    }
+    /***************************************************************/
+
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
-        userName: yup
+        email: yup
             .string()
-            .required('Digite o seu usuário'),
+            .email('Digite um e-mail válido')
+            .required('Digite o seu e-mail'),
         password: yup
             .string()
-            .required('Digite a sua senha'),
+            .required('Digite a sua senha')
+            .min(8, 'Mínimo 8 caracteres'),
     });
 
     const {
         control,
         handleSubmit,
-        setError: setFormError,
         formState: { errors }
     } = useForm<FormProps>({
         mode: 'onChange',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ userName, password }: FormProps) => {
-        if (userName.length > 0 && password.length > 0) {
-            navigation.navigate('Home')
-            console.log({ userName, password });
-        } else {
-            userName.length === 0 &&
-                setFormError('userName', {
-                    type: 'manual',
-                    message: 'Digite um usuário válido',
-                });
-            password.length === 0 &&
-                setFormError('password', {
-                    type: 'manual',
-                    message: 'Digite uma senha válida',
-                });
-        }
+    const onSubmit = ({ email, password }: FormProps) => {
+        handleSignIn({ email, password })
     }
 
     return (
@@ -61,15 +74,15 @@ export const SignIn = () => {
             <S.ContainerLogin>
                 <Controller
                     control={control}
-                    name="userName"
+                    name="email"
                     render={({ field: { value, onChange } }) => (
                         <Input
-                            typeInput={'userName'}
-                            titleInput={'Usuário'}
+                            typeInput={'text'}
+                            titleInput={'E-mail'}
                             placeholder={'Informe o usuário'}
                             value={value}
                             onChangeText={onChange}
-                            messageError={errors?.userName?.message}
+                            messageError={errors?.email?.message}
                         />
                     )}
                 />
@@ -83,6 +96,7 @@ export const SignIn = () => {
                             placeholder={'Sua senha'}
                             value={value}
                             onChangeText={onChange}
+                            // onChangeText={(onChange) => setPassword(onChange)}
                             messageError={errors?.password?.message}
                         />
                     )}

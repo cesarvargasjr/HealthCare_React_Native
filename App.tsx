@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { ToastProvider } from 'react-native-toast-notifications'
 import Routes from './src/routes';
 import {
   Nunito_400Regular,
@@ -25,7 +26,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor='#fff' barStyle='dark-content' />
-      <Routes />
+      <ToastProvider>
+        <Routes />
+      </ToastProvider>
     </NavigationContainer>
   );
 }
