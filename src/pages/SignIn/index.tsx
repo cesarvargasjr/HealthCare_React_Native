@@ -35,14 +35,12 @@ export const SignIn: React.FC = () => {
             })
             .catch(error => {
                 console.log(error);
-                toast.show('Erro ao fazer login, verifique seu e-mail e senha', {
+                toast.show('Usuário e/ou senha inválidos', {
                     type: 'danger',
-                    swipeEnabled: true,
                 });
             })
     }
     /***************************************************************/
-
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         email: yup
@@ -96,7 +94,6 @@ export const SignIn: React.FC = () => {
                             placeholder={'Sua senha'}
                             value={value}
                             onChangeText={onChange}
-                            // onChangeText={(onChange) => setPassword(onChange)}
                             messageError={errors?.password?.message}
                         />
                     )}

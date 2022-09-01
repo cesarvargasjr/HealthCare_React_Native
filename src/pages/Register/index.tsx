@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useToast } from 'react-native-toast-notifications';
 import * as yup from 'yup';
 import * as S from './styles';
 import { Button } from '../../components/button';
@@ -22,6 +23,7 @@ interface FormProps {
 export const Register = () => {
 
     const navigation: any = useNavigation();
+    const toast = useToast();
 
     /**************** CRIAÇÃO DE USUÁRIO - FIREBASE ****************/
     const app = initializeApp(firebaseConfig);
@@ -32,8 +34,10 @@ export const Register = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(async () => {
                 await addDoc(collection(db, "registerUsers"), { name, email });
-                console.log('Conta criada');
                 navigation.navigate('SignIn')
+                toast.show('Usuário cadastrado com sucesso', {
+                    type: 'success',
+                });
             })
             .catch(error => {
                 console.log(error)

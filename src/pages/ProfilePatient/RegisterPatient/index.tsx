@@ -1,12 +1,16 @@
 import React from 'react';
+import { useToast } from 'react-native-toast-notifications';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import * as S from './styles';
 import { Button } from '../../../components/button';
 import { AddImage } from '../../../components/cards/addImage';
 import { Input } from '../../../components/input';
-import * as S from './styles';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../../../../firebase-config';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 interface FormProps {
     name: string,
@@ -18,6 +22,29 @@ interface FormProps {
 export const RegisterPatient = () => {
 
     const navigation: any = useNavigation();
+    const toast = useToast();
+
+    /*********************** CADASTRO DE PACIENTES - FIREBASE ***********************/
+    const handleCreatePatient = ({ name, age, weight, height }) => {
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        addDoc(collection(db, "registerPatients"), { name, age, weight, height })
+            .then(() => {
+                navigation.navigate('Home')
+                toast.show('Paciente cadastrado com sucesso', {
+                    type: 'success',
+                });
+            })
+            .catch(error => {
+                console.log(error)
+                toast.show('Não foi possivel efetuar o cadastro, tente novamente', {
+                    type: 'error'
+                });
+            })
+    }
+    /*******************************************************************************/
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         name: yup
@@ -25,13 +52,15 @@ export const RegisterPatient = () => {
             .required('Digite o nome completo'),
         age: yup
             .string()
-            .required('Digite a idade'),
+            .required('Digite a idade')
+            .min(2, 'Mínimo dois caracteres'),
         weight: yup
             .string()
             .required('Digite o peso'),
         height: yup
             .string()
-            .required('Digite a altura'),
+            .required('Digite a altura')
+            .min(3, 'Digite três caracteres'),
     });
 
     const {
@@ -44,10 +73,7 @@ export const RegisterPatient = () => {
     });
 
     const onSubmit = ({ name, age, weight, height }: FormProps) => {
-        if (name.length > 0 && age > 0 && weight > 0 && height > 0) {
-            navigation.navigate('Home')
-            console.log({ name, age, weight, height });
-        }
+        handleCreatePatient({ name, age, weight, height })
     }
 
     return (
@@ -86,7 +112,7 @@ export const RegisterPatient = () => {
             />
             <Controller
                 control={control}
-                name="weight"
+                name="height"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
@@ -95,13 +121,13 @@ export const RegisterPatient = () => {
                         maxLength={3}
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.weight?.message}
+                        messageError={errors?.height?.message}
                     />
                 )}
             />
             <Controller
                 control={control}
-                name="height"
+                name="weight"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
@@ -110,7 +136,7 @@ export const RegisterPatient = () => {
                         maxLength={3}
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.height?.message}
+                        messageError={errors?.weight?.message}
                     />
                 )}
             />

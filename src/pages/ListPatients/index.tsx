@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { CardPatient } from '../../components/cards/patient';
 import { Button } from '../../components/button';
 import { Line } from '../../components/line';
+import { firebaseConfig } from '../../../firebase-config';
+import { initializeApp } from 'firebase/app';
+import { collection, getDocs, getFirestore, query } from 'firebase/firestore';
 
 export const ListPatients = () => {
 
@@ -45,10 +48,32 @@ export const ListPatients = () => {
         },
     ];
 
+
+    /**************** LISTAGEM DOS PACIENTES/IDOSOS - FIREBASE ****************/
+    const [listPatients, setListPatients]: any = useState([]);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const handleListPatients = async () => {
+
+        const data = query(collection(db, "registerPatients"));
+
+        const querySnapshot: any = await getDocs(data);
+        querySnapshot.forEach((doc: any) => {
+            setListPatients((state: any) => [...state, doc.data()])
+        });
+    }
+
+    useMemo(() => {
+        handleListPatients()
+    }, [])
+    /**************************************************************************/
+
+
     return (
         <S.ContainerPage>
             <S.ContainerCards showsVerticalScrollIndicator={false} >
-                {patients.map(({ name, age }, index) => (
+                {listPatients?.map(({ name, age }, index) => (
                     <CardPatient
                         namePatient={name}
                         agePatient={age}
