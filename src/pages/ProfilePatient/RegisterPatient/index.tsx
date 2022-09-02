@@ -10,7 +10,7 @@ import { AddImage } from '../../../components/cards/addImage';
 import { Input } from '../../../components/input';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from '../../../../firebase-config';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, doc, getFirestore } from 'firebase/firestore';
 
 interface FormProps {
     name: string,
@@ -29,8 +29,21 @@ export const RegisterPatient = () => {
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const users = collection(db, 'registerUsers')
+        const idUser = 'Nrp6YKEIUHOg2zu1XgSD'
 
-        addDoc(collection(db, "registerPatients"), { name, age, weight, height })
+        function getDocRef(idRef, collection) {
+            return doc(db, collection.path, idRef)
+        }
+
+        addDoc(collection(db, "registerPatients"),
+            {
+                name,
+                age,
+                weight,
+                height,
+                user: getDocRef(idUser, users),
+            })
             .then(() => {
                 navigation.navigate('Home')
                 toast.show('Paciente cadastrado com sucesso', {
@@ -92,6 +105,7 @@ export const RegisterPatient = () => {
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.name?.message}
+
                     />
                 )}
             />

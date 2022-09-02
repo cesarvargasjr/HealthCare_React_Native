@@ -5,26 +5,26 @@ import { ModalDelete } from '../../modal/modalDelete';
 
 interface CardProps {
     onPress?: () => void;
-    nameRemedie: string;
+    nameDrug: string;
     daysExpired: number;
     timerNotification: number;
-    totalRemedies: number;
+    totalDrugs: number;
     daysNotifications: number;
 }
 
-export const CardRemedies = ({ nameRemedie, daysExpired, timerNotification, totalRemedies, daysNotifications }: CardProps) => {
+export const CardRemedies = ({ nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <S.ContainerCard>
             <S.ContainerHeader>
-                <S.Title>{nameRemedie}</S.Title>
+                <S.Title>{nameDrug}</S.Title>
                 <S.TextHour>
                     <Icon name="bell" size={16} color="#16C153" /> {timerNotification}h
                 </S.TextHour>
             </S.ContainerHeader>
-            <S.TextBold>Comprimidos na cartela: <S.Text>{totalRemedies}</S.Text></S.TextBold>
+            <S.TextBold>Comprimidos na cartela: <S.Text>{totalDrugs}</S.Text></S.TextBold>
             <S.TextBold>Lembrete por:
                 {daysNotifications > 1 ? (
                     <S.Text> {daysNotifications} dias</S.Text>

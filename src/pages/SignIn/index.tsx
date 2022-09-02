@@ -102,7 +102,8 @@ export const SignIn: React.FC = () => {
             <Button
                 typeButton='primary'
                 textButton={'ENTRAR'}
-                onPress={handleSubmit(onSubmit)}
+                // onPress={handleSubmit(onSubmit)}
+                onPress={() => navigation.navigate('Home')}
                 marginTop={8}
             />
             <Button

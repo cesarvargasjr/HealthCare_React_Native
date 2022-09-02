@@ -6,57 +6,48 @@ import { Button } from '../../components/button';
 import { Line } from '../../components/line';
 import { firebaseConfig } from '../../../firebase-config';
 import { initializeApp } from 'firebase/app';
-import { collection, getDocs, getFirestore, query } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { ModalNotifications } from '../../components/modal/modalNotifications';
 
 export const ListPatients = () => {
 
     const navigation: any = useNavigation();
 
-    const patients = [
-        {
-            name: 'José da Silva',
-            age: 82,
-
-        },
-        {
-            name: 'Juliana dos Santos',
-            age: 78,
-        },
-        {
-            name: 'Mauro Sergio Oliveira dos Santos',
-            age: 86,
-        },
-        {
-            name: 'Maria Santos',
-            age: 89,
-        },
-        {
-            name: 'João Silveira',
-            age: 89,
-        },
-        {
-            name: 'Isabel Monteiro',
-            age: 89,
-        },
-        {
-            name: 'Joana Silva',
-            age: 85,
-        },
-        {
-            name: 'Manoel Batista',
-            age: 78,
-        },
-    ];
-
-
     /**************** LISTAGEM DOS PACIENTES/IDOSOS - FIREBASE ****************/
+
+    // FUNÇÃO PARA LISTAGEM TOTAL DA COLLETCION: 
+
+    // const [listPatients, setListPatients]: any = useState([]);
+    // const app = initializeApp(firebaseConfig);
+    // const db = getFirestore(app);
+
+    // const handleListPatients = async () => {
+
+    //     const data = query(collection(db, "registerPatients"));
+
+    //     const querySnapshot: any = await getDocs(data);
+    //     querySnapshot.forEach((doc: any) => {
+    //         setListPatients((state: any) => [...state, doc.data()])
+    //     });
+    // }
+
+    // useMemo(() => {
+    //     handleListPatients()
+    // }, [])
+
     const [listPatients, setListPatients]: any = useState([]);
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const users = collection(db, 'registerUsers')
+    const idUser = 'Nrp6YKEIUHOg2zu1XgSD';
 
     const handleListPatients = async () => {
 
-        const data = query(collection(db, "registerPatients"));
+        function getDocRef(idRef, collection) {
+            return doc(db, collection.path, idRef)
+        }
+
+        const data = query(collection(db, "registerPatients"), where('user', '==', getDocRef(idUser, users)));
 
         const querySnapshot: any = await getDocs(data);
         querySnapshot.forEach((doc: any) => {
@@ -67,19 +58,29 @@ export const ListPatients = () => {
     useMemo(() => {
         handleListPatients()
     }, [])
-    /**************************************************************************/
 
+    /**************************************************************************/
 
     return (
         <S.ContainerPage>
             <S.ContainerCards showsVerticalScrollIndicator={false} >
-                {listPatients?.map(({ name, age }, index) => (
-                    <CardPatient
-                        namePatient={name}
-                        agePatient={age}
-                        key={index}
+                {/**************** VALIDAR REGRA PARA EXIBIR MODAL ****************/}
+                {listPatients ? (
+                    <>
+                        {listPatients?.map(({ name, age }, index) => (
+                            <CardPatient
+                                namePatient={name}
+                                agePatient={age}
+                                key={index}
+                            />
+                        ))}
+                    </>
+                ) : (
+                    <ModalNotifications
+                        description='Você não possui pacientes. Deseja cadastrar um paciente agora?'
+                        navigate={() => navigation.navigate('RegisterPatient')}
                     />
-                ))}
+                )}
             </S.ContainerCards>
             <Line
                 marginTop={10}

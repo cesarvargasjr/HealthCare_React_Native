@@ -1,44 +1,73 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
 import { Button } from '../../components/button';
 import { CardRemedies } from '../../components/cards/remedies';
 import { Line } from '../../components/line';
-
 import * as S from './styles';
 import { ModalDelete } from '../../components/modal/modalDelete';
+import { collection, deleteDoc, doc, getDocs, getFirestore, query, where } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../../../firebase-config';
 
 export const ProfilePatient = () => {
 
     const navigation: any = useNavigation();
     const [isOpen, setIsOpen] = useState(false);
 
-    const remedies = [
-        {
-            nameRemedie: 'Losartana',
-            daysExpired: 16,
-            timerNotification: 24,
-            totalRemedies: 30,
-            daysNotifications: 30,
-        },
-        {
-            nameRemedie: 'Multigrip',
-            daysExpired: 1,
-            timerNotification: 12,
-            totalRemedies: 7,
-            daysNotifications: 1,
-        },
-        {
-            nameRemedie: 'Paracetamol',
-            daysExpired: 5,
-            timerNotification: 8,
-            totalRemedies: 12,
-            daysNotifications: 7,
-        },
-    ]
+    /************* GET PARA VISUALIZAR PERFIL DO PACIENTE - FIREBASE *************/
+    // const getPatient = async (idRef: any) => {
+    //     const app = initializeApp(firebaseConfig);
+    //     const db = getFirestore(app);
+    //     const collectionEntity = collection(db, "/registerPatients")
+
+    //     try {
+    //         return (await getDoc(doc(db, collectionEntity.path, idRef))).data()
+    //     } catch (err) {
+    //         console.error(`Erro ao obter os dados ${"registerPatients"}`, err);
+    //     }
+    // }
+
+    //     const repository = collection(db, "registerPatients")
+    //     repository.getPatient()('3g8QKgUp5m8OIgWdRrjQ')
+    //         .then(res => console.log(res))
+    // }
+
+    // useEffect(() => {
+    //     console.log(getPatient("3g8QKgUp5m8OIgWdRrjQ"))
+    // }, []);
+
+    /*****************************************************************************/
+
+    /******** LISTAGEM / EXCLUSÃO DOS MEDICAMENTOS DO PACIENTE - FIREBASE ********/
+    const [listDrugs, setListDrugs]: any = useState([]);
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const users = collection(db, 'registerDrugs')
+    const idPatient = '3g8QKgUp5m8OIgWdRrjQ';
+
+    // LISTAGEM DOS MEDICAMENTOS
+    const handleListDrugs = async () => {
+
+        function getDocRef(idRef, collection) {
+            return doc(db, collection.path, idRef)
+        }
+
+        const data = query(collection(db, "registerDrugs"), where('user', '==', getDocRef(idPatient, users)));
+
+        const querySnapshot: any = await getDocs(data);
+        querySnapshot.forEach((doc: any) => {
+            setListDrugs((state: any) => [...state, doc.data()])
+        });
+    }
+
+    useMemo(() => {
+        handleListDrugs()
+    }, [])
+    /******************************************************************************/
 
     return (
-        <S.ContainerPage>
+        <S.ContainerPage >
             <S.ContainerProfile>
                 <Image
                     source={require('../../assets/iconProfile.png')}
@@ -66,12 +95,12 @@ export const ProfilePatient = () => {
                 marginBottom={6}
             />
             <S.ContainerCards showsVerticalScrollIndicator={true} >
-                {remedies.map(({ nameRemedie, daysExpired, timerNotification, totalRemedies, daysNotifications }, index) => (
+                {listDrugs.map(({ name, daysExpired, hours, totalDrugs, daysNotifications }, index) => (
                     <CardRemedies
-                        nameRemedie={nameRemedie}
+                        nameDrug={name}
                         daysExpired={daysExpired}
-                        timerNotification={timerNotification}
-                        totalRemedies={totalRemedies}
+                        timerNotification={hours}
+                        totalDrugs={totalDrugs}
                         daysNotifications={daysNotifications}
                         key={index}
                     />
@@ -95,12 +124,15 @@ export const ProfilePatient = () => {
                     marginTop={2}
                 />
             </S.ContainerButton>
-            {isOpen && (
-                <ModalDelete
-                    description='Deseja excluir este perfil?'
-                    closeModal={() => setIsOpen(false)}
-                />
-            )}
-        </S.ContainerPage>
+            {
+                isOpen && (
+                    <ModalDelete
+                        onPress={() => deleteDrug}
+                        description='Deseja excluir este perfil?'
+                        closeModal={() => setIsOpen(false)}
+                    />
+                )
+            }
+        </S.ContainerPage >
     )
 }

@@ -5,10 +5,11 @@ import { Button } from '../../button';
 
 interface ModalProps {
     description: string;
+    onPress: () => any;
     closeModal: () => any;
 }
 
-export const ModalDelete = ({ description, closeModal }: ModalProps) => {
+export const ModalDelete = ({ description, closeModal, onPress }: ModalProps) => {
 
     return (
         <Modal
@@ -23,7 +24,7 @@ export const ModalDelete = ({ description, closeModal }: ModalProps) => {
                     <Button
                         typeButton='primary'
                         textButton='SIM'
-                        onPress={() => console.log('***DEFINIR ROTA***')}
+                        onPress={onPress}
                         marginTop={10}
                     />
                     <Button

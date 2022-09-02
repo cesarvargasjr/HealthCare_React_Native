@@ -3,20 +3,61 @@ import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import * as S from './styles';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
-import * as S from './styles';
+import { useToast } from 'react-native-toast-notifications';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '../../../firebase-config';
+import { addDoc, collection, doc, getFirestore } from 'firebase/firestore';
 
 interface FormProps {
     name: string;
     hours: number;
-    totalRemedies: number;
+    totalDrugs: number;
     daysNotifications: number;
 }
 
 export const RegisterRemedie = () => {
 
     const navigation: any = useNavigation();
+    const toast = useToast();
+
+    /*********************** CADASTRO DE MEDICAMENTOS - FIREBASE ***********************/
+    const handleAddDrug = ({ name, hours, totalDrugs, daysNotifications }) => {
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const collectionName = collection(db, 'registerDrugs')
+        const idPatient = '3g8QKgUp5m8OIgWdRrjQ'
+
+        function getDocRef(idRef, collection) {
+            return doc(db, collection.path, idRef)
+        }
+
+        addDoc(collection(db, "registerDrugs"),
+            {
+                name,
+                hours,
+                totalDrugs,
+                daysNotifications,
+                user: getDocRef(idPatient, collectionName),
+            })
+            .then(() => {
+                navigation.navigate('Home')
+                toast.show('Medicamento cadastrado com sucesso', {
+                    type: 'success',
+                });
+            })
+            .catch(error => {
+                console.log(error)
+                toast.show(
+                    'Não foi possivel efetuar o cadastro do medicamento, tente novamente', {
+                    type: 'error'
+                });
+            })
+    }
+    /***********************************************************************************/
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         name: yup
@@ -25,7 +66,7 @@ export const RegisterRemedie = () => {
         hours: yup
             .string()
             .required('Digite a hora dos intervalos'),
-        totalRemedies: yup
+        totalDrugs: yup
             .string()
             .required('Digite o total de comprimidos na cartela'),
         daysNotifications: yup
@@ -42,11 +83,8 @@ export const RegisterRemedie = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ name, hours, totalRemedies, daysNotifications }: FormProps) => {
-        if (name.length > 0 && hours > 0 && totalRemedies > 0 && daysNotifications > 0) {
-            navigation.navigate('Home')
-            console.log({ name, hours, totalRemedies, daysNotifications });
-        }
+    const onSubmit = ({ name, hours, totalDrugs, daysNotifications }: FormProps) => {
+        handleAddDrug({ name, hours, totalDrugs, daysNotifications })
     }
 
     return (
@@ -82,7 +120,7 @@ export const RegisterRemedie = () => {
             />
             <Controller
                 control={control}
-                name="totalRemedies"
+                name="totalDrugs"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
@@ -91,7 +129,7 @@ export const RegisterRemedie = () => {
                         maxLength={2}
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.totalRemedies?.message}
+                        messageError={errors?.totalDrugs?.message}
                     />
                 )}
             />
