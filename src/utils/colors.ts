@@ -10,7 +10,7 @@ export default {
     lightRed: '#FF6666',
     orange: '#FF824D',
     yellow: '#FFED00',
-    green: '#16C153',
+    green: '#16C159',
     // line: '#E4E4FF',
     line: '#EBEBEB',
   };

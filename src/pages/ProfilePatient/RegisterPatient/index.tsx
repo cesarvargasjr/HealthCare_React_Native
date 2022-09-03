@@ -29,7 +29,7 @@ export const RegisterPatient = () => {
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
-        const users = collection(db, 'registerUsers')
+        const collectionUsers = collection(db, 'registerUsers')
         const idUser = 'Nrp6YKEIUHOg2zu1XgSD'
 
         function getDocRef(idRef, collection) {
@@ -42,7 +42,7 @@ export const RegisterPatient = () => {
                 age,
                 weight,
                 height,
-                user: getDocRef(idUser, users),
+                user: getDocRef(idUser, collectionUsers),
             })
             .then(() => {
                 navigation.navigate('Home')

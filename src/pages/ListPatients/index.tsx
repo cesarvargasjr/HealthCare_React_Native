@@ -15,26 +15,6 @@ export const ListPatients = () => {
 
     /**************** LISTAGEM DOS PACIENTES/IDOSOS - FIREBASE ****************/
 
-    // FUNÇÃO PARA LISTAGEM TOTAL DA COLLETCION: 
-
-    // const [listPatients, setListPatients]: any = useState([]);
-    // const app = initializeApp(firebaseConfig);
-    // const db = getFirestore(app);
-
-    // const handleListPatients = async () => {
-
-    //     const data = query(collection(db, "registerPatients"));
-
-    //     const querySnapshot: any = await getDocs(data);
-    //     querySnapshot.forEach((doc: any) => {
-    //         setListPatients((state: any) => [...state, doc.data()])
-    //     });
-    // }
-
-    // useMemo(() => {
-    //     handleListPatients()
-    // }, [])
-
     const [listPatients, setListPatients]: any = useState([]);
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);

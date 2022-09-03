@@ -16,6 +16,8 @@ export const CardRemedies = ({ nameDrug, daysExpired, timerNotification, totalDr
 
     const [isOpen, setIsOpen] = useState(false);
 
+    var daysExpired = 5;
+
     return (
         <S.ContainerCard>
             <S.ContainerHeader>
@@ -44,6 +46,7 @@ export const CardRemedies = ({ nameDrug, daysExpired, timerNotification, totalDr
             </S.ContainerRow>
             {isOpen && (
                 <ModalDelete
+                    onPress={() => console.log("TESTE")}
                     description='Deseja excluir este medicamento?'
                     closeModal={() => setIsOpen(false)}
                 />

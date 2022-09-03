@@ -5,6 +5,7 @@ import { Button } from '../../components/button';
 import { CardRemedies } from '../../components/cards/remedies';
 import { Line } from '../../components/line';
 import * as S from './styles';
+import { useToast } from 'react-native-toast-notifications';
 import { ModalDelete } from '../../components/modal/modalDelete';
 import { collection, deleteDoc, doc, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
@@ -41,19 +42,26 @@ export const ProfilePatient = () => {
 
     /******** LISTAGEM / EXCLUSÃO DOS MEDICAMENTOS DO PACIENTE - FIREBASE ********/
     const [listDrugs, setListDrugs]: any = useState([]);
+    const toast = useToast();
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    const users = collection(db, 'registerDrugs')
+    const collectionDrugs = collection(db, 'registerDrugs');
     const idPatient = '3g8QKgUp5m8OIgWdRrjQ';
+    const idPatientDelete = 'suSNdS2Q782uv7tlFEEU';
+    const idUser = 'Nrp6YKEIUHOg2zu1XgSD';
+    const collectionUser = 'registerUser';
+    const collectionPatients = 'registerPatient';
+
+
+    function getDocRef(idRef, collection) {
+        return doc(db, collection.path, idRef)
+    }
+
 
     // LISTAGEM DOS MEDICAMENTOS
     const handleListDrugs = async () => {
 
-        function getDocRef(idRef, collection) {
-            return doc(db, collection.path, idRef)
-        }
-
-        const data = query(collection(db, "registerDrugs"), where('user', '==', getDocRef(idPatient, users)));
+        const data = query(collection(db, "registerDrugs"), where('user', '==', getDocRef(idPatient, collectionDrugs)));
 
         const querySnapshot: any = await getDocs(data);
         querySnapshot.forEach((doc: any) => {
@@ -61,9 +69,32 @@ export const ProfilePatient = () => {
         });
     }
 
+
+    // DELETE DE PACIENTE
+    const handleDeletePatient = () => {
+
+        // { user: getDocRef(idUser, collectionUser) }
+        const docRef = doc(db, collectionPatients, idPatientDelete);
+
+        deleteDoc(docRef)
+            .then(() => {
+                toast.show('Paciente excluído com sucesso', {
+                    type: 'success',
+                });
+            })
+            .catch((error) => {
+                console.log(error)
+                toast.show('Não foi possivel excluir o paciente, tente novamente', {
+                    type: 'error'
+                });
+            })
+    }
+
+
     useMemo(() => {
         handleListDrugs()
     }, [])
+
     /******************************************************************************/
 
     return (
@@ -127,7 +158,7 @@ export const ProfilePatient = () => {
             {
                 isOpen && (
                     <ModalDelete
-                        onPress={() => deleteDrug}
+                        onPress={() => (handleDeletePatient(), setIsOpen(false))}
                         description='Deseja excluir este perfil?'
                         closeModal={() => setIsOpen(false)}
                     />
