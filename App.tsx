@@ -1,6 +1,8 @@
 import React from 'react';
+import { LogBox } from 'react-native';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { ToastStyles } from './src/components/toast';
 import Routes from './src/routes';
 import {
   Nunito_400Regular,
@@ -9,7 +11,9 @@ import {
   Nunito_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/nunito';
-import { ToastStyles } from './src/components/toast';
+
+// Ignore all warnings
+LogBox.ignoreAllLogs(true);
 
 export default function App() {
 

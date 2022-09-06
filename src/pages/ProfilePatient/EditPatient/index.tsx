@@ -16,8 +16,8 @@ interface FormProps {
 }
 
 // ********************************************************************************* //
-// TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, PODERIA TRAZER OS 
-// DADOS CADASTRADOS DO USUÁRIO PODENDO EDITAR O INPUT PARA ALTERAR.
+// TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, PODERIA TRAZER OS  //
+// DADOS CADASTRADOS DO USUÁRIO PODENDO EDITAR O INPUT PARA ALTERAR.                 //
 // ********************************************************************************* //
 
 export const EditPatient = () => {
@@ -41,10 +41,8 @@ export const EditPatient = () => {
     });
 
     const onSubmit = ({ name, age, weight, height }: FormProps) => {
-        // if (name.length > 0 && age > 0 && weight > 0 && height > 0) {
         navigation.navigate('Home')
         console.log({ name, age, weight, height });
-        // }
     }
 
     return (
