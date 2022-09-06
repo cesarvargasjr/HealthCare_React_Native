@@ -9,9 +9,7 @@ import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { SvgCss } from 'react-native-svg';
 import signIn from '../../assets/signIn.svg';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../../../firebase-config';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import handleSignIn from '../../services/users/signIn';
 
 interface FormProps {
     email: string;
@@ -20,27 +18,8 @@ interface FormProps {
 
 export const SignIn: React.FC = () => {
 
-    const navigation: any = useNavigation();
     const toast = useToast();
-
-    /**************** AUTENTICAÇÃO DE USUÁRIO - FIREBASE ****************/
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const handleSignIn = ({ email, password }) => {
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                navigation.navigate('Home')
-            })
-            .catch(error => {
-                console.log(error);
-                toast.show('Usuário e/ou senha inválidos', {
-                    type: 'danger',
-                });
-            })
-    }
-    /***************************************************************/
+    const navigation: any = useNavigation();
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         email: yup
@@ -64,6 +43,15 @@ export const SignIn: React.FC = () => {
 
     const onSubmit = ({ email, password }: FormProps) => {
         handleSignIn({ email, password })
+            .then(() => {
+                navigation.navigate('Home')
+            })
+            .catch(error => {
+                console.log(error);
+                toast.show('Usuário e/ou senha inválidos', {
+                    type: 'danger',
+                });
+            })
     }
 
     return (
@@ -102,8 +90,8 @@ export const SignIn: React.FC = () => {
             <Button
                 typeButton='primary'
                 textButton={'ENTRAR'}
-                // onPress={handleSubmit(onSubmit)}
-                onPress={() => navigation.navigate('Home')}
+                onPress={handleSubmit(onSubmit)}
+                // onPress={() => navigation.navigate('Home')}
                 marginTop={8}
             />
             <Button

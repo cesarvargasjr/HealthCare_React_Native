@@ -8,10 +8,7 @@ import * as yup from 'yup';
 import * as S from './styles';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../../../firebase-config';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { collection, getFirestore, addDoc } from 'firebase/firestore';
+import handleCreateAccount from '../../services/users/registerUser';
 
 interface FormProps {
     name: string;
@@ -22,28 +19,8 @@ interface FormProps {
 
 export const Register = () => {
 
-    const navigation: any = useNavigation();
     const toast = useToast();
-
-    /**************** CRIAÇÃO DE USUÁRIO - FIREBASE ****************/
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    const handleCreateAccount = ({ name, email, password }) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(async () => {
-                await addDoc(collection(db, "registerUsers"), { name, email });
-                navigation.navigate('SignIn')
-                toast.show('Usuário cadastrado com sucesso', {
-                    type: 'success',
-                });
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }
-    /***************************************************************/
+    const navigation: any = useNavigation();
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         name: yup
@@ -75,6 +52,8 @@ export const Register = () => {
 
     const onSubmit = ({ name, email, password }: FormProps) => {
         handleCreateAccount({ name, email, password });
+        navigation.navigate('SignIn')
+        toast.show('Usuário cadastrado com sucesso', { type: 'success' });
     }
 
     return (

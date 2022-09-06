@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import * as S from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { ModalDelete } from '../../modal/modalDelete';
+import { useToast } from 'react-native-toast-notifications';
+import handleDeleteDrug from '../../../services/drugs/deleteDrug';
 
 interface CardProps {
     onPress?: () => void;
@@ -15,8 +17,13 @@ interface CardProps {
 export const CardRemedies = ({ nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
-
+    const toast = useToast();
     var daysExpired = 5;
+
+    const deleteDrug = () => {
+        handleDeleteDrug()
+        toast.show('Medicamento excluído com sucesso', { type: 'success' })
+    }
 
     return (
         <S.ContainerCard>
@@ -46,7 +53,7 @@ export const CardRemedies = ({ nameDrug, daysExpired, timerNotification, totalDr
             </S.ContainerRow>
             {isOpen && (
                 <ModalDelete
-                    onPress={() => console.log("TESTE")}
+                    onPress={() => (deleteDrug(), setIsOpen(false))}
                     description='Deseja excluir este medicamento?'
                     closeModal={() => setIsOpen(false)}
                 />

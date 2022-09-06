@@ -7,9 +7,7 @@ import * as S from './styles';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
 import { useToast } from 'react-native-toast-notifications';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../../../firebase-config';
-import { addDoc, collection, doc, getFirestore } from 'firebase/firestore';
+import handleAddDrug from '../../services/drugs/registerDrug';
 
 interface FormProps {
     name: string;
@@ -22,42 +20,6 @@ export const RegisterRemedie = () => {
 
     const navigation: any = useNavigation();
     const toast = useToast();
-
-    /*********************** CADASTRO DE MEDICAMENTOS - FIREBASE ***********************/
-    const handleAddDrug = ({ name, hours, totalDrugs, daysNotifications }) => {
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const collectionName = collection(db, 'registerDrugs')
-        const idPatient = '3g8QKgUp5m8OIgWdRrjQ'
-
-        function getDocRef(idRef, collection) {
-            return doc(db, collection.path, idRef)
-        }
-
-        addDoc(collection(db, "registerDrugs"),
-            {
-                name,
-                hours,
-                totalDrugs,
-                daysNotifications,
-                user: getDocRef(idPatient, collectionName),
-            })
-            .then(() => {
-                navigation.navigate('Home')
-                toast.show('Medicamento cadastrado com sucesso', {
-                    type: 'success',
-                });
-            })
-            .catch(error => {
-                console.log(error)
-                toast.show(
-                    'Não foi possivel efetuar o cadastro do medicamento, tente novamente', {
-                    type: 'error'
-                });
-            })
-    }
-    /***********************************************************************************/
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         name: yup
@@ -85,6 +47,8 @@ export const RegisterRemedie = () => {
 
     const onSubmit = ({ name, hours, totalDrugs, daysNotifications }: FormProps) => {
         handleAddDrug({ name, hours, totalDrugs, daysNotifications })
+        navigation.navigate('ProfilePatient')
+        toast.show('Medicamento cadastrado com sucesso', { type: 'success' })
     }
 
     return (

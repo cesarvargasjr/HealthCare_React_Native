@@ -8,9 +8,7 @@ import * as S from './styles';
 import { Button } from '../../../components/button';
 import { AddImage } from '../../../components/cards/addImage';
 import { Input } from '../../../components/input';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '../../../../firebase-config';
-import { addDoc, collection, doc, getFirestore } from 'firebase/firestore';
+import handleCreatePatient from '../../../services/patients/registerPatient';
 
 interface FormProps {
     name: string,
@@ -23,41 +21,6 @@ export const RegisterPatient = () => {
 
     const navigation: any = useNavigation();
     const toast = useToast();
-
-    /*********************** CADASTRO DE PACIENTES - FIREBASE ***********************/
-    const handleCreatePatient = ({ name, age, weight, height }) => {
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const collectionUsers = collection(db, 'registerUsers')
-        const idUser = 'Nrp6YKEIUHOg2zu1XgSD'
-
-        function getDocRef(idRef, collection) {
-            return doc(db, collection.path, idRef)
-        }
-
-        addDoc(collection(db, "registerPatients"),
-            {
-                name,
-                age,
-                weight,
-                height,
-                user: getDocRef(idUser, collectionUsers),
-            })
-            .then(() => {
-                navigation.navigate('Home')
-                toast.show('Paciente cadastrado com sucesso', {
-                    type: 'success',
-                });
-            })
-            .catch(error => {
-                console.log(error)
-                toast.show('Não foi possivel efetuar o cadastro, tente novamente', {
-                    type: 'error'
-                });
-            })
-    }
-    /*******************************************************************************/
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         name: yup
@@ -87,6 +50,8 @@ export const RegisterPatient = () => {
 
     const onSubmit = ({ name, age, weight, height }: FormProps) => {
         handleCreatePatient({ name, age, weight, height })
+        navigation.navigate('Home')
+        toast.show('Paciente cadastrado com sucesso', { type: 'success' })
     }
 
     return (
