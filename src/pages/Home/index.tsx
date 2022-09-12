@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as S from './styles'
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '../../components/button';
+import { Button } from '../../components/Button';
 import { BackHandler } from 'react-native';
 import { SvgCss } from 'react-native-svg';
 import home from '../../assets/home.svg';

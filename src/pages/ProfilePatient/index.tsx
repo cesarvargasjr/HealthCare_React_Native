@@ -1,14 +1,14 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
-import { Button } from '../../components/button';
-import { CardRemedies } from '../../components/cards/remedies';
-import { Line } from '../../components/line';
+import { Button } from '../../components/Button';
+import { CardDrugs } from '../../components/Cards/Drugs';
+import { Line } from '../../components/Line';
 import * as S from './styles';
 import { useToast } from 'react-native-toast-notifications';
-import { ModalDelete } from '../../components/modal/modalDelete';
-import handleListDrugs from '../../services/drugs/listDrug';
-import handleDeletePatient from '../../services/patients/deletePatient';
+import { ModalDelete } from '../../components/Modal/ModalDelete';
+import handleListDrugs from '../../services/Drugs/ListDrug';
+import handleDeletePatient from '../../services/Patients/DeletePatient';
 
 export const ProfilePatient = () => {
 
@@ -58,7 +58,7 @@ export const ProfilePatient = () => {
             />
             <S.ContainerCards showsVerticalScrollIndicator={true} >
                 {listDrugs.map(({ name, daysExpired, hours, totalDrugs, daysNotifications }, index) => (
-                    <CardRemedies
+                    <CardDrugs
                         nameDrug={name}
                         daysExpired={daysExpired}
                         timerNotification={hours}

@@ -3,7 +3,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { getDocRef } from "../../utils/firebaseCommon";
 
 const db = getDatabase();
-const users = collection(db, 'registerUsers')
+const users = collection(db, 'users')
 const idUser = '0nKxmUiAPlX5149JUQXb';
 
 const handleListPatients = async () => {

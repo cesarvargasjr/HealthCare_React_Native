@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { Image } from 'react-native';
-import { Button } from '../../../components/button';
+import { Button } from '../../Button';
 import { useNavigation } from '@react-navigation/native';
 
 interface CardProps {

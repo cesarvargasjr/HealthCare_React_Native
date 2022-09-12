@@ -5,10 +5,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import * as S from './styles';
-import { Button } from '../../../components/button';
-import { AddImage } from '../../../components/cards/addImage';
-import { Input } from '../../../components/input';
-import handleCreatePatient from '../../../services/patients/registerPatient';
+import { Button } from '../../../components/Button';
+import { AddImage } from '../../../components/Cards/AddImage';
+import { Input } from '../../../components/Input';
+import handleCreatePatient from '../../../services/Patients/RegisterPatient';
 
 interface FormProps {
     name: string,

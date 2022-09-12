@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
-// import { yupResolver } from '@hookform/resolvers/yup';
-// import * as yup from 'yup';
-import { Button } from '../../../components/button';
-import { AddImage } from '../../../components/cards/addImage';
-import { Input } from '../../../components/input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { Button } from '../../../components/Button';
+import { AddImage } from '../../../components/Cards/AddImage';
+import { Input } from '../../../components/Input';
 import * as S from './styles';
+import { useToast } from 'react-native-toast-notifications';
+import handleUpdatePatient from '../../../services/Patients/UpdatePatient';
 
 interface FormProps {
     name: string,
@@ -15,21 +17,22 @@ interface FormProps {
     height: number,
 }
 
-// ********************************************************************************* //
-// TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, PODERIA TRAZER OS  //
-// DADOS CADASTRADOS DO USUÁRIO PODENDO EDITAR O INPUT PARA ALTERAR.                 //
-// ********************************************************************************* //
+// ***********************************************************************************//
+// TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, NOME VEM ESTÁTICO   //
+// PODERIA TRAZER OS DADOS CADASTRADOS DO USUÁRIO PODENDO EDITAR O INPUT PARA ALTERAR //                 //
+// ***********************************************************************************//
 
 export const EditPatient = () => {
 
     const navigation: any = useNavigation();
+    const toast = useToast();
 
-    // const schema: yup.SchemaOf<FormProps> = yup.object().shape({
-    //     name: yup.string().required('Digite o nome completo'),
-    //     age: yup.string().required('Digite a idade'),
-    //     weight: yup.string().required('Digite o peso'),
-    //     height: yup.string().required('Digite a altura'),
-    // });
+    const schema: yup.SchemaOf<FormProps> = yup.object().shape({
+        name: yup.string().required('Digite o nome'),
+        age: yup.string().required('Digite a idade'),
+        weight: yup.string().required('Digite o peso'),
+        height: yup.string().required('Digite a altura'),
+    });
 
     const {
         control,
@@ -37,12 +40,13 @@ export const EditPatient = () => {
         formState: { errors }
     } = useForm<FormProps>({
         mode: 'onChange',
-        // resolver: yupResolver(schema),
+        resolver: yupResolver(schema),
     });
 
     const onSubmit = ({ name, age, weight, height }: FormProps) => {
+        handleUpdatePatient({ name, age, weight, height })
         navigation.navigate('Home')
-        console.log({ name, age, weight, height });
+        toast.show('Paciente atualizado com sucesso', { type: 'success' })
     }
 
     return (

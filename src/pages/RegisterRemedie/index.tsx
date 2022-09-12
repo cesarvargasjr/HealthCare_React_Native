@@ -4,10 +4,10 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import * as S from './styles';
-import { Button } from '../../components/button';
-import { Input } from '../../components/input';
+import { Button } from '../../components/Button';
+import { Input } from '../../components/Input';
 import { useToast } from 'react-native-toast-notifications';
-import handleAddDrug from '../../services/drugs/registerDrug';
+import handleAddDrug from '../../services/Drugs/RegisterDrug';
 
 interface FormProps {
     name: string;

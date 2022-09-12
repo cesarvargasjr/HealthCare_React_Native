@@ -2,7 +2,7 @@ import React from 'react';
 import { LogBox } from 'react-native';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { ToastStyles } from './src/components/toast';
+import { ToastStyles } from './src/components/Toast';
 import Routes from './src/routes';
 import {
   Nunito_400Regular,

@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './styles';
 import * as Animation from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '../../components/button';
+import { Button } from '../../components/Button';
 
 export const Welcome = () => {
 

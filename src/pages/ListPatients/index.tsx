@@ -1,11 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { CardPatient } from '../../components/cards/patient';
-import { Button } from '../../components/button';
-import { Line } from '../../components/line';
-import { ModalNotifications } from '../../components/modal/modalNotifications';
-import handleListPatients from '../../services/patients/listPatient';
+import { CardPatient } from '../../components/Cards/Patient';
+import { Button } from '../../components/Button';
+import { Line } from '../../components/Line';
+import { ModalNotifications } from '../../components/Modal/ModalNotifications';
+import handleListPatients from '../../services/Patients/ListPatient';
 
 export const ListPatients = () => {
 

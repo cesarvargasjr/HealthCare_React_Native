@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import * as S from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { ModalDelete } from '../../modal/modalDelete';
+import { ModalDelete } from '../../Modal/ModalDelete';
 import { useToast } from 'react-native-toast-notifications';
-import handleDeleteDrug from '../../../services/drugs/deleteDrug';
+import handleDeleteDrug from '../../../services/Drugs/DeleteDrug';
 
 interface CardProps {
     onPress?: () => void;
@@ -14,7 +14,7 @@ interface CardProps {
     daysNotifications: number;
 }
 
-export const CardRemedies = ({ nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
+export const CardDrugs = ({ nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const toast = useToast();

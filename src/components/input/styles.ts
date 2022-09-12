@@ -1,4 +1,4 @@
-import { Text } from './../cards/remedies/styles';
+import { Text } from '../Cards/Drugs/styles';
 import styled from 'styled-components/native';
 import colors from '../../utils/colors';
 

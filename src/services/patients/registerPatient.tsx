@@ -6,7 +6,7 @@ const database = getDatabase();
 
 const handleCreatePatient = async ({ name, age, weight, height }) => {
 
-    const collectionUsers = collection(database, 'registerUsers')
+    const collectionUsers = collection(database, 'users')
     const idUser = '0nKxmUiAPlX5149JUQXb'
 
     await addDoc(collection(database, "patients"),
