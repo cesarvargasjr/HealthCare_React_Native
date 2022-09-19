@@ -2,10 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { CardPatient } from '../../components/Cards/Patient';
-import { Button } from '../../components/Button';
-import { Line } from '../../components/Line';
 import { ModalNotifications } from '../../components/Modal/ModalNotifications';
 import handleListPatients from '../../services/Patients/ListPatient';
+import { TabBar } from '../../components/TabBar';
 
 export const ListPatients = () => {
 
@@ -19,7 +18,7 @@ export const ListPatients = () => {
 
     return (
         <S.ContainerPage>
-            <S.ContainerCards showsVerticalScrollIndicator={true} >
+            <S.ContainerCards showsVerticalScrollIndicator={false} >
                 {/**************** VALIDAR REGRA PARA EXIBIR MODAL ****************/}
                 {listPatients ? (
                     <>
@@ -38,19 +37,9 @@ export const ListPatients = () => {
                     />
                 )}
             </S.ContainerCards>
-            <S.ContainerLine>
-                <Line
-                    marginTop={10}
-                />
-            </S.ContainerLine>
-            <S.ContainerButton>
-                <Button
-                    typeButton='primary'
-                    textButton='CADASTRAR UM PACIENTE'
-                    onPress={() => navigation.navigate('RegisterPatient')}
-                    marginTop={8}
-                />
-            </S.ContainerButton>
+            <S.ContainerTabBar>
+                <TabBar />
+            </S.ContainerTabBar>
         </S.ContainerPage>
     )
 }

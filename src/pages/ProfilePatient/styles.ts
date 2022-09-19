@@ -2,8 +2,8 @@ import styled from 'styled-components/native';
 import colors from '../../utils/colors';
 
 export const ContainerPage = styled.View`
-    background-color: ${colors.white};
-    padding: 7%;
+    background-color: ${colors.ghostwhite};
+    padding: 1% 7%;
     height: 100%;
 `;
 
@@ -11,7 +11,7 @@ export const ContainerProfile = styled.View`
     align-items: center;
     flex-direction: row;
     width: 100%;
-    height: 23%;
+    height: 18%;
 `;
 
 export const ContainerInfo = styled.View`
@@ -49,6 +49,15 @@ export const ContainerButton = styled.View`
 `;
 
 export const ContainerButtonProfile = styled.View`
-    width: 100%;
     align-items: center;
+`;
+
+export const ContainerIcon = styled.TouchableOpacity`
+
+`;
+
+export const ContainerIcons = styled.View`
+    height: 100%;
+    justify-content: space-around;
+    margin-left: 10%;
 `;

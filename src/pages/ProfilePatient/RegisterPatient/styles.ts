@@ -16,3 +16,8 @@ export const TitleCard = styled.Text`
     color: ${colors.black};
     margin-bottom: 7px;
 `;
+
+export const ContainerAddImage = styled.View`
+    width: 100%;
+    padding-left: 1%;
+`;

@@ -121,7 +121,9 @@ export const RegisterPatient = () => {
                 )}
             />
             <S.TitleCard>Foto do paciente</S.TitleCard>
-            <AddImage />
+            <S.ContainerAddImage>
+                <AddImage />
+            </S.ContainerAddImage>
             <S.ContainerButton>
                 <Button
                     typeButton='primary'

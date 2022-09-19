@@ -2,12 +2,21 @@ import styled from 'styled-components/native';
 import colors from '../../../utils/colors';
 
 export const ContainerCard = styled.View`
-    width: 100%;
-    border-radius: 8px;
+    width: 95%;
+    border-radius: 10px;
+    margin-left: 2%;
+    margin-top: 2%;
     padding: 5%;
-    border: 2px solid ${colors.purple};
     margin-bottom: 5%;
-    justify-content: space-between;
+    background-color: ${colors.white};
+    /* border: 0.5px solid ${colors.purple}; */
+    /* overflow: hidden; */
+
+    shadow-color: ${colors.purple};
+    shadow-offset: 1px 1px;
+    shadow-opacity: 0.4;
+    shadow-radius: 3px;
+    elevation: 5;
 `;
 
 export const ContainerRow = styled.View`
@@ -26,22 +35,22 @@ export const ContainerHeader = styled.View`
 `;
 
 export const TextBold = styled.Text`
-    font-size: 15px;
+    font-size: 14px;
     color: ${colors.black};
     font-family: 'Nunito_700Bold';
     margin-bottom: 3px;
 `;
 
 export const TextExpired = styled.Text`
-    font-size: 15px;
+    font-size: 14px;
     color: ${colors.purple};
-    font-family: 'Nunito_700Bold';
+    font-family: 'Nunito_400Regular';
 `;
 
 export const TextHour = styled.Text`
-    font-size: 16px;
-    color: ${colors.green};
-    font-family: 'Nunito_800ExtraBold';
+    font-size: 14px;
+    color: ${colors.lightGreen};
+    font-family: 'Nunito_700Bold';
 `;
 
 export const ContainerDelete = styled.TouchableOpacity`
@@ -49,14 +58,14 @@ export const ContainerDelete = styled.TouchableOpacity`
 `;
 
 export const Text = styled.Text`
-    font-size: 15px;
+    font-size: 14px;
     color: ${colors.black};
     font-family: 'Nunito_400Regular';
     line-height: 20px;
 `;
 
 export const Title = styled.Text`
-    font-size: 22px;
+    font-size: 18px;
     color: ${colors.black};
-    font-family: 'Nunito_800ExtraBold';
+    font-family: 'Nunito_700Bold';
 `;

@@ -9,6 +9,7 @@ import * as S from './styles';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import handleCreateAccount from '../../services/Users/RegisterUser';
+import { TabBar } from '../../components/TabBar';
 
 interface FormProps {
     name: string;
@@ -17,7 +18,7 @@ interface FormProps {
     passwordConfirm: string;
 }
 
-export const Register = () => {
+export const RegisterUser = () => {
 
     const toast = useToast();
     const navigation: any = useNavigation();

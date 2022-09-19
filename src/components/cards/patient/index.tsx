@@ -55,7 +55,7 @@ export const CardPatient = ({ namePatient, agePatient }: CardProps) => {
                 textButton='Ver mais detalhes'
                 onPress={() => navigation.navigate('ProfilePatient')}
                 marginTop={3}
-                width={46}
+                width={50}
             />
         </S.ContainerCard>
     )

@@ -21,7 +21,7 @@ export const ToastStyles = ({ children }: Props) => {
             textStyle={{ fontSize: 16 }}
             offset={50}
             offsetTop={30}
-            offsetBottom={40}
+            offsetBottom={80}
             swipeEnabled={true}>
             {children}
         </ToastProvider>

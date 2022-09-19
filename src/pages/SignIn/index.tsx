@@ -100,7 +100,7 @@ export const SignIn: React.FC = () => {
             <Button
                 typeButton='secondary'
                 textButton={'QUERO ME CADASTRAR'}
-                onPress={() => navigation.navigate('Register')}
+                onPress={() => navigation.navigate('RegisterUser')}
                 marginTop={7}
             />
         </S.ContainerPage>

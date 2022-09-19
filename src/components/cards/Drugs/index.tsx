@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { ModalDelete } from '../../Modal/ModalDelete';
 import { useToast } from 'react-native-toast-notifications';
 import handleDeleteDrug from '../../../services/Drugs/DeleteDrug';
+import colors from '../../../utils/colors';
 
 interface CardProps {
     onPress?: () => void;
@@ -30,10 +31,10 @@ export const CardDrugs = ({ nameDrug, daysExpired, timerNotification, totalDrugs
             <S.ContainerHeader>
                 <S.Title>{nameDrug}</S.Title>
                 <S.TextHour>
-                    <Icon name="bell" size={16} color="#16C153" /> {timerNotification}h
+                    <Icon name="bell" size={14} color={colors.lightGreen} /> {timerNotification}h
                 </S.TextHour>
             </S.ContainerHeader>
-            <S.TextBold>Comprimidos na cartela: <S.Text>{totalDrugs}</S.Text></S.TextBold>
+            {/* <S.TextBold>Comprimidos na cartela: <S.Text>{totalDrugs}</S.Text></S.TextBold> */}
             <S.TextBold>Lembrete por:
                 {daysNotifications > 1 ? (
                     <S.Text> {daysNotifications} dias</S.Text>
@@ -48,7 +49,7 @@ export const CardDrugs = ({ nameDrug, daysExpired, timerNotification, totalDrugs
                     <S.TextExpired>Resta {daysExpired} dia...</S.TextExpired>
                 )}
                 <S.ContainerDelete onPress={() => setIsOpen(true)} >
-                    <Icon name="trash" size={25} color='#FF2222' />
+                    <Icon name="trash" size={22} color={colors.lightRed} />
                 </S.ContainerDelete>
             </S.ContainerRow>
             {isOpen && (

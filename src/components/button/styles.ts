@@ -20,7 +20,7 @@ export const ContainerButton = styled.TouchableOpacity<ButtonProps>`
 
 export const TextButton = styled.Text`
     color: ${colors.white};
-    font-family: 'Nunito_700Bold';
+    font-family: 'Nunito_600SemiBold';
     font-size: 15px;
 `;
 
@@ -51,7 +51,7 @@ export const ContainerButtonTertiary = styled.TouchableOpacity<ButtonProps>`
 
 export const TextButtonTertiary = styled.Text`
     color: ${colors.purple};
-    font-family: 'Nunito_700Bold';
+    font-family: 'Nunito_600SemiBold';
     font-size: 15px;
 `;
 
@@ -68,6 +68,6 @@ export const ContainerButtonCancel = styled.TouchableOpacity<ButtonProps>`
 
 export const TextButtonCancel = styled.Text`
     color: ${colors.lightRed};
-    font-family: 'Nunito_700Bold';
+    font-family: 'Nunito_600SemiBold';
     font-size: 15px;
 `;

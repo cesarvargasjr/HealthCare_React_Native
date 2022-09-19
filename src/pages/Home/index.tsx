@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './styles'
-import { useNavigation } from '@react-navigation/native';
-import { Button } from '../../components/Button';
-import { BackHandler } from 'react-native';
-import { SvgCss } from 'react-native-svg';
-import home from '../../assets/home.svg';
+import { BackHandler, ScrollView } from 'react-native';
+import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
+import { CardDays } from '../../components/Cards/days';
+import { TabBar } from '../../components/TabBar';
+import { SliderHome } from '../../components/Cards/SliderHome';
+
+// ******************************************* //
+// CORRIGIR BOTÃO DE VOLTAR DAS PRÓXIMAS TELAS
+// ******************************************* //
 
 export const Home = () => {
 
-    const navigation: any = useNavigation();
-
-    // ******************************************* //
-    // CORRIGIR BOTÃO DE VOLTAR DAS PRÓXIMAS TELAS
-    // ******************************************* //
+    const [selected, setSelected] = useState(1);
 
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => true)
@@ -21,35 +21,26 @@ export const Home = () => {
 
     return (
         <S.ContainerPage>
-            <SvgCss xml={home} height={250} width={250} />
-            <Button
-                typeButton={'primary'}
-                textButton={'ADICIONAR UM PACIENTE'}
-                onPress={() => navigation.navigate('RegisterPatient')}
-                marginTop={5}
-                marginBottom={4}
-            />
-            <Button
-                typeButton={'primary'}
-                textButton={'LISTAR PACIENTES'}
-                onPress={() => navigation.navigate('ListPatients')}
-                marginTop={4}
-                marginBottom={4}
-            />
-            <Button
-                typeButton={'primary'}
-                textButton={'MEU PERFIL'}
-                onPress={() => navigation.navigate('Profile')}
-                marginTop={4}
-                marginBottom={4}
-            />
-            <Button
-                typeButton={'secondary'}
-                textButton={'SAIR'}
-                onPress={() => navigation.navigate('SignIn')}
-                marginTop={4}
-                marginBottom={4}
-            />
+            <S.ContainerContent>
+                <S.ContainerDays>
+                    {['Ontem', 'Hoje', 'Amanhã'].map((item, index) => (
+                        <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} />
+                    ))}
+                </S.ContainerDays>
+                <S.ContainerText>
+                    <S.TextBold>Próximas notificações...</S.TextBold>
+                </S.ContainerText>
+                <SchedulesPatients />
+                {/* <ScrollView
+                style={{ maxHeight: 160 }}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}>
+                <SliderHome />
+            </ScrollView> */}
+            </S.ContainerContent>
+            <S.ContainerTabBar>
+                <TabBar />
+            </S.ContainerTabBar>
         </S.ContainerPage>
     )
 }

@@ -15,7 +15,7 @@ const handleListPatients = async () => {
 
     console.log('***USER***', user);
 
-    const data = query(collection(db, "patients"), where('user', '==', getDocRef(idUser, users)));
+    const data = await query(collection(db, "patients"), where('user', '==', getDocRef(idUser, users)));
 
     const querySnapshot = await getDocs(data);
     querySnapshot.forEach((doc) => {

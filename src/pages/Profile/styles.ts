@@ -2,8 +2,12 @@ import styled from 'styled-components/native';
 import colors from '../../utils/colors';
 
 export const ContainerPage = styled.View`
-    background-color: ${colors.white};
-    padding: 7%;
+    background-color: ${colors.ghostwhite};
     align-items: center;
     height: 100%;
+`;
+
+export const ContainerTabBar = styled.View`
+    position: absolute;
+    bottom: 0;
 `;

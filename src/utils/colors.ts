@@ -12,6 +12,10 @@ export default {
     yellow: '#FFED00',
     green: '#16C159',
     line: '#EBEBEB',
-    // line: '#E4E4FF',
+    lightBlue: '#F0F8FF',
+    ghostwhite: '#F8F8FF',
+    whitesmoke: '#F5F5F5',
+    light: '#E4E4FF',
+    lightGreen: '#51d17e',
   };
   
