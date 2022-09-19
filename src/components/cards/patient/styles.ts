@@ -3,12 +3,25 @@ import colors from '../../../utils/colors';
 
 export const ContainerCard = styled.View`
     width: 100%;
-    border-radius: 8px;
+    border-radius: 15px;
+    border: 0.3px solid ${colors.purple};
     padding: 5%;
-    border: 2px solid ${colors.purple};
     margin-bottom: 5%;
     align-items: center;
     justify-content: space-between;
+    background-color: ${colors.white};
+
+
+    /* border-width: 0.5; */
+    /* border-radius: 8; */
+    /* border-color: #ddd; */
+    /* border-bottom-width: 1; */
+
+    shadow-color: ${colors.purple};
+    shadow-offset: 1px 1px;
+    shadow-opacity: 0.4;
+    shadow-radius: 3px;
+    elevation: 1;
 `;
 
 export const ContainerInfo = styled.View`

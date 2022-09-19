@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,8 +8,9 @@ import * as S from './styles';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { SvgCss } from 'react-native-svg';
-import signIn from '../../assets/signIn.svg';
+import ImageSignIn from '../../assets/signIn.svg';
 import handleSignIn from '../../services/Users/SignIn';
+import { AuthContext } from '../../contexts/Auth';
 
 interface FormProps {
     email: string;
@@ -19,6 +20,7 @@ interface FormProps {
 export const SignIn: React.FC = () => {
 
     const toast = useToast();
+    const { signIn }: any = useContext(AuthContext);
     const navigation: any = useNavigation();
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
@@ -42,6 +44,7 @@ export const SignIn: React.FC = () => {
     });
 
     const onSubmit = ({ email, password }: FormProps) => {
+        signIn({ email })
         handleSignIn({ email, password })
             .then(() => {
                 navigation.navigate('Home')
@@ -51,12 +54,12 @@ export const SignIn: React.FC = () => {
                 toast.show('Usuário e/ou senha inválidos', {
                     type: 'danger',
                 });
-            })
+            });
     }
 
     return (
         <S.ContainerPage>
-            <SvgCss xml={signIn} height={250} width={250} />
+            <SvgCss xml={ImageSignIn} height={250} width={250} />
             <S.ContainerLogin>
                 <Controller
                     control={control}

@@ -12,6 +12,7 @@
     "@expo-google-fonts/nunito": "^0.2.2",
     "@hookform/resolvers": "^2.9.7",
     "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-navigation/bottom-tabs": "^6.3.3",
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
     "@react-navigation/stack": "^6.2.2",
@@ -38,6 +39,8 @@
     "react-native-svg": "12.3.0",
     "react-native-toast-notifications": "^3.3.1",
     "react-native-vector-icons": "^9.2.0",
+    "react-navigation-stack": "react-navigation/stack",
+    "remask": "^0.1.0-alpha.5",
     "styled-components": "^5.3.5",
     "typescript": "^4.7.4",
     "yup": "^0.32.11"

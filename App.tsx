@@ -3,7 +3,8 @@ import { LogBox } from 'react-native';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ToastStyles } from './src/components/Toast';
-import Routes from './src/routes';
+import AuthProvider from './src/contexts/Auth';
+// import Routes from './src/routes/app.routes';
 import {
   Nunito_400Regular,
   Nunito_600SemiBold,
@@ -11,6 +12,7 @@ import {
   Nunito_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/nunito';
+import { TabBar } from './src/routes/tab.routes';
 
 // Ignore all warnings
 LogBox.ignoreAllLogs(true);
@@ -31,7 +33,9 @@ export default function App() {
     <NavigationContainer>
       <StatusBar backgroundColor='#fff' barStyle='dark-content' />
       <ToastStyles>
-        <Routes />
+        <AuthProvider>
+          <TabBar />
+        </AuthProvider>
       </ToastStyles>
     </NavigationContainer>
   );

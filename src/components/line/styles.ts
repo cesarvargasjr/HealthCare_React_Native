@@ -11,5 +11,4 @@ export const Line = styled.View<LineProps>`
     border: 1px solid ${colors.line};
     margin-top: ${({ marginTop }) => marginTop ?? 0}%;
     margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;
-
 `;

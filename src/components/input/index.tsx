@@ -5,6 +5,7 @@ import { Password } from './Password';
 import { Text } from './Text';
 import { UserName } from './UserName';
 import { TextArea } from './TextArea';
+import { Date } from './Date';
 
 interface InputProps {
     placeholder: string;
@@ -60,6 +61,15 @@ export const Input = ({ placeholder, titleInput, typeInput, height, value, onCha
                         placeholder={placeholder}
                         onChangeText={onChangeText}
                         value={value}
+                    />
+                );
+            case 'date':
+                return (
+                    <Date
+                        placeholder={placeholder}
+                        onChangeText={onChangeText}
+                        value={value}
+                        maxLength={maxLength}
                     />
                 );
         }

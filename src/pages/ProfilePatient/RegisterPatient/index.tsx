@@ -28,8 +28,9 @@ export const RegisterPatient = () => {
             .required('Digite o nome completo'),
         age: yup
             .string()
-            .required('Digite a idade')
-            .min(2, 'Mínimo dois caracteres'),
+            .required('Digite a data de nascimento'),
+        // .max(new Date(), 'Não é possível incluir uma data futura'),
+        // .min(2, 'Mínimo dois caracteres'),
         weight: yup
             .string()
             .required('Digite o peso'),
@@ -79,10 +80,10 @@ export const RegisterPatient = () => {
                 name="age"
                 render={({ field: { value, onChange } }) => (
                     <Input
-                        typeInput='number'
-                        titleInput='Idade'
-                        placeholder='80 anos'
-                        maxLength={2}
+                        typeInput='date'
+                        titleInput='Data de nascimento'
+                        placeholder='01/01/1900'
+                        maxLength={10}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.age?.message}

@@ -10,7 +10,8 @@ export const Line = ({ marginTop, marginBottom }: LineProps) => {
     return (
         <S.Line
             marginTop={marginTop}
-            marginBottom={marginBottom}>
+            marginBottom={marginBottom}
+        >
         </S.Line>
     )
 }

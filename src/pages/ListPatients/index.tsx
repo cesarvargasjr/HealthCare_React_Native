@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { CardPatient } from '../../components/Cards/Patient';
@@ -19,7 +19,7 @@ export const ListPatients = () => {
 
     return (
         <S.ContainerPage>
-            <S.ContainerCards showsVerticalScrollIndicator={false} >
+            <S.ContainerCards showsVerticalScrollIndicator={true} >
                 {/**************** VALIDAR REGRA PARA EXIBIR MODAL ****************/}
                 {listPatients ? (
                     <>
@@ -38,14 +38,16 @@ export const ListPatients = () => {
                     />
                 )}
             </S.ContainerCards>
-            <Line
-                marginTop={10}
-            />
+            <S.ContainerLine>
+                <Line
+                    marginTop={10}
+                />
+            </S.ContainerLine>
             <S.ContainerButton>
                 <Button
                     typeButton='primary'
-                    textButton='VOLTAR'
-                    onPress={() => navigation.navigate('Home')}
+                    textButton='CADASTRAR UM PACIENTE'
+                    onPress={() => navigation.navigate('RegisterPatient')}
                     marginTop={8}
                 />
             </S.ContainerButton>

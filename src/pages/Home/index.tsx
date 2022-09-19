@@ -20,14 +20,13 @@ export const Home = () => {
     }, [])
 
     return (
-
         <S.ContainerPage>
             <SvgCss xml={home} height={250} width={250} />
             <Button
                 typeButton={'primary'}
                 textButton={'ADICIONAR UM PACIENTE'}
                 onPress={() => navigation.navigate('RegisterPatient')}
-                marginTop={20}
+                marginTop={5}
                 marginBottom={4}
             />
             <Button
@@ -45,13 +44,12 @@ export const Home = () => {
                 marginBottom={4}
             />
             <Button
-                typeButton={'tertiary'}
+                typeButton={'secondary'}
                 textButton={'SAIR'}
                 onPress={() => navigation.navigate('SignIn')}
                 marginTop={4}
                 marginBottom={4}
             />
         </S.ContainerPage>
-
     )
 }
