@@ -10,20 +10,20 @@ const slider = [
     {
         key: '1',
         image: require('../../assets/indoorBike.png'),
-        title: 'Exercício físico e seus benefícios...',
+        title: 'Exercício físico e seus benefícios, qual o seu impacto no dia a dia...',
         textButton: 'Quero saber mais',
         link: 'BUTTON ATIVIDADE FÍSICA'
     },
     {
         key: '2',
-        image: require('../../assets/drugs.png'),
-        title: 'A importância dos medicamentos...',
+        image: require('../../assets/breakfast.png'),
+        title: 'A importância de uma alimentação saudável...',
         textButton: 'Quero saber mais',
-        link: 'BUTTON IMPORTÂNCIA MEDICAMENTOS'
+        link: 'BUTTON ALIMENTAÇÃO'
     },
     {
         key: '3',
-        image: require('../../assets/welcome.png'),
+        image: require('../../assets/drugs.png'),
         title: 'Medicamento na hora certa, por que é tão importante...',
         textButton: 'Quero saber mais',
         link: 'BUTTON MEDICAMENTO NA HORA CERTA'

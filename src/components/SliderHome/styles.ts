@@ -11,7 +11,6 @@ export const SliderContainer = styled.View`
   shadow-color: ${colors.purple};
   shadow-offset: 1px 1px;
   shadow-opacity: 0.4;
-  shadow-radius: 3px;
   elevation: 5;
 `;
 
@@ -25,7 +24,7 @@ export const Text = styled.Text`
   font-family: 'Nunito_600SemiBold';
   font-size: 16px;
   text-align: center;
-  width: 65%;
+  width: 70%;
 `;
 
 export const ContainerButton = styled.Text`
