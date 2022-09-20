@@ -1,14 +1,16 @@
 import React from 'react';
-import { TabBar } from '../../components/TabBar';
 import * as S from './styles';
+import { TabBar } from '../../components/TabBar';
+import { CardProfileUser } from '../../components/Cards/ProfileUser';
 
 export const ProfileUser = () => {
     return (
         <S.ContainerPage>
             <S.ContainerContent>
-                <S.Text>
-                    Screen em desenvolvimento
-                </S.Text>
+                <CardProfileUser
+                    nameUser={'Nome da Clínica'}
+                    totalPatients={31}
+                />
             </S.ContainerContent>
             <S.ContainerTabBar>
                 <TabBar />

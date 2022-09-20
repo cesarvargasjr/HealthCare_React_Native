@@ -112,7 +112,9 @@ export const EditPatient = () => {
                 )}
             />
             <S.TitleCard>Alterar Foto</S.TitleCard>
-            <AddImage />
+            <S.ContainerAddImage>
+                <AddImage />
+            </S.ContainerAddImage>
             <S.ContainerButton>
                 <Button
                     typeButton='primary'

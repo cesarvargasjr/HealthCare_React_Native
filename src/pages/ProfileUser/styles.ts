@@ -10,8 +10,6 @@ export const ContainerContent = styled.View`
     align-items: center;
     height: 100%;
     padding: 7%;
-
-    margin-top: 30%;
 `;
 
 export const ContainerTabBar = styled.View`

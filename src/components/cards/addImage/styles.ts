@@ -13,5 +13,5 @@ export const ContainerCard = styled.TouchableOpacity`
     shadow-offset: 1px 1px;
     shadow-opacity: 0.5;
     shadow-radius: 3px;
-    elevation: 5;
+    elevation: 3;
 `;
