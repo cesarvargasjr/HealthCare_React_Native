@@ -21,7 +21,7 @@ export const TabBar = () => {
                 <Icon name="address-card" size={18} color='#FFF' />
                 <S.Text>Pacientes</S.Text>
             </S.ContainerIcon>
-            <S.ContainerIcon onPress={() => navigation.navigate('Profile')}>
+            <S.ContainerIcon onPress={() => navigation.navigate('ProfileUser')}>
                 <Icon name="user-o" size={18} color='#FFF' />
                 <S.Text>Meu Perfil</S.Text>
             </S.ContainerIcon>

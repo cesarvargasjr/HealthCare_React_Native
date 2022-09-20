@@ -5,7 +5,7 @@ export const ContainerCard = styled.TouchableOpacity<{ id: number; selected: num
     align-items: center;
     justify-content: center;
     background-color: ${({id, selected}) => id === selected ? colors.purple : colors.white};
-    border: 2px solid ${colors.purple};
+    border: 1px solid ${colors.purple};
     border-radius: 4px;
     height: 35px;
     width: 80px;

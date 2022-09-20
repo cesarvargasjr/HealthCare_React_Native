@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ListPatients } from '../pages/ListPatients';
-import { Profile } from '../pages/Profile';
+import { ProfileUser } from '../pages/ProfileUser';
 import { ProfilePatient } from '../pages/ProfilePatient';
 import { EditPatient } from '../pages/ProfilePatient/EditPatient';
 import { RegisterPatient } from '../pages/ProfilePatient/RegisterPatient';
@@ -79,8 +79,8 @@ export default function AppRoutes() {
                 }}
             />
             <Stack.Screen
-                name="Profile"
-                component={Profile}
+                name="ProfileUser"
+                component={ProfileUser}
                 options={{
                     title: 'Meu perfil',
                     headerShown: true,

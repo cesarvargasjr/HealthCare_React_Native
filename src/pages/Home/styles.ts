@@ -36,11 +36,3 @@ export const ContainerTabBar = styled.View`
 export const ContainerText = styled.View`
     width: 100%;
 `;
-
-export const ContainerSlider = styled.ScrollView`
-    max-height: 30%;
-    flex: 1;
-    width: 100%;
-    border: 1px solid red;
-    /* flex-direction: row; */
-`;

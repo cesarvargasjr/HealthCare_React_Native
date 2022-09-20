@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import * as S from './styles'
-import { BackHandler, ScrollView } from 'react-native';
+import { BackHandler } from 'react-native';
 import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
-import { CardDays } from '../../components/Cards/days';
+import { CardDays } from '../../components/Cards/Days';
 import { TabBar } from '../../components/TabBar';
-import { SliderHome } from '../../components/Cards/SliderHome';
+import { SliderHome } from '../../components/SliderHome';
+import * as S from './styles'
 
-// ******************************************* //
-// CORRIGIR BOTÃO DE VOLTAR DAS PRÓXIMAS TELAS
-// ******************************************* //
+const slider = [
+    {
+        key: '1',
+        image: require('../../assets/indoorBike.png'),
+        title: 'Exercício físico e seus benefícios...',
+        textButton: 'Quero saber mais',
+        link: 'BUTTON ATIVIDADE FÍSICA'
+    },
+    {
+        key: '2',
+        image: require('../../assets/drugs.png'),
+        title: 'A importância dos medicamentos...',
+        textButton: 'Quero saber mais',
+        link: 'BUTTON IMPORTÂNCIA MEDICAMENTOS'
+    },
+    {
+        key: '3',
+        image: require('../../assets/welcome.png'),
+        title: 'Medicamento na hora certa, por que é tão importante...',
+        textButton: 'Quero saber mais',
+        link: 'BUTTON MEDICAMENTO NA HORA CERTA'
+    },
+];
 
 export const Home = () => {
 
@@ -28,15 +48,10 @@ export const Home = () => {
                     ))}
                 </S.ContainerDays>
                 <S.ContainerText>
-                    <S.TextBold>Próximas notificações...</S.TextBold>
+                    <S.TextBold>Agendamentos...</S.TextBold>
                 </S.ContainerText>
                 <SchedulesPatients />
-                {/* <ScrollView
-                style={{ maxHeight: 160 }}
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}>
-                <SliderHome />
-            </ScrollView> */}
+                <SliderHome slider={slider} />
             </S.ContainerContent>
             <S.ContainerTabBar>
                 <TabBar />

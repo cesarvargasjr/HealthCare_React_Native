@@ -36,7 +36,7 @@ export const ProfilePatient = () => {
                 <Image
                     source={require('../../assets/iconProfile.png')}
                     resizeMode="contain"
-                    style={{ height: 90, width: 90 }}
+                    style={{ height: 80, width: 80 }}
                 />
                 <S.ContainerInfo>
                     <S.NameProfile>José Carlos da Silva</S.NameProfile>
@@ -46,10 +46,10 @@ export const ProfilePatient = () => {
                 </S.ContainerInfo>
                 <S.ContainerIcons>
                     <S.ContainerIcon onPress={() => navigation.navigate('EditPatient')} >
-                        <Icon name="pencil" size={24} color={colors.grey} />
+                        <Icon name="pencil" size={20} color={colors.grey} />
                     </S.ContainerIcon>
                     <S.ContainerIcon onPress={() => setIsOpen(true)} >
-                        <Icon name="trash" size={24} color={colors.lightRed} />
+                        <Icon name="trash" size={20} color={colors.lightRed} />
                     </S.ContainerIcon>
                 </S.ContainerIcons>
             </S.ContainerProfile>
