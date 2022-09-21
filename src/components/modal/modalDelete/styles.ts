@@ -31,3 +31,8 @@ export const Description = styled.Text`
     color: ${colors.black};
     font-family: 'Nunito_700Bold';
 `;
+
+export const ContainerButton = styled.View`
+    width: 80%;
+    align-items: center;
+`;

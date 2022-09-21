@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import * as S from './styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { ModalDelete } from '../../Modal/ModalDelete';
 import { useToast } from 'react-native-toast-notifications';
 import handleDeleteDrug from '../../../services/Drugs/DeleteDrug';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../../utils/colors';
+import * as S from './styles';
 
 interface CardProps {
     onPress?: () => void;
@@ -13,16 +13,22 @@ interface CardProps {
     timerNotification: number;
     totalDrugs: number;
     daysNotifications: number;
+    id: string;
+    setListDrugs: any;
 }
 
-export const CardDrugs = ({ nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
+export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const toast = useToast();
+
+    // ********** DESENVOLVER FUNÇÃO PARA CALCULAR DIAS RESTANTES **********
     var daysExpired = 5;
+    // *********************************************************************
 
     const deleteDrug = () => {
-        handleDeleteDrug()
+        handleDeleteDrug(id)
+        setListDrugs((list: any) => list.filter((item: any) => item.id !== id));
         toast.show('Medicamento excluído com sucesso', { type: 'success' })
     }
 

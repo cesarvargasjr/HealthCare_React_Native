@@ -19,7 +19,7 @@ export const ContainerCard = styled.View`
 export const ContainerInfo = styled.View`
     flex-direction: column;
     width: 100%;
-    margin-top: 4%;
+    margin-top: 10%;
 `;
 
 export const TextBold = styled.Text`
@@ -30,7 +30,7 @@ export const TextBold = styled.Text`
 `;
 
 export const Title = styled.Text`
-    font-size: 28px;
+    font-size: 26px;
     color: ${colors.black};
     font-family: 'Nunito_700Bold';
     text-align: center;

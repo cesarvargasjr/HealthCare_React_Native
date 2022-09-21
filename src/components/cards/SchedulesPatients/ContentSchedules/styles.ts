@@ -19,7 +19,7 @@ export const TextBold = styled.Text.attrs({ numberOfLines: 1 })`
 `;
 
 export const Text = styled.Text`
-    font-size: 14px;
+    font-size: 16px;
     color: ${colors.lightGreen};
     font-family: 'Nunito_700Bold';
 `;

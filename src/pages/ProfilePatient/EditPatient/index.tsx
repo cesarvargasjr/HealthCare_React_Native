@@ -9,7 +9,7 @@ import { Input } from '../../../components/Input';
 import * as S from './styles';
 import { useToast } from 'react-native-toast-notifications';
 import handleUpdatePatient from '../../../services/Patients/UpdatePatient';
-import { FormPatient } from '../../../contexts/Patient';
+import { FormPatient, usePatient } from '../../../contexts/Patient';
 
 // ***********************************************************************************//
 // TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, NOME VEM ESTÁTICO   //
@@ -20,12 +20,22 @@ export const EditPatient = () => {
 
     const navigation: any = useNavigation();
     const toast = useToast();
+    const { patient } = usePatient();
 
     const schema: yup.SchemaOf<FormPatient> = yup.object().shape({
-        name: yup.string().required('Digite o nome'),
-        date: yup.string().required('Digite a idade'),
-        weight: yup.string().required('Digite o peso'),
-        height: yup.string().required('Digite a altura'),
+        namePatient: yup
+            .string()
+            .required('Digite o nome completo'),
+        date: yup
+            .string()
+            .required('Digite a data de nascimento'),
+        weight: yup
+            .string()
+            .required('Digite o peso'),
+        height: yup
+            .string().required('Digite a altura')
+            .required('Digite a altura')
+            .min(3, 'Digite três caracteres'),
     });
 
     const {
@@ -38,7 +48,8 @@ export const EditPatient = () => {
     });
 
     const onSubmit = ({ namePatient, date, weight, height }: FormPatient) => {
-        handleUpdatePatient({ namePatient, date, weight, height })
+        const idPatient = patient.id;
+        handleUpdatePatient({ idPatient, namePatient, date, weight, height })
         navigation.navigate('Home')
         toast.show('Paciente atualizado com sucesso', { type: 'success' })
     }
@@ -53,7 +64,6 @@ export const EditPatient = () => {
                         typeInput='text'
                         titleInput='Nome'
                         placeholder='Nome completo'
-                        maxLength={2}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.namePatient?.message}
@@ -65,10 +75,10 @@ export const EditPatient = () => {
                 name="date"
                 render={({ field: { value, onChange } }) => (
                     <Input
-                        typeInput='number'
-                        titleInput='Idade'
-                        placeholder='80 anos'
-                        maxLength={2}
+                        typeInput='date'
+                        titleInput='Data de nascimento'
+                        placeholder='01/01/1900'
+                        maxLength={10}
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.date?.message}

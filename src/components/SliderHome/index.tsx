@@ -1,8 +1,8 @@
 import React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Image, Platform } from 'react-native';
-import * as S from './styles';
 import { Button } from '../Button';
+import * as S from './styles';
 
 interface SliderProps {
     slider: SliderContentProps[];

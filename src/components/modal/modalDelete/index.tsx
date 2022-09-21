@@ -21,18 +21,20 @@ export const ModalDelete = ({ description, closeModal, onPress }: ModalProps) =>
                     <S.Description>
                         {description}
                     </S.Description>
-                    <Button
-                        typeButton='primary'
-                        textButton='SIM'
-                        onPress={onPress}
-                        marginTop={10}
-                    />
-                    <Button
-                        typeButton='cancel'
-                        textButton='CANCELAR'
-                        onPress={closeModal}
-                        marginTop={7}
-                    />
+                    <S.ContainerButton>
+                        <Button
+                            typeButton='primary'
+                            textButton='SIM'
+                            onPress={onPress}
+                            marginTop={10}
+                        />
+                        <Button
+                            typeButton='cancel'
+                            textButton='CANCELAR'
+                            onPress={closeModal}
+                            marginTop={7}
+                        />
+                    </S.ContainerButton>
                 </S.ContainerModal>
             </S.ContainerPage>
         </Modal>

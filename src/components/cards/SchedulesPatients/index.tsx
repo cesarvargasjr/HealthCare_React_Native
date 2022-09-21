@@ -16,7 +16,7 @@ export const SchedulesPatients = () => {
         response?.length > 0 && setListPatients(response);
     }, [isFocused]);
 
-    const renderContent = () => {
+    const renderContentSchedules = () => {
         if (viewListPatients?.length === 0) {
             return (
                 <S.TextBold>
@@ -33,7 +33,7 @@ export const SchedulesPatients = () => {
 
     return (
         <S.ContainerCard>
-            {renderContent()}
+            {renderContentSchedules()}
         </S.ContainerCard>
     )
 }

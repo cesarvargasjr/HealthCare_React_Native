@@ -8,6 +8,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { useToast } from 'react-native-toast-notifications';
 import handleAddDrug from '../../services/Drugs/RegisterDrug';
+import { usePatient } from '../../contexts/Patient';
 
 interface FormDrugs {
     name: string;
@@ -20,6 +21,7 @@ export const RegisterRemedie = () => {
 
     const navigation: any = useNavigation();
     const toast = useToast();
+    const { patient } = usePatient();
 
     const schema: yup.SchemaOf<FormDrugs> = yup.object().shape({
         name: yup
@@ -46,7 +48,7 @@ export const RegisterRemedie = () => {
     });
 
     const onSubmit = ({ name, hours, totalDrugs, daysNotifications }: FormDrugs) => {
-        handleAddDrug({ name, hours, totalDrugs, daysNotifications })
+        handleAddDrug({ patient, name, hours, totalDrugs, daysNotifications })
         navigation.navigate('ProfilePatient')
         toast.show('Medicamento cadastrado com sucesso', { type: 'success' })
     }

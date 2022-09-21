@@ -20,7 +20,7 @@ export const ContainerTabBar = styled.View`
 
 export const ListPatientsEmpty = styled.View`
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 88%;
 `;
 

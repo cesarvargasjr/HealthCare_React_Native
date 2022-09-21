@@ -63,3 +63,16 @@ export const ContainerIcons = styled.View`
     justify-content: space-evenly;
     margin-left: 10%;
 `;
+
+export const ListDrugsEmpty = styled.View`
+    align-items: center;
+    margin-top: 30%;
+`;
+
+export const TextListEmpty = styled.Text`
+    font-size: 19px;
+    text-align: center;
+    color: ${colors.black};
+    font-family: 'Nunito_600SemiBold';
+    max-width: 90%;
+`;

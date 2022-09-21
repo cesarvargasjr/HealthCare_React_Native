@@ -3,11 +3,11 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { CardPatient } from '../../components/Cards/Patient';
 import { TabBar } from '../../components/TabBar';
 import { usePatient } from '../../contexts/Patient';
+import { SvgCss } from 'react-native-svg';
+import { Button } from '../../components/Button';
 import handleListPatients from '../../services/Patients/ListPatient';
 import * as S from './styles';
-import { SvgCss } from 'react-native-svg';
 import listEmpity from '../../assets/listEmpity.svg';
-import { Button } from '../../components/Button';
 
 export const ListPatients = () => {
 
@@ -20,7 +20,7 @@ export const ListPatients = () => {
         setListPatients(response);
     }, [isFocused])
 
-    const renderContent = () => {
+    const RenderContent = () => {
         if (listPatients?.length > 0) {
             return (
                 <S.ContainerCards showsVerticalScrollIndicator={false} >
@@ -39,13 +39,13 @@ export const ListPatients = () => {
         } else {
             return (
                 <S.ListPatientsEmpty>
-                    <SvgCss xml={listEmpity} height={200} width={200} style={{ marginBottom: 30 }} />
+                    <SvgCss xml={listEmpity} height={250} width={250} />
                     <S.Text>
                         Você não possui pacientes cadastrados
                     </S.Text>
                     <Button
                         typeButton={'primary'}
-                        textButton={'CADASTRAR AGORA'}
+                        textButton={'CADASTRAR PACIENTE AGORA'}
                         onPress={() => navigation.navigate('RegisterPatient')}
                         marginTop={25}
                     />
@@ -56,7 +56,7 @@ export const ListPatients = () => {
 
     return (
         <S.ContainerPage>
-            {renderContent()}
+            <RenderContent />
             <S.ContainerTabBar>
                 <TabBar />
             </S.ContainerTabBar>

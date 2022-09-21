@@ -2,11 +2,11 @@ import { collection, deleteDoc, doc } from "firebase/firestore";
 import { getDatabase } from "../../../firebase-config";
 
 const database = getDatabase();
-const idDrug = '5XuvZb9FImAdmkiAoAHG';
-const collectionDrugs = collection(database, 'registerDrug');
+const collectionDrugs = collection(database, 'drugs');
 
-const handleDeleteDrug = async () => {
-    const docRef = doc(database, collectionDrugs.path, idDrug);
+const handleDeleteDrug = async (id: string) => {
+
+    const docRef = doc(database, collectionDrugs.path, id);
     await deleteDoc(docRef)
 }
 

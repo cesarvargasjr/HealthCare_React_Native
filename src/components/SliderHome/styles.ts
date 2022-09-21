@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import colors from '../../utils/colors';
 
 export const SliderContainer = styled.View`
-  height: 270px;
+  min-height: 42%;
   width: 100%;
   border-radius: 10px;
   background-color: ${colors.white};

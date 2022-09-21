@@ -1,27 +1,28 @@
 import React, { useMemo, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { usePatient } from '../../contexts/Patient';
 import { Image } from 'react-native';
 import { Button } from '../../components/Button';
 import { CardDrugs } from '../../components/Cards/Drugs';
 import { Line } from '../../components/Line';
-import * as S from './styles';
 import { useToast } from 'react-native-toast-notifications';
 import { ModalDelete } from '../../components/Modal/ModalDelete';
+import { SvgCss } from 'react-native-svg';
+import listEmpity from '../../assets/listEmpity.svg';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import handleListDrugs from '../../services/Drugs/ListDrug';
 import handleDeletePatient from '../../services/Patients/DeletePatient';
 import colors from '../../utils/colors';
-import { usePatient } from '../../contexts/Patient';
+import * as S from './styles';
 
 export const ProfilePatient = () => {
 
     const toast = useToast();
     const navigation: any = useNavigation();
     const [isOpen, setIsOpen] = useState(false);
+    const isFocused = useIsFocused();
     const [listDrugs, setListDrugs]: any = useState([]);
     const { patient, getAge } = usePatient();
-
-    console.log('DADOS PACIENTE', patient)
 
     const deletePatient = () => {
         handleDeletePatient(patient.id)
@@ -29,10 +30,39 @@ export const ProfilePatient = () => {
         toast.show('Paciente excluído com sucesso', { type: 'success' })
     }
 
-    useMemo(async () => {
-        const response = await handleListDrugs();
-        setListDrugs(response);
-    }, [])
+    const RenderListDrugs = () => {
+        if (listDrugs?.length > 0) {
+            return (
+                listDrugs?.map(({ id, name, daysExpired, hours, totalDrugs, daysNotifications }, index) => (
+                    <CardDrugs
+                        id={id}
+                        nameDrug={name}
+                        daysExpired={daysExpired}
+                        timerNotification={hours}
+                        totalDrugs={totalDrugs}
+                        daysNotifications={daysNotifications}
+                        key={index}
+                        setListDrugs={setListDrugs}
+                    />
+                ))
+            )
+        } else {
+            return (
+                <S.ListDrugsEmpty>
+                    <SvgCss xml={listEmpity} height={150} width={150} style={{ marginBottom: 40 }} />
+                    <S.TextListEmpty>
+                        Este paciente não possui medicamentos cadastrados
+                    </S.TextListEmpty>
+                </S.ListDrugsEmpty>
+            )
+        }
+    }
+
+    useMemo(
+        async () => {
+            const response = await handleListDrugs();
+            setListDrugs(response);
+        }, [isFocused])
 
     return (
         <S.ContainerPage >
@@ -59,16 +89,7 @@ export const ProfilePatient = () => {
             </S.ContainerProfile>
             <Line marginTop={2} />
             <S.ContainerCards showsVerticalScrollIndicator={false} >
-                {listDrugs.map(({ name, daysExpired, hours, totalDrugs, daysNotifications }, index) => (
-                    <CardDrugs
-                        nameDrug={name}
-                        daysExpired={daysExpired}
-                        timerNotification={hours}
-                        totalDrugs={totalDrugs}
-                        daysNotifications={daysNotifications}
-                        key={index}
-                    />
-                ))}
+                <RenderListDrugs />
             </S.ContainerCards>
             <Line />
             <S.ContainerButton>
