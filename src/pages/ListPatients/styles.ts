@@ -7,6 +7,8 @@ export const ContainerPage = styled.View`
 `;
 
 export const ContainerCards = styled.ScrollView`
+    height: 88%;
+    min-height: 88%;
     max-height: 88%;
     padding: 3% 4%;
 `;
@@ -14,4 +16,18 @@ export const ContainerCards = styled.ScrollView`
 export const ContainerTabBar = styled.View`
     position: absolute;
     bottom: 0;
+`;
+
+export const ListPatientsEmpty = styled.View`
+    align-items: center;
+    justify-content: center;
+    height: 88%;
+`;
+
+export const Text = styled.Text`
+    font-size: 24px;
+    text-align: center;
+    color: ${colors.black};
+    font-family: 'Nunito_600SemiBold';
+    max-width: 65%;
 `;

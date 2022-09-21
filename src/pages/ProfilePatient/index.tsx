@@ -21,6 +21,8 @@ export const ProfilePatient = () => {
     const [listDrugs, setListDrugs]: any = useState([]);
     const { patient, getAge } = usePatient();
 
+    console.log('DADOS PACIENTE', patient)
+
     const deletePatient = () => {
         handleDeletePatient(patient.id)
         navigation.navigate('Home')

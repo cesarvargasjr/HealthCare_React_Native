@@ -6,8 +6,8 @@ const database = getDatabase();
 
 const handleAddDrug = async ({ name, hours, totalDrugs, daysNotifications }) => {
 
-    const collectionName = collection(database, 'drugs')
-    const idPatient = 'AVx8I9uYi4YHeux83DLP'
+    const collectionName = collection(database, 'drugs');
+    const idPatient = 'AVx8I9uYi4YHeux83DLP';
 
     await addDoc(collection(database, "drugs"),
         {
