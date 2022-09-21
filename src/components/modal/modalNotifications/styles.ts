@@ -26,7 +26,7 @@ export const ContainerModal = styled.View`
 
 export const Description = styled.Text`
     font-size: 21px;
-    width: 95%;
+    width: 91%;
     text-align: center;
     color: ${colors.black};
     font-family: 'Nunito_700Bold';

@@ -6,8 +6,7 @@ export const ContainerCard = styled.View`
     border-radius: 10px;
     padding: 5%;
     margin-left: 3%;
-    margin-top: 4%;
-    margin-bottom: 2%;
+    margin-bottom: 6%;
     align-items: center;
     justify-content: space-between;
     background-color: ${colors.white};
@@ -21,7 +20,8 @@ export const ContainerCard = styled.View`
 
 export const ContainerInfo = styled.View`
     flex-direction: column;
-    width: 75%;
+    margin-right: 5%;
+    width: 70%;
 `;
 
 export const TextBold = styled.Text`

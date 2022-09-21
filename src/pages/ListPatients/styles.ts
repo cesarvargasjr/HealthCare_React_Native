@@ -7,8 +7,8 @@ export const ContainerPage = styled.View`
 `;
 
 export const ContainerCards = styled.ScrollView`
-    max-height: 85%;
-    padding: 0 4%;
+    max-height: 88%;
+    padding: 3% 4%;
 `;
 
 export const ContainerTabBar = styled.View`

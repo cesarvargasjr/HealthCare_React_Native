@@ -5,8 +5,8 @@ export const ContainerCard = styled.View`
     width: 95%;
     border-radius: 10px;
     margin-left: 2%;
-    margin-top: 2%;
     padding: 5%;
+    margin-top: 2%;
     margin-bottom: 5%;
     background-color: ${colors.white};
     /* border: 0.5px solid ${colors.purple}; */

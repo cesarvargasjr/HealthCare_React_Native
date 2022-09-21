@@ -12,15 +12,17 @@ export const ContainerProfile = styled.View`
     flex-direction: row;
     width: 100%;
     height: 18%;
+    margin-top: 2%;
 `;
 
 export const ContainerInfo = styled.View`
     flex-direction: column;
-    margin-left: 5%;
+    margin-left: 3%;
+    width: 56%;
 `;
 
 export const NameProfile = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
     color: ${colors.black};
     font-family: 'Nunito_800ExtraBold';
     margin-bottom: 5px;
@@ -41,7 +43,7 @@ export const Text = styled.Text`
 
 export const ContainerCards = styled.ScrollView`
     height: 90px;
-    padding: 0 5%;
+    padding: 2% 5%;
 `;
 
 export const ContainerButton = styled.View`
@@ -57,7 +59,7 @@ export const ContainerIcon = styled.TouchableOpacity`
 `;
 
 export const ContainerIcons = styled.View`
-    height: 100%;
-    justify-content: space-around;
+    height: 70%;
+    justify-content: space-evenly;
     margin-left: 10%;
 `;

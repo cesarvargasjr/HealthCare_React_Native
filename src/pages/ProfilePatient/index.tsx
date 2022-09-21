@@ -38,7 +38,7 @@ export const ProfilePatient = () => {
                 <Image
                     source={require('../../assets/iconProfile.png')}
                     resizeMode="contain"
-                    style={{ height: 80, width: 80 }}
+                    style={{ height: 75, width: 75 }}
                 />
                 <S.ContainerInfo>
                     <S.NameProfile>{patient.namePatient}</S.NameProfile>
@@ -55,9 +55,7 @@ export const ProfilePatient = () => {
                     </S.ContainerIcon>
                 </S.ContainerIcons>
             </S.ContainerProfile>
-            <Line
-                marginBottom={4}
-            />
+            <Line marginTop={2} />
             <S.ContainerCards showsVerticalScrollIndicator={false} >
                 {listDrugs.map(({ name, daysExpired, hours, totalDrugs, daysNotifications }, index) => (
                     <CardDrugs
@@ -70,9 +68,7 @@ export const ProfilePatient = () => {
                     />
                 ))}
             </S.ContainerCards>
-            <Line
-                marginTop={5}
-            />
+            <Line />
             <S.ContainerButton>
                 <Button
                     typeButton='primary'

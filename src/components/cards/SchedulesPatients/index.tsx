@@ -14,16 +14,26 @@ export const SchedulesPatients = () => {
     useMemo(async () => {
         const response: any = await handleListPatients();
         response?.length > 0 && setListPatients(response);
-    }, [isFocused])
+    }, [isFocused]);
+
+    const renderContent = () => {
+        if (viewListPatients?.length === 0) {
+            return (
+                <S.TextBold>
+                    Você não possui pacientes cadastrados
+                </S.TextBold>
+            )
+        } else {
+            return (
+                viewListPatients?.map(({ namePatient }, index) => (
+                    <ContentSchedules name={namePatient} index={index} key={index} />))
+            )
+        }
+    }
 
     return (
         <S.ContainerCard>
-            {viewListPatients.length === 0 ? (
-                <></>
-            ) : (
-                viewListPatients?.map(({ namePatient }, index) => (
-                    <ContentSchedules name={namePatient} index={index} key={index} />))
-            )}
+            {renderContent()}
         </S.ContainerCard>
     )
 }

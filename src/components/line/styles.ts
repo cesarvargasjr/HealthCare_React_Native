@@ -8,7 +8,7 @@ interface LineProps {
 
 export const Line = styled.View<LineProps>`
     height: 1px;
-    border: 1px solid ${colors.line};
+    border: 1px solid ${colors.light};
     margin-top: ${({ marginTop }) => marginTop ?? 0}%;
     margin-bottom: ${({ marginBottom }) => marginBottom ?? 0}%;
 `;

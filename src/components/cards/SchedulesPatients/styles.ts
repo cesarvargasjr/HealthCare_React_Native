@@ -9,12 +9,19 @@ export const ContainerCard = styled.View`
     align-items: center;
     justify-content: space-between;
     background-color: ${colors.white};
-    /* border: 0.5px solid ${colors.purple}; */
-    /* overflow: hidden; */
 
     shadow-color: ${colors.purple};
     shadow-offset: 1px 1px;
     shadow-opacity: 0.4;
     shadow-radius: 3px;
     elevation: 5;
+`;
+
+export const TextBold = styled.Text`
+    font-size: 18px;
+    color: ${colors.black};
+    font-family: 'Nunito_700Bold';
+    text-align: center;
+    line-height: 27px;
+    width: 60%;
 `;
