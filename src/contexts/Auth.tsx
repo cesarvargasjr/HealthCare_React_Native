@@ -1,23 +1,18 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-interface AuthProps {
-    email: string;
-    // name: string;
+export interface ContextProps {
+    user: { email: string };
+    signIn: (email: string) => void;
 }
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext({} as ContextProps);
 
-export default function AuthProvider({ children }) {
-    const [user, setUser] = useState({});
-    // const [nameUser, setNameUser] = useState({});
+function AuthProvider({ children }) {
+    const [user, setUser] = useState({ email: '' });
 
-    const signIn = ({ email }: AuthProps) => {
+    const signIn = (email: string) => {
         setUser({ email: email });
     }
-
-    // const nameUserProfile = ({ name }: AuthProps) => {
-    //     setNameUser({ name: name });
-    // }
 
     return (
         <AuthContext.Provider value={{ signIn, user }}>
@@ -25,3 +20,13 @@ export default function AuthProvider({ children }) {
         </AuthContext.Provider>
     )
 }
+
+const useAuth = () => useContext(AuthContext);
+
+export { AuthProvider, useAuth }
+
+
+// const [nameUser, setNameUser] = useState({});
+// const nameUserProfile = ({ name }: AuthProps) => {
+//     setNameUser({ name: name });
+// }

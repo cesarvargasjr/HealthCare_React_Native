@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import handleListDrugs from '../../services/Drugs/ListDrug';
 import handleDeletePatient from '../../services/Patients/DeletePatient';
 import colors from '../../utils/colors';
+import { usePatient } from '../../contexts/Patient';
 
 export const ProfilePatient = () => {
 
@@ -18,9 +19,10 @@ export const ProfilePatient = () => {
     const navigation: any = useNavigation();
     const [isOpen, setIsOpen] = useState(false);
     const [listDrugs, setListDrugs]: any = useState([]);
+    const { patient, getAge } = usePatient();
 
     const deletePatient = () => {
-        handleDeletePatient()
+        handleDeletePatient(patient.id)
         navigation.navigate('Home')
         toast.show('Paciente excluído com sucesso', { type: 'success' })
     }
@@ -39,10 +41,10 @@ export const ProfilePatient = () => {
                     style={{ height: 80, width: 80 }}
                 />
                 <S.ContainerInfo>
-                    <S.NameProfile>José Carlos da Silva</S.NameProfile>
-                    <S.TextBold>Idade: <S.Text>80 anos</S.Text></S.TextBold>
-                    <S.TextBold>Peso: <S.Text>70 kg</S.Text></S.TextBold>
-                    <S.TextBold>Altura: <S.Text>175 cm</S.Text></S.TextBold>
+                    <S.NameProfile>{patient.namePatient}</S.NameProfile>
+                    <S.TextBold>Idade: <S.Text>{getAge()} anos</S.Text></S.TextBold>
+                    <S.TextBold>Peso: <S.Text>{patient.weight} kg</S.Text></S.TextBold>
+                    <S.TextBold>Altura: <S.Text>{patient.height} cm</S.Text></S.TextBold>
                 </S.ContainerInfo>
                 <S.ContainerIcons>
                     <S.ContainerIcon onPress={() => navigation.navigate('EditPatient')} >
@@ -84,7 +86,7 @@ export const ProfilePatient = () => {
                 isOpen && (
                     <ModalDelete
                         onPress={() => (deletePatient(), setIsOpen(false))}
-                        description='Deseja excluir este perfil?'
+                        description='Deseja excluir o perfil deste paciente?'
                         closeModal={() => setIsOpen(false)}
                     />
                 )

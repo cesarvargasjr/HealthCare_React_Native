@@ -44,7 +44,7 @@ export const Home = () => {
             <S.ContainerContent>
                 <S.ContainerDays>
                     {['Ontem', 'Hoje', 'Amanhã'].map((item, index) => (
-                        <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} />
+                        <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} key={index} />
                     ))}
                 </S.ContainerDays>
                 <S.ContainerText>

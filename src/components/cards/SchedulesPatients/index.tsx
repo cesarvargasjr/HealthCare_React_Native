@@ -1,23 +1,29 @@
-import React, { useMemo, useState } from 'react';
-import * as S from './styles';
-import { ContentSchedules } from './ContentSchedules';
+import React, { useMemo } from 'react';
 import handleListPatients from '../../../services/Patients/ListPatient';
+import { ContentSchedules } from './ContentSchedules';
+import { usePatient } from '../../../contexts/Patient';
+import { useIsFocused } from '@react-navigation/native';
+import * as S from './styles';
 
 export const SchedulesPatients = () => {
 
-    const [listPatients, setListPatients] = useState([]);
+    const { listPatients, setListPatients } = usePatient();
     const viewListPatients = listPatients?.slice(0, 3);
+    const isFocused = useIsFocused();
 
     useMemo(async () => {
         const response: any = await handleListPatients();
         response?.length > 0 && setListPatients(response);
-    }, [])
+    }, [isFocused])
 
     return (
         <S.ContainerCard>
-            {viewListPatients?.map(({ name }, index) => (
-                <ContentSchedules namePatient={name} index={index} key={index} />
-            ))}
+            {viewListPatients.length === 0 ? (
+                <></>
+            ) : (
+                viewListPatients?.map(({ namePatient }, index) => (
+                    <ContentSchedules name={namePatient} index={index} key={index} />))
+            )}
         </S.ContainerCard>
     )
 }

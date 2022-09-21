@@ -11,8 +11,6 @@ export const ContainerCard = styled.View`
     align-items: center;
     justify-content: space-between;
     background-color: ${colors.white};
-    /* overflow: hidden; */
-    /* border: 0.5px solid ${colors.purple}; */
 
     shadow-color: ${colors.purple};
     shadow-offset: 1px 1px;

@@ -1,28 +1,29 @@
-import { useContext } from "react";
 import { getDatabase } from "../../../firebase-config";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { getDocRef } from "../../utils/firebaseCommon";
-import { AuthContext } from "../../contexts/Auth";
+import { useAuth } from "../../contexts/Auth";
 
-const db = getDatabase();
-const users = collection(db, 'users')
-const idUser = '0nKxmUiAPlX5149JUQXb';
 
 const handleListPatients = async () => {
 
-    const { user }: any = useContext(AuthContext);
-    const listPatients = [];
+    try {
+        const database = getDatabase();
+        const collectionUsers = collection(database, 'users')
+        const { user } = useAuth();
+        const listPatients = [];
 
-    console.log('***USER***', user);
+        const data = await query(collection(database, "patients"), where('user', '==', getDocRef(user.email, collectionUsers)));
 
-    const data = await query(collection(db, "patients"), where('user', '==', getDocRef(idUser, users)));
+        const querySnapshot = await getDocs(data);
+        querySnapshot.forEach((doc) => {
+            listPatients.push({ id: doc.id, ...doc.data() })
+        });
 
-    const querySnapshot = await getDocs(data);
-    querySnapshot.forEach((doc) => {
-        listPatients.push(doc.data())
-    });
-
-    return listPatients;
+        return listPatients;
+    } catch (err) {
+        console.error(err);
+        return null;
+    }
 }
 
 export default handleListPatients;

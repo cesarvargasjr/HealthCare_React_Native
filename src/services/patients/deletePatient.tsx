@@ -3,10 +3,10 @@ import { getDatabase } from "../../../firebase-config";
 
 const database = getDatabase();
 const collectionPatients = collection(database, 'patients');
-const idPatientDelete = '******************';
 
-const handleDeletePatient = async () => {
-    const docRef = doc(database, collectionPatients.path, idPatientDelete);
+const handleDeletePatient = async (id: string) => {
+
+    const docRef = doc(database, collectionPatients.path, id);
     await deleteDoc(docRef)
 }
 

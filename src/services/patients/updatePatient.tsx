@@ -1,24 +1,26 @@
 import { collection, doc, updateDoc } from "firebase/firestore";
 import { getDatabase } from "../../../firebase-config";
 import { getDocRef } from "../../utils/firebaseCommon";
+import { AuthContext } from "../../contexts/Auth";
+import { useContext } from "react";
 
 const database = getDatabase();
 
-const handleUpdatePatient = async ({ name, age, weight, height }) => {
+const handleUpdatePatient = async ({ namePatient, date, weight, height }) => {
 
     const collectionPatients = collection(database, 'patients');
     const idPatientUpdate = '78XVn181UV53MoWNQ2C9';
     const docRef = doc(database, collectionPatients.path, idPatientUpdate);
-    // const idUser = '0nKxmUiAPlX5149JUQXb';
-    // const collectionUsers = 'users';
+    const { user }: any = useContext(AuthContext);
+    const collectionUsers = 'users';
 
     await updateDoc(docRef,
         {
-            name,
-            age,
+            namePatient,
+            date,
             weight,
             height,
-            // user: getDocRef(idUser, collectionUsers),
+            user: getDocRef(user.email, collectionUsers),
         })
 }
 

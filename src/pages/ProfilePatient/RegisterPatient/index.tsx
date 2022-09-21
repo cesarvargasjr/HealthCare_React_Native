@@ -9,24 +9,20 @@ import { Button } from '../../../components/Button';
 import { AddImage } from '../../../components/Cards/AddImage';
 import { Input } from '../../../components/Input';
 import handleCreatePatient from '../../../services/Patients/RegisterPatient';
-
-interface FormProps {
-    name: string,
-    age: number,
-    weight: number,
-    height: number,
-}
+import { useAuth } from '../../../contexts/Auth';
+import { FormPatient } from '../../../contexts/Patient';
 
 export const RegisterPatient = () => {
 
     const navigation: any = useNavigation();
     const toast = useToast();
+    const { user } = useAuth();
 
-    const schema: yup.SchemaOf<FormProps> = yup.object().shape({
-        name: yup
+    const schema: yup.SchemaOf<FormPatient> = yup.object().shape({
+        namePatient: yup
             .string()
             .required('Digite o nome completo'),
-        age: yup
+        date: yup
             .string()
             .required('Digite a data de nascimento'),
         // .max(new Date(), 'Não é possível incluir uma data futura'),
@@ -44,22 +40,22 @@ export const RegisterPatient = () => {
         control,
         handleSubmit,
         formState: { errors }
-    } = useForm<FormProps>({
+    } = useForm<FormPatient>({
         mode: 'onChange',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ name, age, weight, height }: FormProps) => {
-        handleCreatePatient({ name, age, weight, height })
+    const onSubmit = async ({ namePatient, date, weight, height }: FormPatient) => {
+        await handleCreatePatient({ user, namePatient, date, weight, height })
         navigation.navigate('Home')
         toast.show('Paciente cadastrado com sucesso', { type: 'success' })
-    }
+    };
 
     return (
         <S.ContainerPage>
             <Controller
                 control={control}
-                name="name"
+                name="namePatient"
                 rules={{
                     minLength: 5,
                 }}
@@ -70,14 +66,14 @@ export const RegisterPatient = () => {
                         placeholder='Nome completo'
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.name?.message}
+                        messageError={errors?.namePatient?.message}
 
                     />
                 )}
             />
             <Controller
                 control={control}
-                name="age"
+                name="date"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='date'
@@ -86,7 +82,7 @@ export const RegisterPatient = () => {
                         maxLength={10}
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.age?.message}
+                        messageError={errors?.date?.message}
                     />
                 )}
             />

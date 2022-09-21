@@ -4,19 +4,22 @@ import { getDocRef } from "../../utils/firebaseCommon";
 
 const database = getDatabase();
 
-const handleCreatePatient = async ({ name, age, weight, height }) => {
+const handleCreatePatient = async ({ user, namePatient, date, weight, height }) => {
 
-    const collectionUsers = collection(database, 'users')
-    const idUser = '0nKxmUiAPlX5149JUQXb'
+    try {
+        const collectionUsers = collection(database, 'users');
 
-    await addDoc(collection(database, "patients"),
-        {
-            name,
-            age,
-            weight,
-            height,
-            user: getDocRef(idUser, collectionUsers),
-        })
+        await addDoc(collection(database, "patients"),
+            {
+                namePatient,
+                date,
+                weight,
+                height,
+                user: getDocRef(user.email, collectionUsers),
+            })
+    } catch (err) {
+        console.error(err);
+    }
 }
 
 export default handleCreatePatient;

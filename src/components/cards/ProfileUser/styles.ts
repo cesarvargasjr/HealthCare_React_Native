@@ -4,7 +4,7 @@ import colors from '../../../utils/colors';
 export const ContainerCard = styled.View`
     width: 100%;
     border-radius: 10px;
-    padding: 4%;
+    padding: 10% 4%;
     /* align-items: center; */
     /* justify-content: space-between; */
     background-color: ${colors.white};

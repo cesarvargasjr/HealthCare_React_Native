@@ -9,7 +9,6 @@ import * as S from './styles';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import handleCreateAccount from '../../services/Users/RegisterUser';
-import { TabBar } from '../../components/TabBar';
 
 interface FormProps {
     name: string;
@@ -51,10 +50,13 @@ export const RegisterUser = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ name, email, password }: FormProps) => {
-        handleCreateAccount({ name, email, password });
-        navigation.navigate('SignIn')
-        toast.show('Usuário cadastrado com sucesso', { type: 'success' });
+    const onSubmit = async ({ name, email, password }: FormProps) => {
+        if (await handleCreateAccount({ name, email, password })) {
+            navigation.navigate('SignIn')
+            toast.show('Usuário cadastrado com sucesso', { type: 'success' });
+        } else {
+            toast.show('Já existe cadastro com este e-mail', { type: 'danger' });
+        }
     }
 
     return (

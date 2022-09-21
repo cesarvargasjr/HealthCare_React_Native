@@ -9,13 +9,7 @@ import { Input } from '../../../components/Input';
 import * as S from './styles';
 import { useToast } from 'react-native-toast-notifications';
 import handleUpdatePatient from '../../../services/Patients/UpdatePatient';
-
-interface FormProps {
-    name: string,
-    age: number,
-    weight: number,
-    height: number,
-}
+import { FormPatient } from '../../../contexts/Patient';
 
 // ***********************************************************************************//
 // TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, NOME VEM ESTÁTICO   //
@@ -27,9 +21,9 @@ export const EditPatient = () => {
     const navigation: any = useNavigation();
     const toast = useToast();
 
-    const schema: yup.SchemaOf<FormProps> = yup.object().shape({
+    const schema: yup.SchemaOf<FormPatient> = yup.object().shape({
         name: yup.string().required('Digite o nome'),
-        age: yup.string().required('Digite a idade'),
+        date: yup.string().required('Digite a idade'),
         weight: yup.string().required('Digite o peso'),
         height: yup.string().required('Digite a altura'),
     });
@@ -38,13 +32,13 @@ export const EditPatient = () => {
         control,
         handleSubmit,
         formState: { errors }
-    } = useForm<FormProps>({
+    } = useForm<FormPatient>({
         mode: 'onChange',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ name, age, weight, height }: FormProps) => {
-        handleUpdatePatient({ name, age, weight, height })
+    const onSubmit = ({ namePatient, date, weight, height }: FormPatient) => {
+        handleUpdatePatient({ namePatient, date, weight, height })
         navigation.navigate('Home')
         toast.show('Paciente atualizado com sucesso', { type: 'success' })
     }
@@ -53,7 +47,7 @@ export const EditPatient = () => {
         <S.ContainerPage>
             <Controller
                 control={control}
-                name="name"
+                name="namePatient"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='text'
@@ -62,13 +56,13 @@ export const EditPatient = () => {
                         maxLength={2}
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.name?.message}
+                        messageError={errors?.namePatient?.message}
                     />
                 )}
             />
             <Controller
                 control={control}
-                name="age"
+                name="date"
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
@@ -77,7 +71,7 @@ export const EditPatient = () => {
                         maxLength={2}
                         value={value}
                         onChangeText={onChange}
-                        messageError={errors?.age?.message}
+                        messageError={errors?.date?.message}
                     />
                 )}
             />

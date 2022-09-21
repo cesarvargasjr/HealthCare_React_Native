@@ -4,11 +4,11 @@ import * as S from './styles';
 import { Image } from 'react-native';
 
 interface ContentProps {
-    namePatient: string;
+    name: string;
     index: number;
 }
 
-export const ContentSchedules = ({ namePatient, index }: ContentProps) => {
+export const ContentSchedules = ({ name, index }: ContentProps) => {
 
     return (
         <S.ContainerDescription index={index}>
@@ -19,7 +19,7 @@ export const ContentSchedules = ({ namePatient, index }: ContentProps) => {
                         resizeMode="contain"
                         style={{ height: 25, width: 25 }}
                     />
-                    <S.TextBold>{namePatient}</S.TextBold>
+                    <S.TextBold>{name}</S.TextBold>
                 </S.ContentPatient>
                 <S.ContentPatient>
                     <Icon name="bell" size={16} color="#51d17e" />

@@ -3,7 +3,8 @@ import { LogBox } from 'react-native';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ToastStyles } from './src/components/Toast';
-import AuthProvider from './src/contexts/Auth';
+import { AuthProvider } from './src/contexts/Auth';
+import { PatientProvider } from './src/contexts/Patient';
 import Routes from './src/routes/app.routes';
 import colors from './src/utils/colors';
 import {
@@ -34,7 +35,9 @@ export default function App() {
       <StatusBar backgroundColor={colors.white} barStyle='dark-content' />
       <ToastStyles>
         <AuthProvider>
-          <Routes />
+          <PatientProvider>
+            <Routes />
+          </PatientProvider>
         </AuthProvider>
       </ToastStyles>
     </NavigationContainer>

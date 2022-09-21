@@ -1,15 +1,16 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { CardPatient } from '../../components/Cards/Patient';
 import { ModalNotifications } from '../../components/Modal/ModalNotifications';
 import handleListPatients from '../../services/Patients/ListPatient';
 import { TabBar } from '../../components/TabBar';
+import { usePatient } from '../../contexts/Patient';
 
 export const ListPatients = () => {
 
     const navigation: any = useNavigation();
-    const [listPatients, setListPatients] = useState([]);
+    const { listPatients, setListPatients } = usePatient();
 
     useMemo(async () => {
         const response = await handleListPatients();
@@ -22,10 +23,13 @@ export const ListPatients = () => {
                 {/**************** VALIDAR REGRA PARA EXIBIR MODAL ****************/}
                 {listPatients ? (
                     <>
-                        {listPatients?.map(({ name, age }, index) => (
+                        {listPatients?.map(({ id, namePatient, date, weight, height }, index) => (
                             <CardPatient
-                                namePatient={name}
-                                agePatient={age}
+                                id={id}
+                                namePatient={namePatient}
+                                date={date}
+                                weight={weight}
+                                height={height}
                                 key={index}
                             />
                         ))}

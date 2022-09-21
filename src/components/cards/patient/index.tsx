@@ -3,38 +3,19 @@ import * as S from './styles';
 import { Image } from 'react-native';
 import { Button } from '../../Button';
 import { useNavigation } from '@react-navigation/native';
+import { FormPatient, usePatient } from '../../../contexts/Patient';
+import calculateAge from '../../../utils/calculateAge';
 
-interface CardProps {
-    namePatient: string;
-    agePatient: number;
-}
-
-export const CardPatient = ({ namePatient, agePatient }: CardProps) => {
+export const CardPatient = ({ id, namePatient, date, weight, height }: FormPatient) => {
 
     const navigation: any = useNavigation();
+    const { setPatient } = usePatient();
 
-    function handleAge(agePatient) {
-        var today = new Date();
-        var currentYear = today.getFullYear();
-        var anoNascParts = agePatient.split('/');
-        var birthDay = anoNascParts[0];
-        var birthMonth = anoNascParts[1];
-        var birthYear = anoNascParts[2];
-        var age = currentYear - birthYear;
-        var mesAtual = today.getMonth() + 1;
-        // Se mês atual for menor que o nascimento, não fez aniversário ainda  
-        if (mesAtual < birthMonth) {
-            age--;
-        } else {
-            // Se estiver no mês do nascimento, verificar o dia
-            if (mesAtual == birthMonth) {
-                if (new Date().getDate() < birthDay) {
-                    //Se a data atual for menor que o dia de nascimento ele ainda não fez aniversário
-                    age--;
-                }
-            }
-        }
-        return age;
+    const getAge = () => calculateAge(date);
+
+    const handlePatient = () => {
+        setPatient({ id, namePatient, date, weight, height });
+        navigation.navigate('ProfilePatient');
     }
 
     return (
@@ -42,7 +23,7 @@ export const CardPatient = ({ namePatient, agePatient }: CardProps) => {
             <S.ContainerDescription>
                 <S.ContainerInfo>
                     <S.TextBold>Nome: <S.Text>{namePatient}</S.Text></S.TextBold>
-                    <S.TextBold>Idade: <S.Text>{handleAge(agePatient)} anos</S.Text></S.TextBold>
+                    <S.TextBold>Idade: <S.Text>{getAge()} anos</S.Text></S.TextBold>
                 </S.ContainerInfo>
                 <Image
                     source={require('../../../assets/iconProfile.png')}
@@ -53,7 +34,7 @@ export const CardPatient = ({ namePatient, agePatient }: CardProps) => {
             <Button
                 typeButton='secondary'
                 textButton='Ver mais detalhes'
-                onPress={() => navigation.navigate('ProfilePatient')}
+                onPress={() => handlePatient()}
                 marginTop={3}
                 width={50}
             />
