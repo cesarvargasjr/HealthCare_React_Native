@@ -17,7 +17,7 @@ interface FormDrugs {
     daysNotifications: number;
 }
 
-export const RegisterRemedie = () => {
+export const RegisterDrug = () => {
 
     const navigation: any = useNavigation();
     const toast = useToast();

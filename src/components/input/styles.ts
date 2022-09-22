@@ -18,7 +18,7 @@ export const ContainerInput = styled.View<InputProps>`
 `;
 
 export const TitleInput = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Nunito_700Bold';
     color: ${colors.black};
 `;
@@ -31,7 +31,13 @@ export const MessageError = styled.Text<{marginBottom: any}>`
 `;
 
 export const DescInput = styled.Text`
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'Nunito_700Bold';
     color: ${colors.lightGrey};
+    margin-left: 3px;
+`;
+
+export const ContainerTitle = styled.View`
+    flex-direction: row;
+    align-items: center;
 `;

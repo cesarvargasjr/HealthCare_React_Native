@@ -12,7 +12,7 @@ export const ContainerContent = styled.View`
 `;
 
 export const TextBold = styled.Text`
-    font-size: 21px;
+    font-size: 18px;
     color: ${colors.purple};
     font-family: 'Nunito_700Bold';
     line-height: 26px;
@@ -35,4 +35,9 @@ export const ContainerTabBar = styled.View`
 
 export const ContainerText = styled.View`
     width: 100%;
+`;
+
+export const ContainerButton = styled.View`
+    width: 100%;
+    align-items: flex-end;
 `;

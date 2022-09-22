@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { BackHandler } from 'react-native';
 import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
-import { CardDays } from '../../components/Cards/Days';
 import { TabBar } from '../../components/TabBar';
 import { SliderHome } from '../../components/SliderHome';
+import { Button } from '../../components/Button';
 import * as S from './styles'
 
 const slider = [
@@ -32,6 +33,7 @@ const slider = [
 
 export const Home = () => {
 
+    const navigation: any = useNavigation();
     const [selected, setSelected] = useState(1);
 
     useEffect(() => {
@@ -42,15 +44,26 @@ export const Home = () => {
     return (
         <S.ContainerPage>
             <S.ContainerContent>
+                {/* >>>>>> FILTRO DE AGENDAMENTOS CONFORME O DIA <<<<<<
                 <S.ContainerDays>
                     {['Ontem', 'Hoje', 'Amanhã'].map((item, index) => (
                         <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} key={index} />
                     ))}
-                </S.ContainerDays>
+                </S.ContainerDays> */}
                 <S.ContainerText>
-                    <S.TextBold>Agendamentos...</S.TextBold>
+                    <S.TextBold>Próximos atendimentos...</S.TextBold>
                 </S.ContainerText>
                 <SchedulesPatients />
+                <S.ContainerButton>
+                    <Button
+                        typeButton='secondary'
+                        textButton='Ver mais'
+                        onPress={() => navigation.navigate('AllSchedules')}
+                        width={25}
+                        marginTop={1}
+                        marginBottom={7}
+                    />
+                </S.ContainerButton>
                 <SliderHome slider={slider} />
             </S.ContainerContent>
             <S.ContainerTabBar>

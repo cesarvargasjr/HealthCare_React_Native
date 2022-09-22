@@ -78,8 +78,10 @@ export const Input = ({ placeholder, descInput, titleInput, typeInput, height, v
 
     return (
         <>
-            <S.TitleInput>{titleInput}</S.TitleInput>
-            {descInput && <S.DescInput>{descInput}</S.DescInput>}
+            <S.ContainerTitle>
+                <S.TitleInput>{titleInput}</S.TitleInput>
+                {descInput && <S.DescInput>{descInput}</S.DescInput>}
+            </S.ContainerTitle>
             <S.ContainerInput height={height} >
                 {getInput()}
             </S.ContainerInput>

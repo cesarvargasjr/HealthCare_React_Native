@@ -96,7 +96,7 @@ export const ProfilePatient = () => {
                 <Button
                     typeButton='primary'
                     textButton='ADICIONAR MEDICAMENTO'
-                    onPress={() => navigation.navigate('RegisterRemedie')}
+                    onPress={() => navigation.navigate('RegisterDrug')}
                     marginTop={5}
                     marginBottom={7}
                 />

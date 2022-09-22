@@ -4,10 +4,10 @@ import colors from '../../../utils/colors';
 export const ContainerCard = styled.View`
     width: 100%;
     border-radius: 10px;
-    padding: 5%;
-    margin-bottom: 5%;
+    padding: 0 5%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    height: 28%;
     background-color: ${colors.white};
 
     shadow-color: ${colors.purple};

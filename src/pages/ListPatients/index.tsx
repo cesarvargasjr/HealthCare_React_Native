@@ -6,8 +6,8 @@ import { usePatient } from '../../contexts/Patient';
 import { SvgCss } from 'react-native-svg';
 import { Button } from '../../components/Button';
 import handleListPatients from '../../services/Patients/ListPatient';
-import * as S from './styles';
 import listEmpity from '../../assets/listEmpity.svg';
+import * as S from './styles';
 
 export const ListPatients = () => {
 

@@ -5,11 +5,12 @@ import { ProfilePatient } from '../pages/ProfilePatient';
 import { EditPatient } from '../pages/ProfilePatient/EditPatient';
 import { RegisterPatient } from '../pages/ProfilePatient/RegisterPatient';
 import { RegisterUser } from '../pages/RegisterUser';
-import { RegisterRemedie } from '../pages/RegisterRemedie';
+import { RegisterDrug } from '../pages/RegisterDrug';
 import { SignIn } from '../pages/SignIn';
 import { Welcome } from '../pages/Welcome';
 import { Home } from '../pages/Home';
 import colors from '../utils/colors';
+import { AllSchedules } from '../pages/AllSchedules';
 
 const Stack = createNativeStackNavigator();
 
@@ -97,8 +98,8 @@ export default function AppRoutes() {
                 }}
             />
             <Stack.Screen
-                name="RegisterRemedie"
-                component={RegisterRemedie}
+                name="RegisterDrug"
+                component={RegisterDrug}
                 options={{
                     title: 'Cadastro de medicamento',
                     headerShown: true,
@@ -110,6 +111,15 @@ export default function AppRoutes() {
                 component={EditPatient}
                 options={{
                     title: 'Editar perfil (Paciente)',
+                    headerShown: true,
+                    headerBackVisible: true,
+                }}
+            />
+            <Stack.Screen
+                name="AllSchedules"
+                component={AllSchedules}
+                options={{
+                    title: 'Atendimentos (Próximas 24h)',
                     headerShown: true,
                     headerBackVisible: true,
                 }}

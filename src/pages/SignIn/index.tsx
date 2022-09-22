@@ -3,14 +3,14 @@ import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToast } from 'react-native-toast-notifications';
-import * as yup from 'yup';
-import * as S from './styles';
+import { useAuth } from '../../contexts/Auth';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { SvgCss } from 'react-native-svg';
+import * as yup from 'yup';
+import * as S from './styles';
 import ImageSignIn from '../../assets/signIn.svg';
 import handleSignIn from '../../services/Users/SignIn';
-import { useAuth } from '../../contexts/Auth';
 
 interface FormProps {
     email: string;
@@ -22,6 +22,13 @@ export const SignIn: React.FC = () => {
     const toast = useToast();
     const { signIn } = useAuth();
     const navigation: any = useNavigation();
+
+    // Função para o teclado não ficar em cima do input
+    // onFocus={() => onFocusLogin()}
+    // const dropView = useRef(null);
+    // const onFocusLogin = () => {
+    //     dropView?.current?.scrollTo({ animated: true, y: 900 });
+    // };
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         email: yup
@@ -68,7 +75,7 @@ export const SignIn: React.FC = () => {
                         <Input
                             typeInput={'text'}
                             titleInput={'E-mail'}
-                            placeholder={'Informe o usuário'}
+                            placeholder={'nome@email.com'}
                             value={value}
                             onChangeText={onChange}
                             messageError={errors?.email?.message}
