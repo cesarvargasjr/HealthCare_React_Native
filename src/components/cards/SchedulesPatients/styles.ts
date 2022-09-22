@@ -23,5 +23,5 @@ export const TextBold = styled.Text`
     font-family: 'Nunito_700Bold';
     text-align: center;
     line-height: 27px;
-    width: 60%;
+    width: 80%;
 `;

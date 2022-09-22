@@ -20,7 +20,7 @@ export const SchedulesPatients = () => {
         if (viewListPatients?.length === 0) {
             return (
                 <S.TextBold>
-                    Você não possui pacientes cadastrados
+                    Você não possui agendamentos no momento
                 </S.TextBold>
             )
         } else {

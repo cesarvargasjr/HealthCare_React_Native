@@ -47,9 +47,10 @@ export const EditPatient = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ namePatient, date, weight, height }: FormPatient) => {
+    const onSubmit = async ({ namePatient, date, weight, height }: FormPatient) => {
         const idPatient = patient.id;
-        handleUpdatePatient({ idPatient, namePatient, date, weight, height })
+
+        await handleUpdatePatient({ idPatient, namePatient, date, weight, height })
         navigation.navigate('Home')
         toast.show('Paciente atualizado com sucesso', { type: 'success' })
     }
