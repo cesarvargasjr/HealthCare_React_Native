@@ -15,7 +15,7 @@ export const AllSchedules = () => {
         if (listPatients?.length > 0) {
             return (
                 listPatients?.map(({ namePatient }) => (
-                    <S.ContainerContent>
+                    <>
                         <S.ContainerSchedule>
                             <S.ContainerInfo>
                                 <S.Title>Nome do paciente</S.Title>
@@ -27,7 +27,7 @@ export const AllSchedules = () => {
                             </S.ContainerTime>
                         </S.ContainerSchedule>
                         <Line />
-                    </S.ContainerContent>
+                    </>
                 ))
             )
         } else {
@@ -44,7 +44,9 @@ export const AllSchedules = () => {
 
     return (
         <S.ContainerPage>
-            {RenderSchedules()}
+            <S.ContainerContent>
+                {RenderSchedules()}
+            </S.ContainerContent>
             <S.ContainerTabBar>
                 <TabBar />
             </S.ContainerTabBar>
