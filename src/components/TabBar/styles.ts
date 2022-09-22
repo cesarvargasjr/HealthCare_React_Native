@@ -25,4 +25,5 @@ export const Text = styled.Text`
     font-size: 12px;
     color: ${colors.white};
     font-family: 'Nunito_400Regular';
+    margin-top: 5%;
 `;

@@ -29,3 +29,9 @@ export const MessageError = styled.Text<{marginBottom: any}>`
     color: ${colors.red};
     margin-bottom: 10px;
 `;
+
+export const DescInput = styled.Text`
+    font-size: 14px;
+    font-family: 'Nunito_700Bold';
+    color: ${colors.lightGrey};
+`;

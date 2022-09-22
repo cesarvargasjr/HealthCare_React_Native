@@ -2,6 +2,7 @@ export default {
     white: '#FFFFFF',
     black: '#000000',
     grey: '#353535',
+    lightGrey: '#909090',
     purple: '#6C63FF',
     purpleDark: '#888BF0',
     blue: '#536DFE',

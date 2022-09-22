@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,11 +10,6 @@ import * as S from './styles';
 import { useToast } from 'react-native-toast-notifications';
 import handleUpdatePatient from '../../../services/Patients/UpdatePatient';
 import { FormPatient, usePatient } from '../../../contexts/Patient';
-
-// ***********************************************************************************//
-// TELA DE EDITAR PERFIL DO PACIENTE, CAMPOS NÃO SÃO OBRIGATÓRIO, NOME VEM ESTÁTICO   //
-// PODERIA TRAZER OS DADOS CADASTRADOS DO USUÁRIO PODENDO EDITAR O INPUT PARA ALTERAR //                 //
-// ***********************************************************************************//
 
 export const EditPatient = () => {
 
@@ -45,6 +40,12 @@ export const EditPatient = () => {
     } = useForm<FormPatient>({
         mode: 'onChange',
         resolver: yupResolver(schema),
+        defaultValues: {
+            namePatient: patient?.namePatient,
+            date: patient?.date,
+            height: patient.height,
+            weight: patient.weight,
+        }
     });
 
     const onSubmit = async ({ namePatient, date, weight, height }: FormPatient) => {

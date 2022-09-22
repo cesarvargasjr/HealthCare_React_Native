@@ -33,7 +33,7 @@ export const SliderHome = ({ slider }: SliderProps) => {
                     typeButton={'secondary'}
                     textButton={item.textButton}
                     marginTop={4}
-                    onPress={() => console.log(item.link)}
+                    onPress={() => (item.link)}
                 />
             </S.ContainerContent>
         );

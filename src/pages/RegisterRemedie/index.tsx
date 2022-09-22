@@ -75,8 +75,9 @@ export const RegisterRemedie = () => {
                 render={({ field: { value, onChange } }) => (
                     <Input
                         typeInput='number'
-                        placeholder='A cada 12h'
+                        placeholder='12h'
                         titleInput='Intervalo para medicação'
+                        descInput='(Exemplo: A cada 12h)'
                         maxLength={2}
                         value={value}
                         onChangeText={onChange}

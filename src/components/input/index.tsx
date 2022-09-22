@@ -16,9 +16,10 @@ interface InputProps {
     value?: any;
     messageError?: string;
     maxLength?: number;
+    descInput?: string;
 }
 
-export const Input = ({ placeholder, titleInput, typeInput, height, value, onChangeText, messageError, maxLength }: InputProps) => {
+export const Input = ({ placeholder, descInput, titleInput, typeInput, height, value, onChangeText, messageError, maxLength }: InputProps) => {
 
     function getInput() {
         switch (typeInput) {
@@ -78,6 +79,7 @@ export const Input = ({ placeholder, titleInput, typeInput, height, value, onCha
     return (
         <>
             <S.TitleInput>{titleInput}</S.TitleInput>
+            {descInput && <S.DescInput>{descInput}</S.DescInput>}
             <S.ContainerInput height={height} >
                 {getInput()}
             </S.ContainerInput>
