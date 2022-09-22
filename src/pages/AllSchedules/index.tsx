@@ -18,8 +18,12 @@ export const AllSchedules = () => {
                     <>
                         <S.ContainerSchedule>
                             <S.ContainerInfo>
-                                <S.Title>Nome do paciente</S.Title>
+                                <S.Title>Paciente</S.Title>
                                 <S.Text>{namePatient}</S.Text>
+                                <S.ContainerDescription>
+                                    <S.Title>Medicamento</S.Title>
+                                    <S.Text>Losartana</S.Text>
+                                </S.ContainerDescription>
                             </S.ContainerInfo>
                             <S.ContainerTime>
                                 <Icon name="clock-o" size={22} color="#51d17e" />
@@ -35,7 +39,7 @@ export const AllSchedules = () => {
                 <S.ListPatientsEmpty>
                     <SvgCss xml={listEmpity} height={250} width={250} />
                     <S.TextListEmpity>
-                        Você não possui atendimentos para fazer no momento
+                        Você não possui atendimentos no momento
                     </S.TextListEmpity>
                 </S.ListPatientsEmpty>
             )

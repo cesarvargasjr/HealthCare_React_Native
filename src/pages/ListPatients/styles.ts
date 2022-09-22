@@ -7,9 +7,9 @@ export const ContainerPage = styled.View`
 `;
 
 export const ContainerCards = styled.ScrollView`
-    height: 88%;
-    min-height: 88%;
-    max-height: 88%;
+    height: 90%;
+    min-height: 90%;
+    max-height: 90%;
     padding: 3% 4%;
 `;
 

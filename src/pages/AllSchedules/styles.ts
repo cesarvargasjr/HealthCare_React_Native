@@ -27,6 +27,7 @@ export const TextListEmpity = styled.Text`
     color: ${colors.black};
     font-family: 'Nunito_600SemiBold';
     max-width: 90%;
+    margin-top: 15%;
 `;
 
 export const Title = styled.Text`
@@ -43,22 +44,25 @@ export const TextTime = styled.Text`
 `;
 
 export const ContainerSchedule = styled.View`
-    padding: 8%;
+    padding: 6% 8%;
     flex-direction: row;
     justify-content: space-between;
 `;
 
 export const ContainerInfo = styled.View`
     justify-content: center;
+    max-width: 75%;
 `;
 
 export const ContainerTime = styled.View`
-    align-items: center;
     flex-direction: row;
 `;
 
 export const ListPatientsEmpty = styled.View`
     align-items: center;
-    justify-content: space-evenly;
-    height: 85%;
+    margin-top: 30%;
+`;
+
+export const ContainerDescription = styled.View`
+    margin-top: 12px;
 `;
