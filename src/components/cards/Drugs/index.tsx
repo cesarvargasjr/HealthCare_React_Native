@@ -60,9 +60,9 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotifi
             </S.ContainerRow> */}
             <S.ContainerRow>
                 {daysNotifications > 1 ? (
-                    <S.TextExpired>Tratamento por {daysNotifications} dias</S.TextExpired>
+                    <S.Text>Tratamento por {daysNotifications} dias</S.Text>
                 ) : (
-                    <S.TextExpired>Tratamento por {daysNotifications} dia</S.TextExpired>
+                    <S.Text>Tratamento por {daysNotifications} dia</S.Text>
                 )}
                 <S.ContainerDelete onPress={() => setIsOpen(true)} >
                     <Icon name="trash" size={22} color={colors.lightRed} />

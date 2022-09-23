@@ -107,7 +107,7 @@ export const RegisterDrug = () => {
                     <Input
                         typeInput='number'
                         placeholder='7 dias'
-                        titleInput='Lembrete por quantos dias'
+                        titleInput='Tratamento por quantos dias'
                         maxLength={2}
                         value={value}
                         onChangeText={onChange}
