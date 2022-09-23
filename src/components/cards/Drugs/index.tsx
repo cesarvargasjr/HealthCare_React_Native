@@ -41,18 +41,28 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotifi
                 </S.TextHour>
             </S.ContainerHeader>
             {/* <S.TextBold>Comprimidos na cartela: <S.Text>{totalDrugs}</S.Text></S.TextBold> */}
-            <S.TextBold>Lembrete por:
+            {/* <S.TextBold>Lembrete por:
                 {daysNotifications > 1 ? (
                     <S.Text> {daysNotifications} dias</S.Text>
                 ) : (
                     <S.Text> {daysNotifications} dia</S.Text>
                 )}
-            </S.TextBold>
-            <S.ContainerRow>
+            </S.TextBold> */}
+            {/* <S.ContainerRow>
                 {daysExpired > 1 ? (
                     <S.TextExpired>Restam {daysExpired} dias...</S.TextExpired>
                 ) : (
                     <S.TextExpired>Resta {daysExpired} dia...</S.TextExpired>
+                )}
+                <S.ContainerDelete onPress={() => setIsOpen(true)} >
+                    <Icon name="trash" size={22} color={colors.lightRed} />
+                </S.ContainerDelete>
+            </S.ContainerRow> */}
+            <S.ContainerRow>
+                {daysNotifications > 1 ? (
+                    <S.TextExpired>Tratamento por {daysNotifications} dias</S.TextExpired>
+                ) : (
+                    <S.TextExpired>Tratamento por {daysNotifications} dia</S.TextExpired>
                 )}
                 <S.ContainerDelete onPress={() => setIsOpen(true)} >
                     <Icon name="trash" size={22} color={colors.lightRed} />

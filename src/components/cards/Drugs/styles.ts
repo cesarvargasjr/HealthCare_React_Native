@@ -9,8 +9,6 @@ export const ContainerCard = styled.View`
     margin-top: 2%;
     margin-bottom: 5%;
     background-color: ${colors.white};
-    /* border: 0.5px solid ${colors.purple}; */
-    /* overflow: hidden; */
 
     shadow-color: ${colors.purple};
     shadow-offset: 1px 1px;
@@ -24,6 +22,7 @@ export const ContainerRow = styled.View`
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    margin-top: 2%;
 `;
 
 export const ContainerHeader = styled.View`
