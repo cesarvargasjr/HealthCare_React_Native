@@ -22,15 +22,24 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotifi
     const [isOpen, setIsOpen] = useState(false);
     const toast = useToast();
 
-    // ********** DESENVOLVER FUNÇÃO PARA CALCULAR DIAS RESTANTES **********
-    var daysExpired = 5;
-    // *********************************************************************
-
     const deleteDrug = () => {
         handleDeleteDrug(id)
         setListDrugs((list: any) => list.filter((item: any) => item.id !== id));
         toast.show('Medicamento excluído com sucesso', { type: 'success' })
     }
+
+    const RenderDaysNotifications = () => {
+        if (daysNotifications > 1) {
+            return (
+                <S.Text>Tratamento por {daysNotifications} dias</S.Text>
+            )
+        } else {
+            return (
+                <S.Text>Tratamento por {daysNotifications} dia</S.Text>
+            )
+        }
+    }
+
 
     return (
         <S.ContainerCard>
@@ -40,30 +49,8 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotifi
                     <Icon name="bell" size={14} color={colors.lightGreen} /> {timerNotification}h
                 </S.TextHour>
             </S.ContainerHeader>
-            {/* <S.TextBold>Comprimidos na cartela: <S.Text>{totalDrugs}</S.Text></S.TextBold> */}
-            {/* <S.TextBold>Lembrete por:
-                {daysNotifications > 1 ? (
-                    <S.Text> {daysNotifications} dias</S.Text>
-                ) : (
-                    <S.Text> {daysNotifications} dia</S.Text>
-                )}
-            </S.TextBold> */}
-            {/* <S.ContainerRow>
-                {daysExpired > 1 ? (
-                    <S.TextExpired>Restam {daysExpired} dias...</S.TextExpired>
-                ) : (
-                    <S.TextExpired>Resta {daysExpired} dia...</S.TextExpired>
-                )}
-                <S.ContainerDelete onPress={() => setIsOpen(true)} >
-                    <Icon name="trash" size={22} color={colors.lightRed} />
-                </S.ContainerDelete>
-            </S.ContainerRow> */}
             <S.ContainerRow>
-                {daysNotifications > 1 ? (
-                    <S.Text>Tratamento por {daysNotifications} dias</S.Text>
-                ) : (
-                    <S.Text>Tratamento por {daysNotifications} dia</S.Text>
-                )}
+                <RenderDaysNotifications />
                 <S.ContainerDelete onPress={() => setIsOpen(true)} >
                     <Icon name="trash" size={22} color={colors.lightRed} />
                 </S.ContainerDelete>
@@ -78,3 +65,31 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotifi
         </S.ContainerCard>
     )
 }
+
+
+{/* 
+    >>>>> QUANTIDADE DE COMPRIMIDOS NA CARTELA / QUANTOS DIAS RESTAM DE NOTIFICAÇÃO <<<<<
+    >>>>> PODERIA TRAZER QUANTOS REMÉDIOS AINDA TEM EM ESTOQUE <<<<< 
+
+    // ********** DESENVOLVER FUNÇÃO PARA CALCULAR DIAS RESTANTES **********
+        var daysExpired = 5;
+    // *********************************************************************
+
+        <S.TextBold>Comprimidos na cartela: <S.Text>{totalDrugs}</S.Text></S.TextBold>
+            <S.TextBold>Lembrete por:
+                {daysNotifications > 1 ? (
+                    <S.Text> {daysNotifications} dias</S.Text>
+                ) : (
+                    <S.Text> {daysNotifications} dia</S.Text>
+                )}
+            </S.TextBold> 
+            <S.ContainerRow>
+                {daysExpired > 1 ? (
+                    <S.TextExpired>Restam {daysExpired} dias...</S.TextExpired>
+                ) : (
+                    <S.TextExpired>Resta {daysExpired} dia...</S.TextExpired>
+                )}
+                <S.ContainerDelete onPress={() => setIsOpen(true)} >
+                    <Icon name="trash" size={22} color={colors.lightRed} />
+                </S.ContainerDelete>
+            </S.ContainerRow>  */}

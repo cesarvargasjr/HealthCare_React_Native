@@ -11,9 +11,9 @@ interface SliderProps {
 interface SliderContentProps {
     key: string;
     image: string;
-    title: string;
-    textButton: string;
-    link: any;
+    description: string;
+    // textButton: string;
+    // link: any;
 }
 
 export const SliderHome = ({ slider }: SliderProps) => {
@@ -24,17 +24,19 @@ export const SliderHome = ({ slider }: SliderProps) => {
                     source={item.image}
                     style={{
                         resizeMode: 'contain',
-                        height: 150,
-                        width: 150,
+                        maxHeight: 200,
+                        maxWidth: 200,
+                        height: 200,
+                        width: 200,
                     }}
                 />
-                <S.Text>{item.title}</S.Text>
-                <Button
+                <S.Text>{item.description}</S.Text>
+                {/* <Button
                     typeButton={'secondary'}
                     textButton={item.textButton}
                     marginTop={4}
                     onPress={() => (item.link)}
-                />
+                /> */}
             </S.ContainerContent>
         );
     }
@@ -49,13 +51,13 @@ export const SliderHome = ({ slider }: SliderProps) => {
                 showDoneButton={false}
                 dotStyle={{
                     position: 'relative',
-                    top: (Platform.OS == 'ios' ? 15 : 20),
+                    top: (Platform.OS == 'ios' ? 20 : 23),
                     width: 7,
                     height: 7,
                     backgroundColor: '#E3E4FF',
                 }}
                 activeDotStyle={{
-                    top: (Platform.OS == 'ios' ? 15 : 20),
+                    top: (Platform.OS == 'ios' ? 20 : 23),
                     width: 7,
                     height: 7,
                     backgroundColor: '#6C63FF',

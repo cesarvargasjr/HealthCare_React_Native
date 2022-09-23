@@ -10,6 +10,7 @@ import * as S from './styles';
 export const AllSchedules = () => {
 
     const { listPatients } = usePatient();
+    const quantityDrugs = 1;
 
     const RenderSchedules = () => {
         if (listPatients?.length > 0) {
@@ -25,10 +26,17 @@ export const AllSchedules = () => {
                                     <S.Text>Losartana</S.Text>
                                 </S.ContainerDescription>
                             </S.ContainerInfo>
-                            <S.ContainerTime>
-                                <Icon name="clock-o" size={22} color="#51d17e" />
-                                <S.TextTime>09:15</S.TextTime>
-                            </S.ContainerTime>
+                            <S.ContainerInstructions>
+                                <S.ContainerInLine>
+                                    <Icon name="clock-o" size={22} color="#51d17e" />
+                                    <S.TextTime>09:15</S.TextTime>
+                                </S.ContainerInLine>
+                                {quantityDrugs === 1 ? (
+                                    <S.TextDrug>{quantityDrugs} Comprimido</S.TextDrug>
+                                ) : (
+                                    <S.TextDrug>{quantityDrugs} Comprimidos</S.TextDrug>
+                                )}
+                            </S.ContainerInstructions>
                         </S.ContainerSchedule>
                         <Line />
                     </>

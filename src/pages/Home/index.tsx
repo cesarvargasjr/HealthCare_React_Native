@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { BackHandler } from 'react-native';
 import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
@@ -7,34 +7,52 @@ import { SliderHome } from '../../components/SliderHome';
 import { Button } from '../../components/Button';
 import * as S from './styles'
 
+// const slider = [
+//     {
+//         key: '1',
+//         image: require('../../assets/indoorBike.png'),
+//         title: 'Exercício físico e seus benefícios, qual o seu impacto no dia a dia...',
+//         textButton: 'Quero saber mais',
+//         link: 'BUTTON ATIVIDADE FÍSICA'
+//     },
+//     {
+//         key: '2',
+//         image: require('../../assets/breakfast.png'),
+//         title: 'A importância de uma alimentação saudável...',
+//         textButton: 'Quero saber mais',
+//         link: 'BUTTON ALIMENTAÇÃO'
+//     },
+//     {
+//         key: '3',
+//         image: require('../../assets/drugs.png'),
+//         title: 'Medicamento na hora certa, por que é tão importante...',
+//         textButton: 'Quero saber mais',
+//         link: 'BUTTON MEDICAMENTO NA HORA CERTA'
+//     },
+// ];
+
 const slider = [
     {
         key: '1',
-        image: require('../../assets/indoorBike.png'),
-        title: 'Exercício físico e seus benefícios, qual o seu impacto no dia a dia...',
-        textButton: 'Quero saber mais',
-        link: 'BUTTON ATIVIDADE FÍSICA'
+        image: require('../../assets/welcome.png'),
+        description: 'Com o aplicativo Health Care você pode fazer o gerenciamento de seus pacientes e medicamentos.',
     },
     {
         key: '2',
-        image: require('../../assets/breakfast.png'),
-        title: 'A importância de uma alimentação saudável...',
-        textButton: 'Quero saber mais',
-        link: 'BUTTON ALIMENTAÇÃO'
+        image: require('../../assets/registerPatients.png'),
+        description: 'Cadastre seus pacientes e comece a gerenciar sua clínica com o Health Care.',
     },
     {
         key: '3',
         image: require('../../assets/drugs.png'),
-        title: 'Medicamento na hora certa, por que é tão importante...',
-        textButton: 'Quero saber mais',
-        link: 'BUTTON MEDICAMENTO NA HORA CERTA'
+        description: 'Após ter pacientes cadastrados insira os seus respectivos medicamentos para gerenciar os atendimentos.',
     },
 ];
 
 export const Home = () => {
 
     const navigation: any = useNavigation();
-    const [selected, setSelected] = useState(1);
+    // const [selected, setSelected] = useState(1);
 
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => true)

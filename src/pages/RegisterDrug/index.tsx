@@ -15,6 +15,7 @@ interface FormDrugs {
     hours: number;
     totalDrugs: number;
     daysNotifications: number;
+    quantityDrugs: number;
 }
 
 export const RegisterDrug = () => {
@@ -33,6 +34,9 @@ export const RegisterDrug = () => {
         totalDrugs: yup
             .string()
             .required('Digite o total de comprimidos na cartela'),
+        quantityDrugs: yup
+            .string()
+            .required('Digite a dosagem por medicação'),
         daysNotifications: yup
             .string()
             .required('Digite a quantidade de dias'),
@@ -47,8 +51,8 @@ export const RegisterDrug = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = ({ name, hours, totalDrugs, daysNotifications }: FormDrugs) => {
-        handleAddDrug({ patient, name, hours, totalDrugs, daysNotifications })
+    const onSubmit = ({ name, hours, totalDrugs, quantityDrugs, daysNotifications }: FormDrugs) => {
+        handleAddDrug({ patient, name, hours, totalDrugs, quantityDrugs, daysNotifications })
         navigation.navigate('ProfilePatient')
         toast.show('Medicamento cadastrado com sucesso', { type: 'success' })
     }
@@ -97,6 +101,22 @@ export const RegisterDrug = () => {
                         value={value}
                         onChangeText={onChange}
                         messageError={errors?.totalDrugs?.message}
+                    />
+                )}
+            />
+            <Controller
+                control={control}
+                name="quantityDrugs"
+                render={({ field: { value, onChange } }) => (
+                    <Input
+                        typeInput='number'
+                        placeholder='1'
+                        titleInput='Dosagem por medicação'
+                        descInput='(Exemplo: 1 comprimido)'
+                        maxLength={1}
+                        value={value}
+                        onChangeText={onChange}
+                        messageError={errors?.quantityDrugs?.message}
                     />
                 )}
             />

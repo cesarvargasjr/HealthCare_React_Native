@@ -18,7 +18,7 @@ export const ContainerContent = styled.ScrollView`
 export const Text = styled.Text`
     font-size: 16px;
     color: ${colors.black};
-    font-family: 'Nunito_400regular';
+    font-family: 'Nunito_400Regular';
 `;
 
 export const TextListEmpity = styled.Text`
@@ -43,6 +43,12 @@ export const TextTime = styled.Text`
     margin-left: 4px;
 `;
 
+export const TextDrug = styled.Text`
+    font-size: 16px;
+    color: ${colors.purple};
+    font-family: 'Nunito_700Bold';
+`;
+
 export const ContainerSchedule = styled.View`
     padding: 6% 8%;
     flex-direction: row;
@@ -51,11 +57,13 @@ export const ContainerSchedule = styled.View`
 
 export const ContainerInfo = styled.View`
     justify-content: center;
-    max-width: 75%;
+    width: 70%;
+    max-width: 70%;
 `;
 
-export const ContainerTime = styled.View`
+export const ContainerInLine = styled.View`
     flex-direction: row;
+    align-items: center;
 `;
 
 export const ListPatientsEmpty = styled.View`
@@ -65,4 +73,9 @@ export const ListPatientsEmpty = styled.View`
 
 export const ContainerDescription = styled.View`
     margin-top: 12px;
+`;
+
+export const ContainerInstructions = styled.View`
+    justify-content: space-evenly;
+    width: 37%;
 `;
