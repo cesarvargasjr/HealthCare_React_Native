@@ -16,7 +16,7 @@ import * as S from './styles';
 import * as yup from 'yup';
 interface FormDrugs {
     name: string;
-    hours: number;
+    // hours: number;
     totalDrugs: number;
     daysNotifications: number;
     quantityDrugs: number;
@@ -35,9 +35,9 @@ export const RegisterDrug = () => {
         name: yup
             .string()
             .required('Digite um medicamento'),
-        hours: yup
-            .number()
-            .required('Digite a hora dos intervalos'),
+        // hours: yup
+        //     .number()
+        //     .required('Digite a hora dos intervalos'),
         totalDrugs: yup
             .number()
             .required('Digite o total de comprimidos na cartela'),
@@ -87,8 +87,8 @@ export const RegisterDrug = () => {
     };
     // *********************************************************************** //
 
-    const onSubmit = ({ name, hours, totalDrugs, quantityDrugs, daysNotifications }: FormDrugs) => {
-        handleAddDrug({ user, patient, name, hours, totalDrugs, quantityDrugs, daysNotifications, dateInitialNotification, timeNotification })
+    const onSubmit = ({ name, totalDrugs, quantityDrugs, daysNotifications }: FormDrugs) => {
+        handleAddDrug({ user, patient, name, totalDrugs, quantityDrugs, daysNotifications, dateInitialNotification, timeNotification })
         navigation.navigate('ProfilePatient')
         toast.show('Medicamento cadastrado com sucesso', { type: 'success' })
     }
@@ -109,7 +109,7 @@ export const RegisterDrug = () => {
                     />
                 )}
             />
-            <Controller
+            {/* <Controller
                 control={control}
                 name="hours"
                 render={({ field: { value, onChange } }) => (
@@ -124,7 +124,7 @@ export const RegisterDrug = () => {
                         messageError={errors?.hours?.message}
                     />
                 )}
-            />
+            /> */}
             <Controller
                 control={control}
                 name="totalDrugs"

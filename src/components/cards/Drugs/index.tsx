@@ -10,14 +10,14 @@ interface CardProps {
     onPress?: () => void;
     nameDrug: string;
     daysExpired: number;
-    timerNotification: number;
+    timeNotification: number;
     totalDrugs: number;
     daysNotifications: number;
     id: string;
     setListDrugs: any;
 }
 
-export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotification, totalDrugs, daysNotifications }: CardProps) => {
+export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timeNotification, totalDrugs, daysNotifications }: CardProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const toast = useToast();
@@ -45,9 +45,12 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timerNotifi
         <S.ContainerCard>
             <S.ContainerHeader>
                 <S.Title>{nameDrug}</S.Title>
-                <S.TextHour>
-                    <Icon name="bell" size={14} color={colors.lightGreen} /> {timerNotification}h
-                </S.TextHour>
+                <S.ContainerHour>
+                    <Icon name="clock-o" size={19} color={colors.lightGreen} />
+                    <S.TextHour>
+                        {timeNotification}
+                    </S.TextHour>
+                </S.ContainerHour>
             </S.ContainerHeader>
             <S.ContainerRow>
                 <RenderDaysNotifications />

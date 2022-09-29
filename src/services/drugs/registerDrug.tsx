@@ -4,14 +4,13 @@ import { getDocRef } from "../../utils/firebaseCommon";
 
 const database = getDatabase();
 
-const handleAddDrug = async ({ user, patient, name, hours, totalDrugs, quantityDrugs, daysNotifications, dateInitialNotification, timeNotification }) => {
+const handleAddDrug = async ({ user, patient, name, totalDrugs, quantityDrugs, daysNotifications, dateInitialNotification, timeNotification }) => {
 
     const collectionName = collection(database, 'drugs');
 
     await addDoc(collection(database, "drugs"),
         {
             name,
-            hours,
             totalDrugs,
             quantityDrugs,
             daysNotifications,

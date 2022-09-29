@@ -30,7 +30,7 @@ export const ContainerHeader = styled.View`
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    margin-bottom: 3%;
+    margin-bottom: 2%;
 `;
 
 export const TextBold = styled.Text`
@@ -50,6 +50,11 @@ export const TextHour = styled.Text`
     font-size: 14px;
     color: ${colors.lightGreen};
     font-family: 'Nunito_700Bold';
+`;
+
+export const ContainerHour = styled.View`
+    align-items: center;
+    flex-direction: row;
 `;
 
 export const ContainerDelete = styled.TouchableOpacity`

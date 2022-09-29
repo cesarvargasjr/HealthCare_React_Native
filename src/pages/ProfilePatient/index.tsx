@@ -34,12 +34,12 @@ export const ProfilePatient = () => {
     const RenderListDrugs = () => {
         if (listDrugs?.length > 0) {
             return (
-                listDrugs?.map(({ id, name, daysExpired, hours, totalDrugs, daysNotifications }, index) => (
+                listDrugs?.map(({ id, name, daysExpired, hours, totalDrugs, daysNotifications, timeNotification }, index) => (
                     <CardDrugs
                         id={id}
                         nameDrug={name}
                         daysExpired={daysExpired}
-                        timerNotification={hours}
+                        timeNotification={timeNotification}
                         totalDrugs={totalDrugs}
                         daysNotifications={daysNotifications}
                         key={index}
