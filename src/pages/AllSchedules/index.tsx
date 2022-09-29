@@ -13,16 +13,15 @@ export const AllSchedules = () => {
     const [listDrugs, setListDrugs]: any = useState();
     const { user } = useAuth();
 
-    useMemo(
-        async () => {
-            const response: any = await handleListAllDrugs(user);
-            setListDrugs(response);
-        }, []);
+    useMemo(async () => {
+        const response: any = await handleListAllDrugs(user);
+        setListDrugs(response.sort((a, b) => a.timeNotification > b.timeNotification ? 1 : -1));
+    }, []);
 
     const RenderSchedules = () => {
         if (listDrugs?.length > 0) {
             return (
-                listDrugs.map(({ quantityDrugs, name, namePatient, hours }, key) => {
+                listDrugs.map(({ quantityDrugs, name, namePatient, timeNotification }, key) => {
                     return (
                         <>
                             <S.ContainerSchedule key={key}>
@@ -37,12 +36,12 @@ export const AllSchedules = () => {
                                 <S.ContainerInstructions>
                                     <S.ContainerInLine>
                                         <Icon name="clock-o" size={22} color="#51d17e" />
-                                        <S.TextTime>{hours}h</S.TextTime>
+                                        <S.TextTime>{timeNotification}</S.TextTime>
                                     </S.ContainerInLine>
-                                    {quantityDrugs === 1 ? (
-                                        <S.TextDrug>{quantityDrugs} Comprimido</S.TextDrug>
-                                    ) : (
+                                    {quantityDrugs > 1 ? (
                                         <S.TextDrug>{quantityDrugs} Comprimidos</S.TextDrug>
+                                    ) : (
+                                        <S.TextDrug>{quantityDrugs} Comprimido</S.TextDrug>
                                     )}
                                 </S.ContainerInstructions>
                             </S.ContainerSchedule>

@@ -10,7 +10,7 @@ import { handleListAllDrugs } from '../../../services/Drugs/ListDrug';
 export const SchedulesPatients = () => {
 
     const [listDrugs, setListDrugs]: any = useState();
-    const viewListDrugs = listDrugs?.slice(0, 3);
+    const viewListDrugs = listDrugs?.sort((a, b) => a.timeNotification > b.timeNotification ? 1 : -1).slice(0, 3);
     const { user } = useAuth();
     const isFocused = useIsFocused();
 
@@ -30,8 +30,8 @@ export const SchedulesPatients = () => {
             )
         } else {
             return (
-                viewListDrugs?.map(({ namePatient, hours }, index) => (
-                    <ContentSchedules name={namePatient} time={hours} index={index} key={index} />))
+                viewListDrugs?.map(({ namePatient, timeNotification }, index) => (
+                    <ContentSchedules name={namePatient} timeNotification={timeNotification} index={index} key={index} />))
             )
         }
     }

@@ -4,7 +4,9 @@ import { Image } from 'react-native';
 import { Button } from '../../Button';
 import { useNavigation } from '@react-navigation/native';
 import { FormPatient, usePatient } from '../../../contexts/Patient';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import calculateAge from '../../../utils/calculateAge';
+import colors from '../../../utils/colors';
 
 export const CardPatient = ({ id, namePatient, date, weight, height }: FormPatient) => {
 
@@ -21,15 +23,16 @@ export const CardPatient = ({ id, namePatient, date, weight, height }: FormPatie
     return (
         <S.ContainerCard>
             <S.ContainerDescription>
+                <Icon name="user-o" size={30} color={colors.purple} />
                 <S.ContainerInfo>
                     <S.TextBold>Nome: <S.Text>{namePatient}</S.Text></S.TextBold>
                     <S.TextBold>Idade: <S.Text>{getAge()} anos</S.Text></S.TextBold>
                 </S.ContainerInfo>
-                <Image
+                {/* <Image
                     source={require('../../../assets/iconProfile.png')}
                     resizeMode="contain"
                     style={{ height: 56, width: 60 }}
-                />
+                /> */}
             </S.ContainerDescription>
             <Button
                 typeButton='secondary'

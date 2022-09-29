@@ -11,6 +11,7 @@ import { Input } from '../../../components/Input';
 import handleCreatePatient from '../../../services/Patients/RegisterPatient';
 import { useAuth } from '../../../contexts/Auth';
 import { FormPatient } from '../../../contexts/Patient';
+import { TabBar } from '../../../components/TabBar';
 
 export const RegisterPatient = () => {
 
@@ -26,10 +27,10 @@ export const RegisterPatient = () => {
             .string()
             .required('Digite a data de nascimento'),
         weight: yup
-            .number()
+            .string()
             .required('Digite o peso'),
         height: yup
-            .number()
+            .string()
             .required('Digite a altura')
             .min(3, 'Digite três caracteres'),
     });
@@ -50,7 +51,7 @@ export const RegisterPatient = () => {
     };
 
     return (
-        <S.ContainerPage>
+        <S.ContainerContent>
             <Controller
                 control={control}
                 name="namePatient"
@@ -114,10 +115,10 @@ export const RegisterPatient = () => {
                     />
                 )}
             />
-            <S.TitleCard>Foto do paciente</S.TitleCard>
+            {/* <S.TitleCard>Foto do paciente</S.TitleCard>
             <S.ContainerAddImage>
                 <AddImage />
-            </S.ContainerAddImage>
+            </S.ContainerAddImage> */}
             <S.ContainerButton>
                 <Button
                     typeButton='primary'
@@ -126,6 +127,6 @@ export const RegisterPatient = () => {
                     marginTop={10}
                 />
             </S.ContainerButton>
-        </S.ContainerPage>
+        </S.ContainerContent>
     )
 }

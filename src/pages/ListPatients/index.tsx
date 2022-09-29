@@ -1,4 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
+import { handleListAllDrugs } from '../../services/Drugs/ListDrug';
+import { useAuth } from '../../contexts/Auth';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { CardPatient } from '../../components/Cards/Patient';
 import { TabBar } from '../../components/TabBar';
@@ -12,13 +14,21 @@ import * as S from './styles';
 export const ListPatients = () => {
 
     const navigation: any = useNavigation();
-    const { listPatients, setListPatients } = usePatient();
     const isFocused = useIsFocused();
+    const { listPatients, setListPatients } = usePatient();
 
     useMemo(async () => {
         const response = await handleListPatients();
         setListPatients(response);
-    }, [isFocused])
+    }, [isFocused]);
+
+    // ***** TRAZER QUANTIDADE DE MEDICAMENTOS POR PACIENTE *****
+    // const { user } = useAuth();
+    // const [listDrugs, setListDrugs]: any = useState();
+
+    // const allListDrugs: any = await handleListAllDrugs(user);
+    // setListDrugs(allListDrugs);
+    // console.log(listDrugs[3].name)
 
     const RenderContent = () => {
         if (listPatients?.length > 0) {
@@ -52,7 +62,7 @@ export const ListPatients = () => {
                 </S.ListPatientsEmpty>
             )
         }
-    }
+    };
 
     return (
         <S.ContainerPage>

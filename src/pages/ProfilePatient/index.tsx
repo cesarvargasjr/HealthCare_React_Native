@@ -67,11 +67,12 @@ export const ProfilePatient = () => {
     return (
         <S.ContainerPage >
             <S.ContainerProfile>
-                <Image
+                {/* <Image
                     source={require('../../assets/iconProfile.png')}
                     resizeMode="contain"
                     style={{ height: 75, width: 75 }}
-                />
+                /> */}
+                {/* <Icon name="id-card-o" size={60} color={colors.purple} /> */}
                 <S.ContainerInfo>
                     <S.NameProfile>{patient.namePatient}</S.NameProfile>
                     <S.TextBold>Idade: <S.Text>{getAge()} anos</S.Text></S.TextBold>

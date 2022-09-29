@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -28,7 +28,8 @@ export const EditPatient = () => {
             .string()
             .required('Digite o peso'),
         height: yup
-            .string().required('Digite a altura')
+            .string()
+            .required('Digite a altura')
             .required('Digite a altura')
             .min(3, 'Digite três caracteres'),
     });
@@ -54,7 +55,7 @@ export const EditPatient = () => {
         await handleUpdatePatient({ idPatient, namePatient, date, weight, height })
         navigation.navigate('Home')
         toast.show('Paciente atualizado com sucesso', { type: 'success' })
-    }
+    };
 
     return (
         <S.ContainerPage>
@@ -117,10 +118,10 @@ export const EditPatient = () => {
                     />
                 )}
             />
-            <S.TitleCard>Alterar Foto</S.TitleCard>
+            {/* <S.TitleCard>Alterar Foto</S.TitleCard>
             <S.ContainerAddImage>
                 <AddImage />
-            </S.ContainerAddImage>
+            </S.ContainerAddImage> */}
             <S.ContainerButton>
                 <Button
                     typeButton='primary'

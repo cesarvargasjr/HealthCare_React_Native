@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
+import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import * as S from './styles';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { useToast } from 'react-native-toast-notifications';
-import handleAddDrug from '../../services/Drugs/RegisterDrug';
 import { usePatient } from '../../contexts/Patient';
 import { useAuth } from '../../contexts/Auth';
+import colors from '../../utils/colors';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import handleAddDrug from '../../services/Drugs/RegisterDrug';
+import * as S from './styles';
+import * as yup from 'yup';
 interface FormDrugs {
     name: string;
     hours: number;
     totalDrugs: number;
     daysNotifications: number;
     quantityDrugs: number;
+    dateInitialNotification: string;
+    timeNotification: string;
 }
 
 export const RegisterDrug = () => {
@@ -52,8 +58,37 @@ export const RegisterDrug = () => {
         resolver: yupResolver(schema),
     });
 
+    // *************** Componente para registro de Data e Hora *************** //
+    const [datePicker, setDatePicker] = useState(false);
+    const [date, setDate] = useState(new Date());
+    const [timePicker, setTimePicker] = useState(false);
+    const [time, setTime] = useState(new Date(Date.now()));
+
+    const dateInitialNotification = date.toString().slice(4, 16);
+    const timeNotification = time.toString().slice(15, 21);
+    const [month, day, year] = date.toLocaleDateString().split('/')
+
+    function showDatePicker() {
+        setDatePicker(true);
+    };
+
+    function showTimePicker() {
+        setTimePicker(true);
+    };
+
+    function onDateSelected(event, value) {
+        setDate(value);
+        setDatePicker(false);
+    };
+
+    function onTimeSelected(event, value) {
+        setTime(value);
+        setTimePicker(false);
+    };
+    // *********************************************************************** //
+
     const onSubmit = ({ name, hours, totalDrugs, quantityDrugs, daysNotifications }: FormDrugs) => {
-        handleAddDrug({ user, patient, name, hours, totalDrugs, quantityDrugs, daysNotifications })
+        handleAddDrug({ user, patient, name, hours, totalDrugs, quantityDrugs, daysNotifications, dateInitialNotification, timeNotification })
         navigation.navigate('ProfilePatient')
         toast.show('Medicamento cadastrado com sucesso', { type: 'success' })
     }
@@ -81,7 +116,7 @@ export const RegisterDrug = () => {
                     <Input
                         typeInput='number'
                         placeholder='12h'
-                        titleInput='Intervalo para medicação'
+                        titleInput='Intervalo da medicação'
                         descInput='(Exemplo: A cada 12h)'
                         maxLength={2}
                         value={value}
@@ -137,12 +172,56 @@ export const RegisterDrug = () => {
                 )}
             />
 
+            <S.TitleTouchDateTime>Data de início</S.TitleTouchDateTime>
+            <S.ContainerInfoDateTime onPress={showDatePicker}>
+                <S.TextDateTime>{`${day}/${month}/${year}`}</S.TextDateTime>
+                {/* <Icon name="pencil" size={18} color={colors.grey} style={{ marginLeft: 6 }} /> */}
+            </S.ContainerInfoDateTime>
+            <S.TitleTouchDateTime>Hora da medicação</S.TitleTouchDateTime>
+            <S.ContainerInfoDateTime onPress={showTimePicker}>
+                <S.TextDateTime>{time.toLocaleTimeString('pt-US').slice(0, 5)}</S.TextDateTime>
+                {/* <Icon name="pencil" size={18} color={colors.grey} style={{ marginLeft: 6 }} /> */}
+            </S.ContainerInfoDateTime>
+
+            {datePicker && (
+                <DateTimePicker
+                    value={date}
+                    mode={'date'}
+                    display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                    is24Hour={true}
+                    onChange={onDateSelected}
+                    style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: 320,
+                        height: 260,
+                        display: 'flex',
+                    }}
+                />
+            )}
+
+            {timePicker && (
+                <DateTimePicker
+                    value={time}
+                    mode={'time'}
+                    display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                    is24Hour={false}
+                    onChange={onTimeSelected}
+                    style={{
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: 320,
+                        height: 260,
+                    }}
+                />
+            )}
+
             <S.ContainerButton>
                 <Button
                     typeButton='primary'
                     textButton='SALVAR'
                     onPress={handleSubmit(onSubmit)}
-                    marginTop={5}
+                    marginTop={4}
                 />
             </S.ContainerButton>
         </S.ContainerPage>

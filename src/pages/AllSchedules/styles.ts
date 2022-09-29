@@ -41,7 +41,7 @@ export const TextTime = styled.Text`
     font-size: 16px;
     color: ${colors.green};
     font-family: 'Nunito_700Bold';
-    margin-left: 4px;
+    margin-left: 1px;
 `;
 
 export const TextDrug = styled.Text`

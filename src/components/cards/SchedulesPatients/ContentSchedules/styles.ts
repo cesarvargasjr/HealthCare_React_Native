@@ -24,14 +24,8 @@ export const Text = styled.Text`
     font-family: 'Nunito_700Bold';
 `;
 
-// export const ContainerDescription = styled.View<{index: number}>`
-//     flex-direction: row;
-//     margin-bottom: ${({index}) => index === 2 ? 0 : 6}%;
-// `;
-
 export const ContainerDescription = styled.View`
     flex-direction: row;
-    /* margin-bottom: 5%; */
 `;
 
 export const ContentPatient = styled.View`

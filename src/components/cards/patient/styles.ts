@@ -4,7 +4,7 @@ import colors from '../../../utils/colors';
 export const ContainerCard = styled.View`
     width: 95%;
     border-radius: 10px;
-    padding: 5%;
+    padding: 4% 2%;
     margin-left: 3%;
     margin-bottom: 6%;
     align-items: center;
@@ -38,5 +38,8 @@ export const Text = styled.Text`
 `;
 
 export const ContainerDescription = styled.View`
+    width: 100%;
     flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
 `;

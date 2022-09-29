@@ -11,18 +11,20 @@ export const ContainerProfile = styled.View`
     align-items: center;
     flex-direction: row;
     width: 100%;
-    height: 18%;
+    min-height: 18%;
+    max-height: 25%;
+    padding: 0 3%;
     margin-top: 2%;
+    justify-content: space-evenly;
 `;
 
 export const ContainerInfo = styled.View`
     flex-direction: column;
-    margin-left: 3%;
-    width: 56%;
+    width: 77%;
 `;
 
 export const NameProfile = styled.Text`
-    font-size: 16px;
+    font-size: 21px;
     color: ${colors.black};
     font-family: 'Nunito_800ExtraBold';
     margin-bottom: 5px;

@@ -24,9 +24,3 @@ function AuthProvider({ children }) {
 const useAuth = () => useContext(AuthContext);
 
 export { AuthProvider, useAuth }
-
-
-// const [nameUser, setNameUser] = useState({});
-// const nameUserProfile = ({ name }: AuthProps) => {
-//     setNameUser({ name: name });
-// }
