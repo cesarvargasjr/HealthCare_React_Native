@@ -3,7 +3,6 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { getDocRef } from "../../utils/firebaseCommon";
 import { usePatient } from "../../contexts/Patient";
 
-
 const handleListDrugs = async () => {
 
     const database = getDatabase();
@@ -14,6 +13,22 @@ const handleListDrugs = async () => {
     const data = query(collection(database, "drugs"), where('user', '==', getDocRef(patient.id, collectionDrugs)));
 
     const querySnapshot: any = await getDocs(data);
+    querySnapshot.forEach((doc: any) => {
+        listDrugs.push({ id: doc.id, ...doc.data() })
+    });
+
+    return listDrugs;
+}
+
+export const handleListAllDrugs = async (user) => {
+
+    const database = getDatabase();
+    const listDrugs = [];
+
+    const data = query(collection(database, "drugs"), where('email', '==', user.email));
+
+    const querySnapshot: any = await getDocs(data);
+
     querySnapshot.forEach((doc: any) => {
         listDrugs.push({ id: doc.id, ...doc.data() })
     });

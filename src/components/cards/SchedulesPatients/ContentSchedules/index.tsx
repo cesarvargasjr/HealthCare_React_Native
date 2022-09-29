@@ -5,10 +5,11 @@ import { Image } from 'react-native';
 
 interface ContentProps {
     name: string;
+    time: string;
     index: number;
 }
 
-export const ContentSchedules = ({ name, index }: ContentProps) => {
+export const ContentSchedules = ({ name, time, index }: ContentProps) => {
 
     return (
         <S.ContainerDescription index={index}>
@@ -23,7 +24,7 @@ export const ContentSchedules = ({ name, index }: ContentProps) => {
                 </S.ContentPatient>
                 <S.ContentPatient>
                     <Icon name="clock-o" size={18} color="#51d17e" />
-                    <S.Text> 9:15</S.Text>
+                    <S.Text> {time}h</S.Text>
                 </S.ContentPatient>
             </S.ContainerInfo>
         </S.ContainerDescription>

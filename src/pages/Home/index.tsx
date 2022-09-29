@@ -35,12 +35,12 @@ const slider = [
     {
         key: '1',
         image: require('../../assets/welcome.png'),
-        description: 'Com o aplicativo Health Care você pode fazer o gerenciamento de seus pacientes e medicamentos.',
+        description: 'Com o Health Care você poderá fazer o gerenciamento de seus pacientes, medicamentos e atendimentos.',
     },
     {
         key: '2',
         image: require('../../assets/registerPatients.png'),
-        description: 'Cadastre seus pacientes e comece a gerenciar sua clínica com o Health Care.',
+        description: 'Cadastre seus pacientes e comece a gerenciar sua clínica.',
     },
     {
         key: '3',
@@ -75,7 +75,7 @@ export const Home = () => {
                 <S.ContainerButton>
                     <Button
                         typeButton='secondary'
-                        textButton='Ver mais'
+                        textButton='Ver todos'
                         onPress={() => navigation.navigate('AllSchedules')}
                         width={25}
                         marginTop={1}

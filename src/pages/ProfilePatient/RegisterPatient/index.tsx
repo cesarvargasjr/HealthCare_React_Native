@@ -25,13 +25,11 @@ export const RegisterPatient = () => {
         date: yup
             .string()
             .required('Digite a data de nascimento'),
-        // .max(new Date(), 'Não é possível incluir uma data futura'),
-        // .min(2, 'Mínimo dois caracteres'),
         weight: yup
-            .string()
+            .number()
             .required('Digite o peso'),
         height: yup
-            .string()
+            .number()
             .required('Digite a altura')
             .min(3, 'Digite três caracteres'),
     });

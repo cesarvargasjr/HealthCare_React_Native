@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,7 +9,7 @@ import { Input } from '../../components/Input';
 import { useToast } from 'react-native-toast-notifications';
 import handleAddDrug from '../../services/Drugs/RegisterDrug';
 import { usePatient } from '../../contexts/Patient';
-
+import { useAuth } from '../../contexts/Auth';
 interface FormDrugs {
     name: string;
     hours: number;
@@ -23,22 +23,23 @@ export const RegisterDrug = () => {
     const navigation: any = useNavigation();
     const toast = useToast();
     const { patient } = usePatient();
+    const { user } = useAuth();
 
     const schema: yup.SchemaOf<FormDrugs> = yup.object().shape({
         name: yup
             .string()
             .required('Digite um medicamento'),
         hours: yup
-            .string()
+            .number()
             .required('Digite a hora dos intervalos'),
         totalDrugs: yup
-            .string()
+            .number()
             .required('Digite o total de comprimidos na cartela'),
         quantityDrugs: yup
-            .string()
+            .number()
             .required('Digite a dosagem por medicação'),
         daysNotifications: yup
-            .string()
+            .number()
             .required('Digite a quantidade de dias'),
     });
 
@@ -52,7 +53,7 @@ export const RegisterDrug = () => {
     });
 
     const onSubmit = ({ name, hours, totalDrugs, quantityDrugs, daysNotifications }: FormDrugs) => {
-        handleAddDrug({ patient, name, hours, totalDrugs, quantityDrugs, daysNotifications })
+        handleAddDrug({ user, patient, name, hours, totalDrugs, quantityDrugs, daysNotifications })
         navigation.navigate('ProfilePatient')
         toast.show('Medicamento cadastrado com sucesso', { type: 'success' })
     }
@@ -135,6 +136,7 @@ export const RegisterDrug = () => {
                     />
                 )}
             />
+
             <S.ContainerButton>
                 <Button
                     typeButton='primary'

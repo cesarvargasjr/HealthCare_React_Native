@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import handleListPatients from '../services/Patients/ListPatient';
 import calculateAge from '../utils/calculateAge';
 
 export interface FormPatient {
@@ -25,6 +26,13 @@ function PatientProvider({ children }) {
     const [listPatients, setListPatients] = useState<Array<FormPatient>>([] as Array<FormPatient>);
 
     const getAge = () => calculateAge(patient.date);
+
+    useEffect(() => {
+        async () => {
+            const response: any = await handleListPatients();
+            response?.length > 0 && setListPatients(response);
+        }
+    }, []);
 
     return (
         <PatientContext.Provider value={{ patient, setPatient, getAge, listPatients, setListPatients }}>

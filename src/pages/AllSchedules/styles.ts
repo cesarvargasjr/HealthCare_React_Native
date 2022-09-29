@@ -13,6 +13,7 @@ export const ContainerTabBar = styled.View`
 
 export const ContainerContent = styled.ScrollView`
     padding: 0 3%;
+    max-height: 89%;
 `;
 
 export const Text = styled.Text`
