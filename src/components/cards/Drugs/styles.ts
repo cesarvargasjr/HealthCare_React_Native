@@ -7,7 +7,7 @@ export const ContainerCard = styled.View`
     margin-left: 2%;
     padding: 5%;
     margin-top: 2%;
-    margin-bottom: 5%;
+    margin-bottom: 4%;
     background-color: ${colors.white};
 
     shadow-color: ${colors.purple};

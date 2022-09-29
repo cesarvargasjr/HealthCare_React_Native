@@ -8,6 +8,7 @@ import { Line } from '../../components/Line';
 import { useToast } from 'react-native-toast-notifications';
 import { ModalDelete } from '../../components/Modal/ModalDelete';
 import { SvgCss } from 'react-native-svg';
+import { TabBar } from '../../components/TabBar';
 import listEmpity from '../../assets/listEmpity.svg';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import handleListDrugs from '../../services/Drugs/ListDrug';
@@ -66,42 +67,6 @@ export const ProfilePatient = () => {
 
     return (
         <S.ContainerPage >
-            <S.ContainerProfile>
-                {/* <Image
-                    source={require('../../assets/iconProfile.png')}
-                    resizeMode="contain"
-                    style={{ height: 75, width: 75 }}
-                /> */}
-                {/* <Icon name="id-card-o" size={60} color={colors.purple} /> */}
-                <S.ContainerInfo>
-                    <S.NameProfile>{patient.namePatient}</S.NameProfile>
-                    <S.TextBold>Idade: <S.Text>{getAge()} anos</S.Text></S.TextBold>
-                    <S.TextBold>Peso: <S.Text>{patient.weight} kg</S.Text></S.TextBold>
-                    <S.TextBold>Altura: <S.Text>{patient.height} cm</S.Text></S.TextBold>
-                </S.ContainerInfo>
-                <S.ContainerIcons>
-                    <S.ContainerIcon onPress={() => navigation.navigate('EditPatient')} >
-                        <Icon name="pencil" size={20} color={colors.grey} />
-                    </S.ContainerIcon>
-                    <S.ContainerIcon onPress={() => setIsOpen(true)} >
-                        <Icon name="trash" size={20} color={colors.lightRed} />
-                    </S.ContainerIcon>
-                </S.ContainerIcons>
-            </S.ContainerProfile>
-            <Line marginTop={2} />
-            <S.ContainerCards showsVerticalScrollIndicator={false} >
-                <RenderListDrugs />
-            </S.ContainerCards>
-            <Line />
-            <S.ContainerButton>
-                <Button
-                    typeButton='primary'
-                    textButton='ADICIONAR MEDICAMENTO'
-                    onPress={() => navigation.navigate('RegisterDrug')}
-                    marginTop={5}
-                    marginBottom={7}
-                />
-            </S.ContainerButton>
             {
                 isOpen && (
                     <ModalDelete
@@ -111,6 +76,47 @@ export const ProfilePatient = () => {
                     />
                 )
             }
-        </S.ContainerPage >
+            <S.ContainerContent>
+                <S.ContainerProfile>
+                    {/* <Image
+                    source={require('../../assets/iconProfile.png')}
+                    resizeMode="contain"
+                    style={{ height: 75, width: 75 }}
+                /> */}
+                    {/* <Icon name="id-card-o" size={60} color={colors.purple} /> */}
+                    <S.ContainerInfo>
+                        <S.NameProfile>{patient.namePatient}</S.NameProfile>
+                        <S.TextBold>Idade: <S.Text>{getAge()} anos</S.Text></S.TextBold>
+                        <S.TextBold>Peso: <S.Text>{patient.weight} kg</S.Text></S.TextBold>
+                        <S.TextBold>Altura: <S.Text>{patient.height} cm</S.Text></S.TextBold>
+                    </S.ContainerInfo>
+                    <S.ContainerIcons>
+                        <S.ContainerIcon onPress={() => navigation.navigate('EditPatient')} >
+                            <Icon name="pencil" size={20} color={colors.grey} />
+                        </S.ContainerIcon>
+                        <S.ContainerIcon onPress={() => setIsOpen(true)} >
+                            <Icon name="trash" size={20} color={colors.lightRed} />
+                        </S.ContainerIcon>
+                    </S.ContainerIcons>
+                </S.ContainerProfile>
+                <Line marginTop={2} />
+                <S.ContainerCards showsVerticalScrollIndicator={false} >
+                    <RenderListDrugs />
+                </S.ContainerCards>
+                <Line />
+                <S.ContainerButton>
+                    <Button
+                        typeButton='primary'
+                        textButton='NOVO MEDICAMENTO'
+                        onPress={() => navigation.navigate('RegisterDrug')}
+                        marginTop={5}
+                        marginBottom={7}
+                    />
+                </S.ContainerButton>
+            </S.ContainerContent>
+            {/* <S.ContainerTabBar>
+                <TabBar />
+            </S.ContainerTabBar> */}
+        </S.ContainerPage>
     )
 }

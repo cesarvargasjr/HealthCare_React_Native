@@ -3,6 +3,11 @@ import colors from '../../utils/colors';
 
 export const ContainerPage = styled.View`
     background-color: ${colors.ghostwhite};
+    height: 100%;
+`;
+
+export const ContainerContent = styled.View`
+    background-color: ${colors.ghostwhite};
     padding: 1% 7%;
     height: 100%;
 `;
@@ -50,6 +55,8 @@ export const ContainerCards = styled.ScrollView`
 
 export const ContainerButton = styled.View`
     align-items: center;
+    width: 100%;
+    /* padding: 0 20%; */
 `;
 
 export const ContainerButtonProfile = styled.View`
@@ -77,4 +84,9 @@ export const TextListEmpty = styled.Text`
     color: ${colors.black};
     font-family: 'Nunito_600SemiBold';
     max-width: 90%;
+`;
+
+export const ContainerTabBar = styled.View`
+    position: absolute;
+    bottom: 0;
 `;

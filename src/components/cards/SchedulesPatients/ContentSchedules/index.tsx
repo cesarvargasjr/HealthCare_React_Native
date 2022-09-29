@@ -26,7 +26,7 @@ export const ContentSchedules = ({ name, timeNotification, index }: ContentProps
                 </S.ContentPatient>
                 <S.ContentPatient>
                     <Icon name="clock-o" size={19} color={colors.lightGreen} />
-                    <S.Text>{timeNotification}h</S.Text>
+                    <S.Text>{timeNotification}</S.Text>
                 </S.ContentPatient>
             </S.ContainerInfo>
         </S.ContainerDescription>
