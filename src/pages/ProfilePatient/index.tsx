@@ -20,8 +20,8 @@ export const ProfilePatient = () => {
 
     const toast = useToast();
     const navigation: any = useNavigation();
-    const [isOpen, setIsOpen] = useState(false);
     const isFocused = useIsFocused();
+    const [isOpen, setIsOpen] = useState(false);
     const [listDrugs, setListDrugs]: any = useState([]);
     const { patient, getAge } = usePatient();
 
@@ -62,7 +62,7 @@ export const ProfilePatient = () => {
     useMemo(
         async () => {
             const response = await handleListDrugs();
-            setListDrugs(response);
+            setListDrugs(response.sort((a, b) => a.timeNotification > b.timeNotification ? 1 : -1));
         }, [isFocused])
 
     return (

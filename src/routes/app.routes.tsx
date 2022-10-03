@@ -119,7 +119,7 @@ export default function AppRoutes() {
                 name="AllSchedules"
                 component={AllSchedules}
                 options={{
-                    title: 'Atendimentos (Próximas 24h)',
+                    title: 'Atendimentos do dia',
                     headerShown: true,
                     headerBackVisible: true,
                 }}
