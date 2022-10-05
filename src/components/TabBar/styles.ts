@@ -5,8 +5,8 @@ export const ContainerTab = styled.View`
     align-items: center;
     justify-content: space-evenly;
     background-color: ${colors.purple};
-    border-top-left-radius:50px;
-    border-top-right-radius:50px;
+    border-top-left-radius:40px;
+    border-top-right-radius:40px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     height: 70px;
@@ -25,10 +25,18 @@ export const ContainerIcon = styled.TouchableOpacity`
     width: 24%;
 `;
 
+export const ContainerIconAdd = styled.TouchableOpacity`
+    position: relative;
+    align-items: center;
+    width: 24%;
+    /* padding-bottom: 5%; */
+`;
+
 export const Text = styled.Text`
     font-size: 12px;
     color: ${colors.white};
     font-family: 'Nunito_400Regular';
     margin-top: 5%;
+    margin-bottom: 5%;
     text-align: center;
 `;

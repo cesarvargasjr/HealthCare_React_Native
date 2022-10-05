@@ -56,7 +56,7 @@ export default function AppRoutes() {
                 name="Home"
                 component={Home}
                 options={{
-                    title: 'Health Care',
+                    title: 'Home',
                     headerShown: true,
                     headerBackVisible: false,
                 }}

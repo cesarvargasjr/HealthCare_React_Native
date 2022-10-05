@@ -20,12 +20,26 @@ export const TextBold = styled.Text`
     text-align: left;
 `;
 
+export const TextDateNow = styled.Text`
+    font-size: 16px;
+    color: ${colors.lightGrey};
+    font-family: 'Nunito_700Bold';
+    margin-left: 2%;
+`;
+
 export const ContainerDays = styled.View`
     flex-direction: row;
     margin-top: 3%;
     margin-bottom: 8%;
     justify-content: space-evenly;
     width: 100%;
+`;
+
+export const ContainerDateNow = styled.View`
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 5%;
 `;
 
 export const ContainerTabBar = styled.View`
@@ -40,4 +54,10 @@ export const ContainerText = styled.View`
 export const ContainerButton = styled.View`
     width: 100%;
     align-items: flex-end;
+`;
+
+export const ContainerCards = styled.View`
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
 `;

@@ -5,6 +5,9 @@ import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
 import { TabBar } from '../../components/TabBar';
 import { SliderHome } from '../../components/SliderHome';
 import { Button } from '../../components/Button';
+import { CountInfo } from '../../components/Cards/CountInfo';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../../utils/colors';
 import * as S from './styles'
 
 // const slider = [
@@ -54,6 +57,9 @@ export const Home = () => {
     const navigation: any = useNavigation();
     // const [selected, setSelected] = useState(1);
 
+    const dateNow = new Date().toLocaleString().slice(0, 10);
+    console.log('DATA AGORA', dateNow.slice(0, 10))
+
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => true)
         return () => BackHandler.removeEventListener('hardwareBackPress', () => true)
@@ -68,6 +74,10 @@ export const Home = () => {
                         <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} key={index} />
                     ))}
                 </S.ContainerDays> */}
+                <S.ContainerDateNow>
+                    <Icon name="calendar" size={20} color={colors.grey} />
+                    <S.TextDateNow>{dateNow}</S.TextDateNow>
+                </S.ContainerDateNow>
                 <S.ContainerText>
                     <S.TextBold>Próximos atendimentos...</S.TextBold>
                 </S.ContainerText>
@@ -82,7 +92,11 @@ export const Home = () => {
                         marginBottom={7}
                     />
                 </S.ContainerButton>
-                <SliderHome slider={slider} />
+                <S.ContainerCards>
+                    <CountInfo />
+                    <CountInfo />
+                </S.ContainerCards>
+                {/* <SliderHome slider={slider} /> */}
             </S.ContainerContent>
             <S.ContainerTabBar>
                 <TabBar />

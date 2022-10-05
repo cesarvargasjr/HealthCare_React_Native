@@ -2,13 +2,12 @@ import styled from 'styled-components/native';
 import colors from '../../../utils/colors';
 
 export const ContainerCard = styled.View`
-    width: 100%;
     border-radius: 10px;
-    padding: 0 5%;
+    padding: 5%;
     align-items: center;
     justify-content: space-evenly;
-    height: 40%;
-    background-color: ${colors.white};
+    background-color: ${colors.purpleDark};
+    width: 40%;
 
     shadow-color: ${colors.purple};
     shadow-offset: 1px 1px;
@@ -17,11 +16,10 @@ export const ContainerCard = styled.View`
     elevation: 5;
 `;
 
-export const TextBold = styled.Text`
+export const Title = styled.Text`
     font-size: 18px;
-    color: ${colors.black};
-    font-family: 'Nunito_700Bold';
+    color: ${colors.white};
+    font-family: 'Nunito_600SemiBold';
     text-align: center;
     line-height: 27px;
-    width: 80%;
 `;

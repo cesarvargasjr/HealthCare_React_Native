@@ -1,7 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import handleListPatients from '../../../services/Patients/ListPatient';
 import { ContentSchedules } from './ContentSchedules';
-import { usePatient } from '../../../contexts/Patient';
 import { useIsFocused } from '@react-navigation/native';
 import * as S from './styles';
 import { useAuth } from '../../../contexts/Auth';
