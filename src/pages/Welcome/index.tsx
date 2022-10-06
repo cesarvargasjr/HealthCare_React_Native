@@ -1,8 +1,26 @@
 import React from 'react';
 import * as S from './styles';
-import * as Animation from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native';
 import { Button } from '../../components/Button';
+import { SliderOnboarding } from '../../components/SliderOnboarding';
+
+const slider = [
+    {
+        key: '1',
+        image: require('../../assets/welcome.png'),
+        description: 'Com o Health Care você poderá fazer o gerenciamento de seus pacientes, medicamentos e atendimentos.',
+    },
+    {
+        key: '2',
+        image: require('../../assets/registerPatients.png'),
+        description: 'Cadastre seus pacientes e comece a gerenciar sua clínica.',
+    },
+    {
+        key: '3',
+        image: require('../../assets/drugs.png'),
+        description: 'Após ter pacientes cadastrados insira os seus respectivos medicamentos para gerenciar os atendimentos.',
+    },
+];
 
 export const Welcome = () => {
 
@@ -10,21 +28,15 @@ export const Welcome = () => {
 
     return (
         <S.ContainerPage>
-            <Animation.Image
-                source={require('../../assets/welcome.png')}
-                resizeMode="contain"
-                style={{ maxHeight: '40%', width: '100%', marginTop: '10%' }}
-                animation="flipInY"
-            />
-            <S.Title animation="flipInY">
-                Health Care
-            </S.Title>
-            <Button
-                typeButton='primary'
-                textButton={'ACESSAR AGORA'}
-                onPress={() => navigation.navigate('SignIn')}
-                marginTop={35}
-            />
+            <S.Title animation="flipInY">Health Care</S.Title>
+            <SliderOnboarding slider={slider} />
+            <S.ContainerButton>
+                <Button
+                    typeButton='primary'
+                    textButton={'ACESSAR AGORA'}
+                    onPress={() => navigation.navigate('SignIn')}
+                />
+            </S.ContainerButton>
         </S.ContainerPage>
     )
 }

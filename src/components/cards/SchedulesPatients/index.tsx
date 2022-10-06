@@ -7,16 +7,28 @@ import { handleListAllDrugs } from '../../../services/Drugs/ListDrug';
 
 export const SchedulesPatients = () => {
 
-    const [listDrugs, setListDrugs]: any = useState();
-    const viewListDrugs = listDrugs?.sort((a, b) => a.timeNotification > b.timeNotification ? 1 : -1).slice(0, 3);
     const { user } = useAuth();
     const isFocused = useIsFocused();
+    const [listDrugs, setListDrugs]: any = useState([]);
+    const viewListDrugs = listDrugs?.sort((a, b) => a.timeNotification > b.timeNotification).slice(0, 3);
 
     useMemo(
         async () => {
             const response: any = await handleListAllDrugs(user);
-            response?.length > 0 && setListDrugs(response);
-            setListDrugs(response);
+
+            const listSchedules = response || [];
+            const filteredListSchedules = listSchedules?.filter(item => {
+                const [hours, minutes] = new Date().toLocaleTimeString().split(':')
+                const [scheduleHours, scheduleMinutes] = item.timeNotification.split(':')
+
+                if (+hours < +scheduleHours) {
+                    return item
+                } else if (+hours === +scheduleHours && +minutes <= +scheduleMinutes) {
+                    return item
+                }
+            })
+
+            filteredListSchedules?.length > 0 && setListDrugs(filteredListSchedules);
         }, [isFocused]);
 
     const renderContentSchedules = () => {

@@ -1,25 +1,16 @@
 import styled from 'styled-components/native';
-import { View } from 'react-native';
-import colors from '../../utils/colors';
 
 export const SliderContainer = styled.View`
-  max-height: 50%;
-  height: 50%;
+  max-height: 70%;
+  height: 70%;
   width: 100%;
-  border-radius: 10px;
-  background-color: ${colors.white};
-
-  shadow-color: ${colors.purple};
-  shadow-offset: 1px 1px;
-  shadow-opacity: 0.4;
-  elevation: 5;
 `;
 
 export const ContainerContent = styled.View`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+  height: 90%;
   justify-content: space-evenly;
 `;
 
@@ -28,6 +19,7 @@ export const Text = styled.Text`
   font-size: 16px;
   text-align: center;
   width: 80%;
+  margin-bottom: 10%;
 `;
 
 export const ContainerButton = styled.Text`

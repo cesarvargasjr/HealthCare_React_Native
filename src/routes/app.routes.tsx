@@ -57,7 +57,7 @@ export default function AppRoutes() {
                 component={Home}
                 options={{
                     title: 'Home',
-                    headerShown: true,
+                    headerShown: false,
                     headerBackVisible: false,
                 }}
             />

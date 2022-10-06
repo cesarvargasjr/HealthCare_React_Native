@@ -7,7 +7,8 @@ export const ContainerCard = styled.View`
     padding: 0 5%;
     align-items: center;
     justify-content: space-evenly;
-    height: 40%;
+    height: 35%;
+    max-height: 40%;
     background-color: ${colors.white};
 
     shadow-color: ${colors.purple};

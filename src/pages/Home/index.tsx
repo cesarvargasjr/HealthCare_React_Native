@@ -1,81 +1,59 @@
-import React, { useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { BackHandler } from 'react-native';
 import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
 import { TabBar } from '../../components/TabBar';
-import { SliderHome } from '../../components/SliderHome';
 import { Button } from '../../components/Button';
 import { CountInfo } from '../../components/Cards/CountInfo';
+import { handleListAllDrugs } from '../../services/Drugs/ListDrug';
+import { useAuth } from '../../contexts/Auth';
+import { usePatient } from '../../contexts/Patient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../utils/colors';
+import months from '../../utils/months';
+import handleListPatients from '../../services/Patients/ListPatient';
 import * as S from './styles'
-
-// const slider = [
-//     {
-//         key: '1',
-//         image: require('../../assets/indoorBike.png'),
-//         title: 'Exercício físico e seus benefícios, qual o seu impacto no dia a dia...',
-//         textButton: 'Quero saber mais',
-//         link: 'BUTTON ATIVIDADE FÍSICA'
-//     },
-//     {
-//         key: '2',
-//         image: require('../../assets/breakfast.png'),
-//         title: 'A importância de uma alimentação saudável...',
-//         textButton: 'Quero saber mais',
-//         link: 'BUTTON ALIMENTAÇÃO'
-//     },
-//     {
-//         key: '3',
-//         image: require('../../assets/drugs.png'),
-//         title: 'Medicamento na hora certa, por que é tão importante...',
-//         textButton: 'Quero saber mais',
-//         link: 'BUTTON MEDICAMENTO NA HORA CERTA'
-//     },
-// ];
-
-const slider = [
-    {
-        key: '1',
-        image: require('../../assets/welcome.png'),
-        description: 'Com o Health Care você poderá fazer o gerenciamento de seus pacientes, medicamentos e atendimentos.',
-    },
-    {
-        key: '2',
-        image: require('../../assets/registerPatients.png'),
-        description: 'Cadastre seus pacientes e comece a gerenciar sua clínica.',
-    },
-    {
-        key: '3',
-        image: require('../../assets/drugs.png'),
-        description: 'Após ter pacientes cadastrados insira os seus respectivos medicamentos para gerenciar os atendimentos.',
-    },
-];
 
 export const Home = () => {
 
+    const isFocused = useIsFocused();
     const navigation: any = useNavigation();
-    // const [selected, setSelected] = useState(1);
 
-    const dateNow = new Date().toLocaleString().slice(0, 10);
-    console.log('DATA AGORA', dateNow.slice(0, 10))
+    const { user } = useAuth();
+    const { listPatients, setListPatients } = usePatient();
+    const [listSchedules, setListSchedules]: any = useState([]);
 
+    // const totalSchedules = listSchedules.length;
+
+    const [month, day] = new Date().toLocaleDateString().split('/');
+    const dateNow = `${day} de ${months[month]}`;
+
+    // REMOVER AÇÃO DO BOTÃO DE VOLTAR DO CELULAR (NATIVO)
     useEffect(() => {
         BackHandler.addEventListener('hardwareBackPress', () => true)
         return () => BackHandler.removeEventListener('hardwareBackPress', () => true)
     }, [])
 
+    useMemo(async () => {
+        const responsePatients = await handleListPatients();
+        setListPatients(responsePatients);
+
+        const responseDrugs: any = await handleListAllDrugs(user)
+        setListSchedules(responseDrugs)
+    }, [isFocused]);
+
     return (
         <S.ContainerPage>
             <S.ContainerContent>
                 {/* >>>>>> FILTRO DE AGENDAMENTOS CONFORME O DIA <<<<<<
+                // const [selected, setSelected] = useState(1);
                 <S.ContainerDays>
                     {['Ontem', 'Hoje', 'Amanhã'].map((item, index) => (
                         <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} key={index} />
                     ))}
                 </S.ContainerDays> */}
                 <S.ContainerDateNow>
-                    <Icon name="calendar" size={20} color={colors.grey} />
+                    <Icon name="calendar" size={20} color={colors.lightGrey} />
                     <S.TextDateNow>{dateNow}</S.TextDateNow>
                 </S.ContainerDateNow>
                 <S.ContainerText>
@@ -93,10 +71,19 @@ export const Home = () => {
                     />
                 </S.ContainerButton>
                 <S.ContainerCards>
-                    <CountInfo />
-                    <CountInfo />
+                    <CountInfo
+                        nameIcon='calendar'
+                        title='Atendimentos diários'
+                        number={listSchedules.length}
+                        onPress={() => navigation.navigate('AllSchedules')}
+                    />
+                    <CountInfo
+                        nameIcon='users'
+                        title='Pacientes cadastrados'
+                        number={listPatients.length}
+                        onPress={() => navigation.navigate('ListPatients')}
+                    />
                 </S.ContainerCards>
-                {/* <SliderHome slider={slider} /> */}
             </S.ContainerContent>
             <S.ContainerTabBar>
                 <TabBar />

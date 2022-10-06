@@ -1,7 +1,6 @@
 import React from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { Image, Platform } from 'react-native';
-import { Button } from '../Button';
 import * as S from './styles';
 
 interface SliderProps {
@@ -12,11 +11,9 @@ interface SliderContentProps {
     key: string;
     image: string;
     description: string;
-    // textButton: string;
-    // link: any;
 }
 
-export const SliderHome = ({ slider }: SliderProps) => {
+export const SliderOnboarding = ({ slider }: SliderProps) => {
     function renderSlides({ item }: any) {
         return (
             <S.ContainerContent>
@@ -24,19 +21,13 @@ export const SliderHome = ({ slider }: SliderProps) => {
                     source={item.image}
                     style={{
                         resizeMode: 'contain',
-                        maxHeight: 200,
-                        maxWidth: 200,
-                        height: 200,
-                        width: 200,
+                        maxHeight: 350,
+                        maxWidth: 350,
+                        height: 350,
+                        width: 350,
                     }}
                 />
                 <S.Text>{item.description}</S.Text>
-                {/* <Button
-                    typeButton={'secondary'}
-                    textButton={item.textButton}
-                    marginTop={4}
-                    onPress={() => (item.link)}
-                /> */}
             </S.ContainerContent>
         );
     }

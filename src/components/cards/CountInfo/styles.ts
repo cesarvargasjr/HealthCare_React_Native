@@ -1,12 +1,11 @@
 import styled from 'styled-components/native';
 import colors from '../../../utils/colors';
 
-export const ContainerCard = styled.View`
+export const ContainerCard = styled.TouchableOpacity`
     border-radius: 10px;
-    padding: 5%;
+    padding: 10% 4%;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: ${colors.purpleDark};
+    background-color: ${colors.purple};
     width: 40%;
 
     shadow-color: ${colors.purple};
@@ -17,9 +16,18 @@ export const ContainerCard = styled.View`
 `;
 
 export const Title = styled.Text`
-    font-size: 18px;
+    font-size: 16px;
     color: ${colors.white};
-    font-family: 'Nunito_600SemiBold';
+    font-family: 'Nunito_400Regular';
     text-align: center;
     line-height: 27px;
+    margin-top: 5%;
+`;
+
+export const Number = styled.Text`
+    font-size: 21px;
+    color: ${colors.white};
+    font-family: 'Nunito_400Regular';
+    text-align: center;
+    margin-top: 15%;
 `;

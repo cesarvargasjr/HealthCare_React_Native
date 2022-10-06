@@ -29,7 +29,7 @@ export const ContainerIconAdd = styled.TouchableOpacity`
     position: relative;
     align-items: center;
     width: 24%;
-    /* padding-bottom: 5%; */
+    bottom: 5%;
 `;
 
 export const Text = styled.Text`
