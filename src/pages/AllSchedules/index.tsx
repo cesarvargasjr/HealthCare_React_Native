@@ -6,6 +6,7 @@ import { handleListAllDrugs } from '../../services/Drugs/ListDrug';
 import { useAuth } from '../../contexts/Auth';
 import listEmpity from '../../assets/listEmpity.svg';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import colors from '../../utils/colors';
 import * as S from './styles';
 
 export const AllSchedules = () => {
@@ -35,7 +36,7 @@ export const AllSchedules = () => {
                                 </S.ContainerInfo>
                                 <S.ContainerInstructions>
                                     <S.ContainerInLine>
-                                        <Icon name="clock-o" size={22} color="#51d17e" />
+                                        <Icon name="clock-o" size={22} color={colors.lightRed} />
                                         <S.TextTime>{timeNotification}</S.TextTime>
                                     </S.ContainerInLine>
                                     {quantityDrugs > 1 ? (
@@ -59,7 +60,7 @@ export const AllSchedules = () => {
                 </S.ListPatientsEmpty>
             )
         }
-    }
+    };
 
     return (
         <S.ContainerPage>

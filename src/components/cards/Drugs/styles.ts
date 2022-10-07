@@ -30,7 +30,7 @@ export const ContainerHeader = styled.View`
     justify-content: space-between;
     width: 100%;
     align-items: center;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
 `;
 
 export const TextBold = styled.Text`
@@ -68,8 +68,15 @@ export const Text = styled.Text`
     line-height: 20px;
 `;
 
+export const TextDateInitial = styled.Text`
+    font-size: 14px;
+    color: ${colors.black};
+    font-family: 'Nunito_400Regular';
+    line-height: 20px;
+`;
+
 export const Title = styled.Text`
-    font-size: 18px;
+    font-size: 19px;
     color: ${colors.black};
     font-family: 'Nunito_700Bold';
 `;

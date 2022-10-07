@@ -13,7 +13,7 @@ interface CountInfoProps {
 export const CountInfo = ({ title, number, nameIcon, onPress }: CountInfoProps) => {
     return (
         <S.ContainerCard onPress={onPress}>
-            <Icon name={nameIcon} size={30} color={colors.white} />
+            <Icon name={nameIcon} size={30} color={colors.purple} />
             <S.Title>{title}</S.Title>
             <S.Number>{number}</S.Number>
         </S.ContainerCard>

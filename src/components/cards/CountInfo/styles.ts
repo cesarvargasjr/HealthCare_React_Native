@@ -3,9 +3,9 @@ import colors from '../../../utils/colors';
 
 export const ContainerCard = styled.TouchableOpacity`
     border-radius: 10px;
-    padding: 10% 4%;
+    padding: 7% 4%;
     align-items: center;
-    background-color: ${colors.purple};
+    background-color: ${colors.white};
     width: 40%;
 
     shadow-color: ${colors.purple};
@@ -17,7 +17,7 @@ export const ContainerCard = styled.TouchableOpacity`
 
 export const Title = styled.Text`
     font-size: 16px;
-    color: ${colors.white};
+    color: ${colors.purple};
     font-family: 'Nunito_400Regular';
     text-align: center;
     line-height: 27px;
@@ -26,8 +26,17 @@ export const Title = styled.Text`
 
 export const Number = styled.Text`
     font-size: 21px;
-    color: ${colors.white};
-    font-family: 'Nunito_400Regular';
-    text-align: center;
+    color: ${colors.purple};
+    font-family: 'Nunito_700Bold';
     margin-top: 15%;
 `;
+
+// export const ContainerText = styled.View`
+//     background-color: ${colors.purple};
+//     border-radius: 10px;
+//     width: 60%;
+//     height: 35px;
+//     align-items: center;
+//     justify-content: center;
+//     margin-top: 15%;
+// `;

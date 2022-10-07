@@ -9,7 +9,7 @@ export const ContainerTab = styled.View`
     border-top-right-radius:40px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
-    height: 70px;
+    height: 65px;
     width: 100%;
     flex-direction: row;
 
@@ -36,7 +36,7 @@ export const Text = styled.Text`
     font-size: 12px;
     color: ${colors.white};
     font-family: 'Nunito_400Regular';
-    margin-top: 5%;
+    margin-top: 3%;
     margin-bottom: 5%;
     text-align: center;
 `;

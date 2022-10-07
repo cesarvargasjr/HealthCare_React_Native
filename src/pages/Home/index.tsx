@@ -23,8 +23,6 @@ export const Home = () => {
     const { listPatients, setListPatients } = usePatient();
     const [listSchedules, setListSchedules]: any = useState([]);
 
-    // const totalSchedules = listSchedules.length;
-
     const [month, day] = new Date().toLocaleDateString().split('/');
     const dateNow = `${day} de ${months[month]}`;
 
@@ -45,31 +43,10 @@ export const Home = () => {
     return (
         <S.ContainerPage>
             <S.ContainerContent>
-                {/* >>>>>> FILTRO DE AGENDAMENTOS CONFORME O DIA <<<<<<
-                // const [selected, setSelected] = useState(1);
-                <S.ContainerDays>
-                    {['Ontem', 'Hoje', 'Amanhã'].map((item, index) => (
-                        <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} key={index} />
-                    ))}
-                </S.ContainerDays> */}
                 <S.ContainerDateNow>
-                    <Icon name="calendar" size={20} color={colors.lightGrey} />
+                    <Icon name="calendar" size={20} color={colors.grey} />
                     <S.TextDateNow>{dateNow}</S.TextDateNow>
                 </S.ContainerDateNow>
-                <S.ContainerText>
-                    <S.TextBold>Próximos atendimentos...</S.TextBold>
-                </S.ContainerText>
-                <SchedulesPatients />
-                <S.ContainerButton>
-                    <Button
-                        typeButton='secondary'
-                        textButton='Ver todos'
-                        onPress={() => navigation.navigate('AllSchedules')}
-                        width={25}
-                        marginTop={1}
-                        marginBottom={7}
-                    />
-                </S.ContainerButton>
                 <S.ContainerCards>
                     <CountInfo
                         nameIcon='calendar'
@@ -84,10 +61,41 @@ export const Home = () => {
                         onPress={() => navigation.navigate('ListPatients')}
                     />
                 </S.ContainerCards>
+
+                {/* >>>>>> FILTRO DE AGENDAMENTOS CONFORME O DIA <<<<<<
+                // const [selected, setSelected] = useState(1);
+                <S.ContainerDays>
+                    {['Ontem', 'Hoje', 'Amanhã'].map((item, index) => (
+                        <CardDays selected={selected} textDay={item} id={index} onPress={setSelected} key={index} />
+                    ))}
+                </S.ContainerDays> */}
+
+                <S.ContainerText>
+                    <S.TextBold>Próximos atendimentos...</S.TextBold>
+                </S.ContainerText>
+                <SchedulesPatients />
+                <S.ContainerButton>
+                    <Button
+                        typeButton='secondary'
+                        textButton='Ver todos'
+                        onPress={() => navigation.navigate('AllSchedules')}
+                        width={25}
+                        marginTop={1}
+                        marginBottom={7}
+                    />
+                </S.ContainerButton>
             </S.ContainerContent>
             <S.ContainerTabBar>
                 <TabBar />
             </S.ContainerTabBar>
+            {/* <S.ContainerAddPatient>
+                <Icon
+                    name="plus-circle"
+                    size={70}
+                    color={colors.purple}
+                    onPress={() => navigation.navigate('RegisterPatient')}
+                />
+            </S.ContainerAddPatient> */}
         </S.ContainerPage>
     )
 }

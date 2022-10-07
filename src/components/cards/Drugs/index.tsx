@@ -4,6 +4,7 @@ import { useToast } from 'react-native-toast-notifications';
 import handleDeleteDrug from '../../../services/Drugs/DeleteDrug';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../../utils/colors';
+import monthsNumber from '../../../utils/monthsNumber';
 import * as S from './styles';
 
 interface CardProps {
@@ -15,9 +16,10 @@ interface CardProps {
     daysNotifications: number;
     id: string;
     setListDrugs: any;
+    dateInitial: any;
 }
 
-export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timeNotification, totalDrugs, daysNotifications }: CardProps) => {
+export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timeNotification, totalDrugs, daysNotifications, dateInitial }: CardProps) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const toast = useToast();
@@ -26,7 +28,11 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timeNotific
         handleDeleteDrug(id)
         setListDrugs((list: any) => list.filter((item: any) => item.id !== id));
         toast.show('Medicamento excluído com sucesso', { type: 'success' })
-    }
+    };
+
+    const dateInitialNotification = dateInitial.split(' ');
+    const [month, day, year] = dateInitialNotification;
+    const date = `${day}/${monthsNumber[month]}/${year}`;
 
     const RenderDaysNotifications = () => {
         if (daysNotifications > 1) {
@@ -38,7 +44,7 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timeNotific
                 <S.Text>Tratamento por {daysNotifications} dia</S.Text>
             )
         }
-    }
+    };
 
 
     return (
@@ -52,6 +58,7 @@ export const CardDrugs = ({ id, setListDrugs, nameDrug, daysExpired, timeNotific
                     </S.TextHour>
                 </S.ContainerHour>
             </S.ContainerHeader>
+            <S.TextDateInitial><S.TextBold>Início:</S.TextBold> {date}</S.TextDateInitial>
             <S.ContainerRow>
                 <RenderDaysNotifications />
                 <S.ContainerDelete onPress={() => setIsOpen(true)} >

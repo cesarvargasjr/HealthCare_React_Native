@@ -57,8 +57,9 @@ export default function AppRoutes() {
                 component={Home}
                 options={{
                     title: 'Home',
-                    headerShown: false,
+                    headerShown: true,
                     headerBackVisible: false,
+                    // statusBarColor: colors.purple,
                 }}
             />
             <Stack.Screen
@@ -74,7 +75,7 @@ export default function AppRoutes() {
                 name="ListPatients"
                 component={ListPatients}
                 options={{
-                    title: 'Lista dos pacientes',
+                    title: 'Pacientes cadastrados',
                     headerShown: true,
                     headerBackVisible: true,
                 }}

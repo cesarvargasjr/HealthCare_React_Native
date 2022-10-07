@@ -33,6 +33,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor={colors.white} barStyle='dark-content' />
+      {/* <StatusBar backgroundColor={colors.purple} barStyle='light-content' /> */}
       <ToastStyles>
         <AuthProvider>
           <PatientProvider>

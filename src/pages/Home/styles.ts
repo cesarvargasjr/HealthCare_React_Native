@@ -4,11 +4,21 @@ import colors from '../../utils/colors';
 export const ContainerPage = styled.View`
     background-color: ${colors.ghostwhite};
     height: 100%;
+    display: flex;
+`;
+
+export const Background = styled.View`
+    background-color: ${colors.purple};
+    height: 45%;
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px; 
 `;
 
 export const ContainerContent = styled.View`
     padding: 5%;
     align-items: center;
+    /* justify-content: space-evenly; */
+    height: 100%;
 `;
 
 export const TextBold = styled.Text`
@@ -22,7 +32,7 @@ export const TextBold = styled.Text`
 
 export const TextDateNow = styled.Text`
     font-size: 16px;
-    color: ${colors.lightGrey};
+    color: ${colors.grey};
     font-family: 'Nunito_700Bold';
     margin-left: 2%;
 `;
@@ -49,6 +59,7 @@ export const ContainerTabBar = styled.View`
 
 export const ContainerText = styled.View`
     width: 100%;
+    margin-top: 15%;
 `;
 
 export const ContainerButton = styled.View`
@@ -60,4 +71,12 @@ export const ContainerCards = styled.View`
     width: 100%;
     flex-direction: row;
     justify-content: space-evenly;
+`;
+
+export const ContainerAddPatient = styled.View`
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    bottom: 5;
+    
 `;

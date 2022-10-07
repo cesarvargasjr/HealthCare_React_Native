@@ -11,7 +11,7 @@ export const ContainerPage = styled.View`
 `;
 
 export const Title = styled(Animation.Text)`
-    font-size: 46px;
+    font-size: 38px;
     font-family: 'Nunito_800ExtraBold';
     color: ${colors.purple};
 `;
@@ -19,6 +19,6 @@ export const Title = styled(Animation.Text)`
 export const ContainerButton = styled.View`
     padding: 0 7%;
     width: 100%;
-    margin-top: 5%;
+    margin-top: 15%;
     align-items: center;
 `;

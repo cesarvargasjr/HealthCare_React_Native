@@ -64,9 +64,11 @@ export const RegisterDrug = () => {
     const [timePicker, setTimePicker] = useState(false);
     const [time, setTime] = useState(new Date(Date.now()));
 
-    const dateInitialNotification = date.toString().slice(4, 16);
     const timeNotification = time.toString().slice(15, 21);
+
+    const dateInitialNotification = date.toString().slice(4, 16);
     const [month, day, year] = date.toLocaleDateString().split('/')
+    const dateInitial = `${day}/${month}/${year}`;
 
     function showDatePicker() {
         setDatePicker(true);
@@ -174,7 +176,7 @@ export const RegisterDrug = () => {
 
             <S.TitleTouchDateTime>Data de início</S.TitleTouchDateTime>
             <S.ContainerInfoDateTime onPress={showDatePicker}>
-                <S.TextDateTime>{`${day}/${month}/${year}`}</S.TextDateTime>
+                <S.TextDateTime>{dateInitial}</S.TextDateTime>
                 {/* <Icon name="pencil" size={18} color={colors.grey} style={{ marginLeft: 6 }} /> */}
             </S.ContainerInfoDateTime>
             <S.TitleTouchDateTime>Hora da medicação</S.TitleTouchDateTime>

@@ -39,7 +39,7 @@ export const Title = styled.Text`
 
 export const TextTime = styled.Text`
     font-size: 16px;
-    color: ${colors.green};
+    color: ${colors.lightRed};
     font-family: 'Nunito_700Bold';
     margin-left: 1px;
 `;
