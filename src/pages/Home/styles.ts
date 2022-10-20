@@ -17,12 +17,12 @@ export const Background = styled.View`
 export const ContainerContent = styled.View`
     padding: 5%;
     align-items: center;
-    /* justify-content: space-evenly; */
-    height: 100%;
+    justify-content: space-evenly;
+    height: 90%;
 `;
 
 export const TextBold = styled.Text`
-    font-size: 18px;
+    font-size: 21px;
     color: ${colors.purple};
     font-family: 'Nunito_700Bold';
     line-height: 26px;

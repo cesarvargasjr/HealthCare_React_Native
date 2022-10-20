@@ -88,6 +88,7 @@ export const Home = () => {
             <S.ContainerTabBar>
                 <TabBar />
             </S.ContainerTabBar>
+
             {/* <S.ContainerAddPatient>
                 <Icon
                     name="plus-circle"
@@ -96,6 +97,7 @@ export const Home = () => {
                     onPress={() => navigation.navigate('RegisterPatient')}
                 />
             </S.ContainerAddPatient> */}
+
         </S.ContainerPage>
     )
 }

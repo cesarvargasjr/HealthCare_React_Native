@@ -17,9 +17,10 @@ interface InputProps {
     messageError?: string;
     maxLength?: number;
     descInput?: string;
+    onFocus?: any;
 }
 
-export const Input = ({ placeholder, descInput, titleInput, typeInput, height, value, onChangeText, messageError, maxLength }: InputProps) => {
+export const Input = ({ placeholder, descInput, titleInput, typeInput, height, value, onChangeText, messageError, maxLength, onFocus }: InputProps) => {
 
     function getInput() {
         switch (typeInput) {
@@ -54,6 +55,7 @@ export const Input = ({ placeholder, descInput, titleInput, typeInput, height, v
                         placeholder={placeholder}
                         onChangeText={onChangeText}
                         value={value}
+                        onFocus={onFocus}
                     />
                 );
             case 'textArea':

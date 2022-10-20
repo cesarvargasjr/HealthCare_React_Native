@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -22,13 +23,6 @@ export const SignIn: React.FC = () => {
     const toast = useToast();
     const { signIn } = useAuth();
     const navigation: any = useNavigation();
-
-    // Função para o teclado não ficar em cima do input
-    // onFocus={() => onFocusLogin()}
-    // const dropView = useRef(null);
-    // const onFocusLogin = () => {
-    //     dropView?.current?.scrollTo({ animated: true, y: 900 });
-    // };
 
     const schema: yup.SchemaOf<FormProps> = yup.object().shape({
         email: yup
@@ -62,54 +56,62 @@ export const SignIn: React.FC = () => {
                     type: 'danger',
                 });
             });
-    }
+    };
+
+    const dropView: any = useRef(null);
+    const dropScrollView = () => {
+        dropView?.current?.scrollTo({ animated: true, y: 100 });
+    };
 
     return (
-        <S.ContainerPage>
-            <SvgCss xml={ImageSignIn} height={250} width={250} />
-            <S.ContainerLogin>
-                <Controller
-                    control={control}
-                    name="email"
-                    render={({ field: { value, onChange } }) => (
-                        <Input
-                            typeInput={'text'}
-                            titleInput={'E-mail'}
-                            placeholder={'nome@email.com'}
-                            value={value}
-                            onChangeText={onChange}
-                            messageError={errors?.email?.message}
-                        />
-                    )}
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} >
+            <S.ContainerPage ref={dropView} keyboardShouldPersistTaps="handled">
+                <SvgCss xml={ImageSignIn} height={250} width={250} />
+                <S.ContainerLogin>
+                    <Controller
+                        control={control}
+                        name="email"
+                        render={({ field: { value, onChange } }) => (
+                            <Input
+                                typeInput={'text'}
+                                titleInput={'E-mail'}
+                                placeholder={'nome@email.com'}
+                                value={value}
+                                onChangeText={onChange}
+                                messageError={errors?.email?.message}
+                            />
+                        )}
+                    />
+                    <Controller
+                        control={control}
+                        name="password"
+                        render={({ field: { value, onChange } }) => (
+                            <Input
+                                typeInput={'password'}
+                                titleInput={'Senha'}
+                                placeholder={'Sua senha'}
+                                value={value}
+                                onChangeText={onChange}
+                                messageError={errors?.password?.message}
+                                onFocus={() => dropScrollView()}
+                            />
+                        )}
+                    />
+                </S.ContainerLogin>
+                <Button
+                    typeButton='primary'
+                    textButton={'ENTRAR'}
+                    onPress={handleSubmit(onSubmit)}
+                    // onPress={() => navigation.navigate('Home')}
+                    marginTop={8}
                 />
-                <Controller
-                    control={control}
-                    name="password"
-                    render={({ field: { value, onChange } }) => (
-                        <Input
-                            typeInput={'password'}
-                            titleInput={'Senha'}
-                            placeholder={'Sua senha'}
-                            value={value}
-                            onChangeText={onChange}
-                            messageError={errors?.password?.message}
-                        />
-                    )}
+                <Button
+                    typeButton='secondary'
+                    textButton={'QUERO ME CADASTRAR'}
+                    onPress={() => navigation.navigate('RegisterUser')}
+                    marginTop={7}
                 />
-            </S.ContainerLogin>
-            <Button
-                typeButton='primary'
-                textButton={'ENTRAR'}
-                onPress={handleSubmit(onSubmit)}
-                // onPress={() => navigation.navigate('Home')}
-                marginTop={8}
-            />
-            <Button
-                typeButton='secondary'
-                textButton={'QUERO ME CADASTRAR'}
-                onPress={() => navigation.navigate('RegisterUser')}
-                marginTop={7}
-            />
-        </S.ContainerPage>
+            </S.ContainerPage>
+        </KeyboardAvoidingView>
     )
 }

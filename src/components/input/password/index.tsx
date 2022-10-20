@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 
-export const Password = ({ placeholder, onChangeText, value }) => {
+export const Password = ({ placeholder, onChangeText, value, onFocus }) => {
 
     return (
         <TextInput
@@ -12,6 +12,7 @@ export const Password = ({ placeholder, onChangeText, value }) => {
             placeholder={placeholder}
             placeholderTextColor='#bbbbff'
             secureTextEntry={true}
+            onFocus={onFocus}
             style={{
                 fontSize: 16,
                 fontFamily: 'Nunito_400Regular',
