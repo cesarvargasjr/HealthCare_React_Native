@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { KeyboardAvoidingView, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
@@ -58,14 +58,9 @@ export const SignIn: React.FC = () => {
             });
     };
 
-    const dropView: any = useRef(null);
-    const dropScrollView = () => {
-        dropView?.current?.scrollTo({ animated: true, y: 100 });
-    };
-
     return (
         <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined} >
-            <S.ContainerPage ref={dropView} keyboardShouldPersistTaps="handled">
+            <S.ContainerPage keyboardShouldPersistTaps="handled">
                 <SvgCss xml={ImageSignIn} height={250} width={250} />
                 <S.ContainerLogin>
                     <Controller
@@ -93,7 +88,6 @@ export const SignIn: React.FC = () => {
                                 value={value}
                                 onChangeText={onChange}
                                 messageError={errors?.password?.message}
-                                onFocus={() => dropScrollView()}
                             />
                         )}
                     />
