@@ -86,6 +86,13 @@ export const TextListEmpty = styled.Text`
     max-width: 90%;
 `;
 
+export const TextLoading = styled.Text`
+    font-size: 19px;
+    text-align: center;
+    color: ${colors.purpleDark};
+    font-family: 'Nunito_600SemiBold';
+`;
+
 export const ContainerTabBar = styled.View`
     position: absolute;
     bottom: 0;

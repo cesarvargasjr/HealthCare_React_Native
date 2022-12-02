@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { ActivityIndicator } from 'react-native';
 import { usePatient } from '../../contexts/Patient';
 import { Image } from 'react-native';
 import { Button } from '../../components/Button';
@@ -23,13 +24,14 @@ export const ProfilePatient = () => {
     const isFocused = useIsFocused();
     const [isOpen, setIsOpen] = useState(false);
     const [listDrugs, setListDrugs]: any = useState([]);
+    const [loading, setLoading] = useState(false);
     const { patient, getAge } = usePatient();
 
     const deletePatient = () => {
         handleDeletePatient(patient.id)
         navigation.navigate('Home')
         toast.show('Paciente excluído com sucesso', { type: 'success' })
-    }
+    };
 
     const RenderListDrugs = () => {
         if (listDrugs?.length > 0) {
@@ -50,21 +52,36 @@ export const ProfilePatient = () => {
             )
         } else {
             return (
-                <S.ListDrugsEmpty>
-                    <SvgCss xml={listEmpity} height={150} width={150} style={{ marginBottom: 40 }} />
-                    <S.TextListEmpty>
-                        Este paciente não possui medicamentos cadastrados
-                    </S.TextListEmpty>
-                </S.ListDrugsEmpty>
+                <>
+                    {loading ? (
+                        <>
+                            <ActivityIndicator size="large" color="#888BF0" style={{ marginTop: '50%' }} />
+                            <S.TextLoading>
+                                Carregando...
+                            </S.TextLoading>
+                        </>
+                    ) : (
+                        <>
+                            <S.ListDrugsEmpty>
+                                <SvgCss xml={listEmpity} height={150} width={150} style={{ marginBottom: 40 }} />
+                                <S.TextListEmpty>
+                                    Este paciente não possui medicamentos cadastrados
+                                </S.TextListEmpty>
+                            </S.ListDrugsEmpty>
+                        </>
+                    )}
+                </>
             )
         }
-    }
+    };
 
     useMemo(
         async () => {
+            setLoading(true)
             const response = await handleListDrugs();
             setListDrugs(response.sort((a, b) => a.timeNotification > b.timeNotification ? 1 : -1));
-        }, [isFocused])
+            setLoading(false)
+        }, [isFocused]);
 
     return (
         <S.ContainerPage >

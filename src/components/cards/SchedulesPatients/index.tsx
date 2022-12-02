@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { ContentSchedules } from './ContentSchedules';
 import { useIsFocused } from '@react-navigation/native';
 import * as S from './styles';
@@ -9,11 +10,13 @@ export const SchedulesPatients = () => {
 
     const { user } = useAuth();
     const isFocused = useIsFocused();
+    const [loading, setLoading] = useState(false);
     const [listDrugs, setListDrugs]: any = useState([]);
     const viewListDrugs = listDrugs?.sort((a, b) => a.timeNotification > b.timeNotification).slice(0, 3);
 
     useMemo(
         async () => {
+            setLoading(true)
             const response: any = await handleListAllDrugs(user);
 
             const listSchedules = response || [];
@@ -29,14 +32,25 @@ export const SchedulesPatients = () => {
             })
 
             filteredListSchedules?.length > 0 && setListDrugs(filteredListSchedules);
+            setLoading(false)
         }, [isFocused]);
 
     const renderContentSchedules = () => {
         if (viewListDrugs?.length === 0) {
             return (
-                <S.TextBold>
-                    Você não possui atendimentos no momento
-                </S.TextBold>
+                <>
+                    {loading ? (
+                        <>
+                            <ActivityIndicator size="large" color="#888BF0" />
+                        </>
+                    ) : (
+                        <>
+                            <S.TextBold>
+                                Você não possui atendimentos no momento
+                            </S.TextBold>
+                        </>
+                    )}
+                </>
             )
         } else {
             return (
