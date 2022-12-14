@@ -104,6 +104,7 @@ export const ContainerDescription = styled.View`
 
 export const ContainerInstructions = styled.View`
     width: 37%;
+    justify-content: space-evenly;
 `;
 
 export const ContainerCheckbox = styled.View`

@@ -38,7 +38,7 @@ export const AllSchedules = () => {
 
                         <>
                             <S.ContainerSchedule key={index}>
-                                <S.ContainerCheckbox>
+                                {/* <S.ContainerCheckbox>
                                     <Checkbox
                                         value={isChecked[index]}
                                         color={isChecked[index] ? colors.purple : colors.purple}
@@ -47,7 +47,7 @@ export const AllSchedules = () => {
                                             borderRadius: 50,
                                         }}
                                     />
-                                </S.ContainerCheckbox>
+                                </S.ContainerCheckbox> */}
                                 <S.ContainerInfo>
                                     <S.Title>Paciente</S.Title>
                                     <S.Text>{namePatient}</S.Text>
@@ -66,7 +66,7 @@ export const AllSchedules = () => {
                                     ) : (
                                         <S.TextDrug>{quantityDrugs} Comprimido</S.TextDrug>
                                     )}
-                                    {isChecked[index] ? (
+                                    {/* {isChecked[index] ? (
                                         <S.ContainerInLineCheck>
                                             <Icon name="check" size={22} color={colors.lightGreen} />
                                             <S.TextCheck> Realizado</S.TextCheck>
@@ -76,7 +76,7 @@ export const AllSchedules = () => {
                                             <Icon name="warning" size={20} color={colors.orange} />
                                             <S.TextPending> Pendente</S.TextPending>
                                         </S.ContainerInLineCheck>
-                                    )}
+                                    )} */}
                                 </S.ContainerInstructions>
                             </S.ContainerSchedule>
                             <Line />
