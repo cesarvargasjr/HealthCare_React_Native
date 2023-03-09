@@ -16,8 +16,8 @@ A   aplicação   Health   Care   tem   por   objetivo   auxiliar   no gerenciam
 
 ### Desenvolvimento do projeto:
 
-A aplicação é um sistema mobile com um protótipo já disponível para fácil acesso através do EXPO (Ao final, uma imagem com o QR Code para acessá-lo). 
-Desenvolvi tanto a parte de front-end quanto back-end, no entanto, ressalto que no back-end utilizei o Firebase, nas autenticações o Firebase Auth e na manipulação de dados cadastrados Cloud Firestone (Banco de dados não relacional)
+A aplicação é um sistema mobile com um protótipo já disponível para fácil acesso através do EXPO (Ao final, um QR Code para acessá-lo). 
+Desenvolvi tanto a parte de front-end quanto back-end. No front-end React Native e EXPO tomando a frente do sistema e no back-end utilizei o Firebase, nas autenticações o Firebase Auth e na manipulação de dados o Cloud Firestone (Banco de dados não relacional).
 
 ##
 
@@ -53,5 +53,13 @@ Depois abra seu emulador mobile.
 Para executar o projeto.
 
 Executados os comandos verifique seu emulador, pois estará tudo pronto para navegar no aplicaitvo.
+
+##
+
+### QR Code para acessar o Health Care:
+
+Observação: O Health Care é compatível com as plataformas Android e IOS, no entanto, neste momento somente smartphones Android conseguirão navegar no aplicativo através deste QR Code. Caso queira acessar a aplicação em um smartphone IOS será necessário fazer o clone deste repositório e executar o projeto localmente conforme os passos indicados na seção anterios.
+
+<img width="259" alt="image" src="https://user-images.githubusercontent.com/72532360/224177246-aaa75087-18ba-474c-bf52-42b29f61304f.png">
 
 ##
