@@ -82,7 +82,7 @@ Observação: O Health Care é compatível com as plataformas Android e IOS, no 
 
 ##
 
-### Considerações final
+### Considerações finais
 
 Atualmente sigo desenvolvendo algumas features com o intuito de proporcionar ainda mais uma experiência positiva agregando valor ao usuário final. Em breve estarei publicando nas lojas o Health Care para download.
 
