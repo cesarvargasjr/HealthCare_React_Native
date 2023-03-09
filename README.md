@@ -8,9 +8,19 @@
 
 A   aplicação   Health   Care   tem   por   objetivo   auxiliar   no gerenciamento  dos  pacientes  presentes  em  um  lar  de  idosos  ou  um residencial  geriátrico,  juntamente  com  seus  respectivos  medicamentos  e atendimentos  que  precisam  ser  realizados  por  pessoas  capacitadas, especificamente, têm-se:
 
-- Fornecer  praticidade  e  organização  na  manipulação  dos  dados  de pacientes, medicamentos e atendimentos.
+- Fornecer  praticidade  e  organização  na  manipulação  dos  dados  de pacientes, medicamentos e atendimentos;
 
 - Proporcionar   atendimentos   mais   eficazes   evitando   perda   de informações ou até mesmo esquecimentos no gerenciamento de cada informação cadastrada no sistema.
+
+
+### O que você poderá fazer no Health Care:
+
+- Cadastrar seu lar de idosos ou residencial geriátrico;
+- Cadastrar pacientes;
+- Cadastrar medicamentos juntamente com informações de tratamento, como por exemplo, horário da medicação, dosagem e por quanto tempo deve ser realizado o tratamento;
+- Visualizar os atendimentos que precisam ser realizados pelo profissional presente no lar de idosos, com informações do paciente, medicação e hora da medicação;
+- Excluir pacientes;
+- Excluir medicamentos/tratamentos.
 
 ##
 
