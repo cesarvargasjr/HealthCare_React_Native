@@ -1,6 +1,6 @@
-## Projeto tecnológico de final de curso
+## PROJETO TECNOLÓGICO DE FINAL DE CURSO
 ### Universidade Luterana do Brasil (Ulbra Canoas - RS)
-### Análise e Desenvolvimento de Sistemas
+### Tecnólogo em Análise e Desenvolvimento de Sistemas (Concluído em 2022)
 
 ##
 
@@ -61,5 +61,11 @@ Executados os comandos verifique seu emulador, pois estará tudo pronto para nav
 Observação: O Health Care é compatível com as plataformas Android e IOS, no entanto, neste momento somente smartphones Android conseguirão navegar no aplicativo através deste QR Code. Caso queira acessar a aplicação em um smartphone IOS será necessário fazer o clone deste repositório e executar o projeto localmente conforme os passos indicados na seção anterios.
 
 <img width="259" alt="image" src="https://user-images.githubusercontent.com/72532360/224177246-aaa75087-18ba-474c-bf52-42b29f61304f.png">
+
+##
+
+### Imagens do sistema Health Care:
+
+<img width="1264" alt="image" src="https://user-images.githubusercontent.com/72532360/224178594-5c20faab-cbb7-4e8a-8aa1-b4c7f2eac157.png">
 
 ##
