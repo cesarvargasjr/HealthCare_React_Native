@@ -2,7 +2,7 @@ import React from 'react';
 import { LogBox } from 'react-native';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { ToastStyles } from './src/components/Toast';
+import { ToastStyles } from './src/components/toast';
 import { AuthProvider } from './src/contexts/Auth';
 import { PatientProvider } from './src/contexts/Patient';
 import Routes from './src/routes/app.routes';

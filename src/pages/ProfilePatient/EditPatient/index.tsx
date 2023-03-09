@@ -3,12 +3,12 @@ import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Button } from '../../../components/Button';
-import { AddImage } from '../../../components/Cards/AddImage';
-import { Input } from '../../../components/Input';
+import { Button } from '../../../components/button';
+import { AddImage } from '../../../components/cards/addImage';
+import { Input } from '../../../components/input';
 import * as S from './styles';
 import { useToast } from 'react-native-toast-notifications';
-import handleUpdatePatient from '../../../services/Patients/UpdatePatient';
+import handleUpdatePatient from '../../../services/patients/updatePatient';
 import { FormPatient, usePatient } from '../../../contexts/Patient';
 
 export const EditPatient = () => {

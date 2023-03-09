@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
-import { Line } from '../../components/Line';
+import { Line } from '../../components/line';
 import { TabBar } from '../../components/TabBar';
 import { SvgCss } from 'react-native-svg';
-import { handleListAllDrugs } from '../../services/Drugs/ListDrug';
+import { handleListAllDrugs } from '../../services/drugs/listDrug';
 import { useAuth } from '../../contexts/Auth';
 import listEmpity from '../../assets/listEmpity.svg';
 import Icon from 'react-native-vector-icons/FontAwesome';

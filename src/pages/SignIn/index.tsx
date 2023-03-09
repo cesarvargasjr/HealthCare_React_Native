@@ -5,13 +5,13 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToast } from 'react-native-toast-notifications';
 import { useAuth } from '../../contexts/Auth';
-import { Button } from '../../components/Button';
-import { Input } from '../../components/Input';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
 import { SvgCss } from 'react-native-svg';
 import * as yup from 'yup';
 import * as S from './styles';
 import ImageSignIn from '../../assets/signIn.svg';
-import handleSignIn from '../../services/Users/SignIn';
+import handleSignIn from '../../services/users/signIn';
 
 interface FormProps {
     email: string;

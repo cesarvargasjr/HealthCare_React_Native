@@ -3,15 +3,15 @@ import { Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '../../components/Button';
-import { Input } from '../../components/Input';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
 import { useToast } from 'react-native-toast-notifications';
 import { usePatient } from '../../contexts/Patient';
 import { useAuth } from '../../contexts/Auth';
 import colors from '../../utils/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import handleAddDrug from '../../services/Drugs/RegisterDrug';
+import handleAddDrug from '../../services/drugs/registerDrug';
 import * as S from './styles';
 import * as yup from 'yup';
 interface FormDrugs {

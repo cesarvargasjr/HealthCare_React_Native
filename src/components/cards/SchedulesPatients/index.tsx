@@ -3,7 +3,7 @@ import { ContentSchedules } from './ContentSchedules';
 import { useIsFocused } from '@react-navigation/native';
 import * as S from './styles';
 import { useAuth } from '../../../contexts/Auth';
-import { handleListAllDrugs } from '../../../services/Drugs/ListDrug';
+import { handleListAllDrugs } from '../../../services/drugs/listDrug';
 
 export const SchedulesPatients = () => {
 

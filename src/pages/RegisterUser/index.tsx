@@ -6,9 +6,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useToast } from 'react-native-toast-notifications';
 import * as yup from 'yup';
 import * as S from './styles';
-import { Button } from '../../components/Button';
-import { Input } from '../../components/Input';
-import handleCreateAccount from '../../services/Users/RegisterUser';
+import { Button } from '../../components/button';
+import { Input } from '../../components/input';
+import handleCreateAccount from '../../services/users/registerUser';
 
 interface FormProps {
     name: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles'
 import { Modal } from 'react-native';
-import { Button } from '../../Button';
+import { Button } from '../../button';
 
 interface ModalProps {
     description: string;

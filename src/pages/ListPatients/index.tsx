@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { CardPatient } from '../../components/Cards/Patient';
+import { CardPatient } from '../../components/cards/patient';
 import { TabBar } from '../../components/TabBar';
 import { usePatient } from '../../contexts/Patient';
 import { SvgCss } from 'react-native-svg';
-import { Button } from '../../components/Button';
+import { Button } from '../../components/button';
 import listEmpity from '../../assets/listEmpity.svg';
 import * as S from './styles';
 

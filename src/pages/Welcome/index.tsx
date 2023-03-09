@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '../../components/Button';
+import { Button } from '../../components/button';
 import { SliderOnboarding } from '../../components/SliderOnboarding';
 
 const slider = [

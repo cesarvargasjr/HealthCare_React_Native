@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import handleListPatients from '../services/Patients/ListPatient';
+import handleListPatients from '../services/patients/listPatient';
 import calculateAge from '../utils/calculateAge';
 
 export interface FormPatient {

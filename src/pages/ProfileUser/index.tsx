@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { TabBar } from '../../components/TabBar';
-import { CardProfileUser } from '../../components/Cards/ProfileUser';
+import { CardProfileUser } from '../../components/cards/ProfileUser';
 import { SvgCss } from 'react-native-svg';
 import clinic from '../../assets/clinic.svg';
 import { usePatient } from '../../contexts/Patient';

@@ -1,10 +1,10 @@
 import React from 'react';
 import * as S from './styles'
-import { Number } from './Number';
-import { Password } from './Password';
-import { Text } from './Text';
-import { UserName } from './UserName';
-import { TextArea } from './TextArea';
+import { Number } from './number';
+import { Password } from './password';
+import { Text } from './text';
+import { UserName } from './userName';
+import { TextArea } from './textArea';
 import { Date } from './Date';
 
 interface InputProps {

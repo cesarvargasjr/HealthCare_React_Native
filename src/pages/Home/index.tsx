@@ -1,17 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { BackHandler } from 'react-native';
-import { SchedulesPatients } from '../../components/Cards/SchedulesPatients';
+import { SchedulesPatients } from '../../components/cards/SchedulesPatients';
 import { TabBar } from '../../components/TabBar';
-import { Button } from '../../components/Button';
-import { CountInfo } from '../../components/Cards/CountInfo';
-import { handleListAllDrugs } from '../../services/Drugs/ListDrug';
+import { Button } from '../../components/button';
+import { CountInfo } from '../../components/cards/CountInfo';
+import { handleListAllDrugs } from '../../services/drugs/listDrug';
 import { useAuth } from '../../contexts/Auth';
 import { usePatient } from '../../contexts/Patient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../utils/colors';
 import months from '../../utils/months';
-import handleListPatients from '../../services/Patients/ListPatient';
+import handleListPatients from '../../services/patients/listPatient';
 import * as S from './styles'
 
 export const Home = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { Image } from 'react-native';
-import { Button } from '../../Button';
+import { Button } from '../../button';
 import { useNavigation } from '@react-navigation/native';
 import { FormPatient, usePatient } from '../../../contexts/Patient';
 import Icon from 'react-native-vector-icons/FontAwesome';

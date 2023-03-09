@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ModalDelete } from '../../Modal/ModalDelete';
+import { ModalDelete } from '../../modal/modalDelete';
 import { useToast } from 'react-native-toast-notifications';
-import handleDeleteDrug from '../../../services/Drugs/DeleteDrug';
+import handleDeleteDrug from '../../../services/drugs/deleteDrug';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../../utils/colors';
 import monthsNumber from '../../../utils/monthsNumber';
