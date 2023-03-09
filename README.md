@@ -58,7 +58,7 @@ Executados os comandos verifique seu emulador, pois estará tudo pronto para nav
 
 ### QR Code para acessar o Health Care:
 
-Observação: O Health Care é compatível com as plataformas Android e IOS, no entanto, neste momento somente smartphones Android conseguirão navegar no aplicativo através deste QR Code. Caso queira acessar a aplicação em um smartphone IOS será necessário fazer o clone deste repositório e executar o projeto localmente conforme os passos indicados na seção anterios.
+Observação: O Health Care é compatível com as plataformas Android e IOS, no entanto, neste momento somente smartphones Android conseguirão navegar no aplicativo através deste QR Code. Caso queira acessar a aplicação em um smartphone IOS será necessário fazer o clone deste repositório e executar o projeto localmente conforme os passos indicados na seção anterior.
 
 <img width="259" alt="image" src="https://user-images.githubusercontent.com/72532360/224177246-aaa75087-18ba-474c-bf52-42b29f61304f.png">
 
