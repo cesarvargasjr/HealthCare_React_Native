@@ -81,3 +81,9 @@ Observação: O Health Care é compatível com as plataformas Android e IOS, no 
 <img width="1264" alt="image" src="https://user-images.githubusercontent.com/72532360/224178594-5c20faab-cbb7-4e8a-8aa1-b4c7f2eac157.png">
 
 ##
+
+### Considerações final
+
+Atualmente sigo desenvolvendo algumas features com o intuito de proporcionar ainda mais uma experiência positiva agregando valor ao usuário final. Em breve estarei publicando nas lojas o Health Care para download.
+
+##
