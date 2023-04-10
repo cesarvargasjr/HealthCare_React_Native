@@ -56,13 +56,16 @@ Desenvolvi tanto a parte de front-end quanto back-end. No front-end React Native
 
 Após o clone do repositório, executar os seguintes comandos:
 
-### `yarn`
-Para instalar as dependências.
-
+```bash
+# Instale as dependências:
+$ yarn
+```
 Depois abra seu emulador mobile.
 
-### `yarn start` ou `expo start`
-Para executar o projeto.
+```bash
+# Execute a aplicação com:
+$ `yarn start` ou `expo start`
+```
 
 Executados os comandos verifique seu emulador, pois estará tudo pronto para navegar no aplicaitvo.
 
